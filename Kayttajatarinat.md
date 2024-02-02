@@ -9,3 +9,13 @@
 4. Lipunmyyntitoimiston on pystyttävä listaamaan järjestelmään kullekin tapahtumalle enimmäislippumäärä, jotta niihin ei myytäisi liikaa lippuja.
 
 5. Järjestelmän tulee generoida jokaiselle myydylle lipulle uniikki koodi, joka erottaa jokaisen lipun toisistaan ja luo tällöin turvaa sekä asiakkaalle, että tapahtumanjärjestäjälle.
+
+6. Lipunmyyntitoimiston pitää pystyä lisäämään uusia tapahtumia, asettamaan lippumäärät ja seurata myyntitilastoja.
+
+7. Asiakkaan pitää pystyä selaamaan verkkokaupassa eri tapahtumia, valita istumapaikat, suorittaa maksun ja vastaanottaa liput sähköpostiin.
+
+8. Asiakkaan pitää voida peruuttaa tai vaihtaa liput verkkokaupassa.
+
+9. Lipunmyyntitoimiston on pystyttävä luomaan erilaisia kampanjoita, kuten alennuksia tai erikoistarjouksia.
+
+10. Järjestelmän ylläpitäjän on pystyttävä hallinnoimaan käyttäjätilien oikeuksia. 
