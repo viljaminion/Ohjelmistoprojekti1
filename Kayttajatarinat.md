@@ -19,3 +19,13 @@
 9. Lipunmyyntitoimiston on pystyttävä luomaan erilaisia kampanjoita, kuten alennuksia tai erikoistarjouksia.
 
 10. Järjestelmän ylläpitäjän on pystyttävä hallinnoimaan käyttäjätilien oikeuksia. 
+
+11. Asiakkaan pitää pystyä tallentamaan lippu tiedostona, jotta sitä ei tarvitse tulostaa.
+
+12. Asiakkaan sekä lipunmyyntitoimiston on pystyttävä nähdä, kuinka paljon myytäviä lippuja on jäljellä. 
+
+13. Asioinnin järjestelmässä on oltava nopeaa ja helppoa, ilman turhia vaiheita, jotta käyttäjäkokemus on mahdollisimman hyvä.
+
+14. Järjestelmän on oltava visuaalisesti selkeä ja mukavan näköinen, jotta käyttäjäkokemus on mahdollisimman hyvä. 
+
+15. Asiakkaan on pystyttävä nähdä tapahtumien saatavilla olevat liput valitsemansa paikan perusteella. (Esim. Helsingin tapahtumat)
