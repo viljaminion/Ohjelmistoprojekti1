@@ -29,3 +29,13 @@
 14. Järjestelmän on oltava visuaalisesti selkeä ja mukavan näköinen, jotta käyttäjäkokemus on mahdollisimman hyvä. 
 
 15. Asiakkaan on pystyttävä nähdä tapahtumien saatavilla olevat liput valitsemansa paikan perusteella. (Esim. Helsingin tapahtumat)
+
+16. Asiakkaan pitää olla mahdollista ostaa lippu erityisryhmänä, kuten opiskelijana tai eläkeläisenä, jolloin järjestelmä huomioi automaattisesti kyseiset alennukset tai edut.
+
+17. Asiakkaan on voitava tehdä ryhmävaraus ja ostaa useampi lippu kerrallaan yhdellä maksutapahtumalla.
+
+18. Järjestelmän on luotava jokaiselle myydylle lipulle automaattisesti uniikki koodi, joka varmistaa lipun aitouden ja ehkäisee väärennöksiä.
+
+19. Lipunmyyntitoimiston markkinointivastaavan on pystyä käynnistää alennuskampanja.
+
+20. Asiakkaan pitää pystyä lähettämään lippu toiselle, jos itse estyy menemästä tapahtumaan. 
