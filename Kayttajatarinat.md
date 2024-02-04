@@ -1,5 +1,17 @@
 # Käyttäjätarinat
 
+Asiakas perheineen haluaa ostaa liput yhteiseen tapahtumaan. He käyttävät TicketGuru-verkkokauppaa, valitsevat istumapaikat ja ostavat useamman lipun kerrallaan yhdellä maksutapahtumalla. Verkkokauppa näyttää automaattisesti mahdolliset alennukset, kuten perhealennuksen, ja generoi uniikit koodit kullekin lipulle.
+
+Eläkeläisryhmä suunnittelee yhteistä retkeä tapahtumaan. He käyttävät TicketGuru-verkkokauppaa, valitsevat istumapaikat ja ostavat lippunsa verkkomaksulla. Järjestelmä tunnistaa automaattisesti asiakkaat eläkeläisinä ja tarjoaa heille alennetut hinnat. Uniikit koodit generoidaan jokaiselle ostetulle lipulle.
+
+Lipunmyyntitoimisto lisää uuden tapahtuman TicketGuru-järjestelmään, asettaa enimmäislippumäärän ja seuraa myyntitilastoja. Järjestelmä tuottaa myyntiraportin, josta toimisto näkee päivän tai kuukauden myynnin. Tarvittaessa he voivat tehdä muutoksia, kuten lisätä lippuja myyntiin tai päivittää enimmäislippumäärää.
+
+Lipunmyyntitoimiston markkinointivastaava käynnistää alennuskampanjan TicketGuru-järjestelmässä. Hän asettaa alennukset tietyille tapahtumille ja seuraa kampanjan vaikutusta myyntiin. Asiakkaat voivat hyödyntää kampanjaetuja verkkokaupassa ostaessaan lippuja.
+
+Asiakas huomaa, ettei pääse osallistumaan tapahtumaan ja päättää lähettää lipun ystävälleen. Hän käyttää TicketGuru-järjestelmää ja siirtää lipun toiselle henkilölle antamalla tämän sähköpostiosoitteen. Järjestelmä generoi uuden koodin, ja ystävä saa sähköpostitse lipun sekä käyttöönsä uuden, uniikin koodin.
+
+# Vaatimukset
+
 1. Asiakkaan on voitava ostaa useampi lippu kerrallaan, jotta esimerkiksi perheenjäsenille ei tarvitse yksittäin ostaa omia, eikä turhaan tarvitse tehdä useaa ostoa.
 
 2. Järjestelmässä täytyy olla mahdollista ostaa lippu myös erityisryhmille, kuten eläkeläisille, jotta nämä saavat heille kuuluvat edut myös tässä lipunmyyntitoimistossa.
@@ -38,4 +50,14 @@
 
 19. Lipunmyyntitoimiston markkinointivastaavan on pystyä käynnistää alennuskampanja.
 
-20. Asiakkaan pitää pystyä lähettämään lippu toiselle, jos itse estyy menemästä tapahtumaan. 
+20. Asiakkaan pitää pystyä lähettämään lippu toiselle, jos itse estyy menemästä tapahtumaan.
+
+21. Asiakkaana haluaisin tehdä ryhmätilauksen ystäväni kanssa, siten että voimme ostaa vierekkäiset paikat tapahtumaan erillisillä maksukerroilla.
+
+22. Asiakkaan on voitava ostaa lippu lahjaksi toiselle henkilölle.
+
+23. Järjestelmän ylläpitäjällä pitää olla mahdollisuus muokata ja tallentaa lipunmyyjien oikeuksia.
+
+24. Lipunmyyjän on voitava tarkistaa myyntitapahtumista, onko vahingossa tapahtunut tuplakatevaraus veloitettu oikeasti kaksi kertaa.
+
+25. Järjestelmän pitää lukita myytävät paikat tietyksi määräajaksi, jotta samoille paikoille ei tapahdu päällekkäisiä ostoksia.
