@@ -99,7 +99,7 @@ attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän t
 > asiakas_id | FK* N | Asiakkaan idnumero, viittaus [Asiakas](#Asiakas)-tauluun
 > pvm | *DATE |  Ostotapahtuman päivämäärä
 > lippu_id| FK* N | Ostetun lipun idnumero, viittaus [Lippu](#Lippu)-tauluun
-> myyja_id| FK* N | Ostotapahtuman tehneen myyjän idnumero, viittaus [Lipun myyjä](#Lipun myyjä)-tauluun
+> myyja_id| FK* N | Ostotapahtuman tehneen myyjän idnumero, viittaus [Myyjä](#Myyjä)-tauluun
 
 > ### _Lippu_
 > _Lippu-taulu sisältää ostetun lipun tiedot._
@@ -138,8 +138,8 @@ attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän t
 > pvm | *DATETIME |  Maksutapahtuman päivämäärä ja kellonaika
 > ostotapahtuma_id | FK* N | Ostotapahtuman idnumero, viittaus [Ostotapahtuma](#Ostotapahtuma)-tauluun
 
-> ### _Lipun myyjä_
-> _Lipun myyjä-taulu sisältää myyjän yhteystiedot. Myyjällä voi olla vain yksi myyja_id käytössä._
+> ### _Myyjä_
+> _Myyjä-taulu sisältää myyjän yhteystiedot. Myyjällä voi olla vain yksi myyja_id käytössä._
 >
 > Kenttä | Tyyppi | Kuvaus
 > ------ | ------ | ------
