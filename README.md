@@ -55,6 +55,20 @@ attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän t
 > avatar | int FK | Tilin avatar, viittaus [avatar](#Avatar)-tauluun
 > kayttaja | int FK | Viittaus käyttäjään [käyttäjä](#Kayttaja)-taulussa
 
+> ### _Asiakas_
+> _Asiakas-taulu sisältää asiakkaan yhteystiedot. Asiakkaalla voi olla vain yksi asiakasid käytössä._
+>
+> Kenttä | Tyyppi | Kuvaus
+> ------ | ------ | ------
+> id | PK* AN | Asiakkaan id
+> etunimi | C(50) |  Asiakkaan etunimi
+> sukunimi | C(50) |  Asiakkaan sukunimi
+> katuosoite | C(100) |  Katuosoite missä asiakas asuu
+> postinro | FK* N | Postinumero, viittaus [Postinumerot](#Postinumerot)-tauluun
+> puhelinnro | C/20 | Asiakkaan puhelinnumero
+> email | C/100 | Asiakkaan sähköpostiosoite
+
+
 ## Tekninen kuvaus
 
 Teknisessä kuvauksessa esitetään järjestelmän toteutuksen suunnittelussa tehdyt tekniset
