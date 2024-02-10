@@ -60,13 +60,28 @@ attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän t
 >
 > Kenttä | Tyyppi | Kuvaus
 > ------ | ------ | ------
-> id | PK* AN | Asiakkaan id
-> etunimi | C(50) |  Asiakkaan etunimi
-> sukunimi | C(50) |  Asiakkaan sukunimi
-> katuosoite | C(100) |  Katuosoite missä asiakas asuu
+> asiakas_id | PK* AN | Asiakkaan id
+> etunimi | *C(50) |  Asiakkaan etunimi
+> sukunimi | *C(50) |  Asiakkaan sukunimi
+> katuosoite | *C(100) |  Katuosoite missä asiakas asuu
 > postinro | FK* N | Postinumero, viittaus [Postinumerot](#Postinumerot)-tauluun
-> puhelinnro | C/20 | Asiakkaan puhelinnumero
+> puhelinnro | *C/20 | Asiakkaan puhelinnumero
 > email | C/100 | Asiakkaan sähköpostiosoite
+
+> ### _Tapahtuma_
+> _Tapahtuma-taulu sisältää tapahtuman tiedot. Jokaiselle tapahtumalle tehdään oma taulu._
+>
+> Kenttä | Tyyppi | Kuvaus
+> ------ | ------ | ------
+> tapahtuma_id | PK* AN | Tapahtuman id
+> tapahtuma | *C(100) |  Tapahtuman nimi
+> katuosoite | *C(100) |  Katuosoite missä tapahtuma sijaitsee
+> postinro | FK* N | Postinumero, viittaus [Postinumerot](#Postinumerot)-tauluun
+> ajankohta | *DATETIME | Tapahtuman ajankohta
+> kuvaus | *C/500 | Tarkempi kuvaus tapahtumasta
+> lippumäärä | *N | Tapahtumaan myytävien lippujen lukumäärä
+> kesto| TIME | Tapahtuman kesto tunteina/minuutteina
+
 
 
 ## Tekninen kuvaus
