@@ -82,6 +82,25 @@ attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän t
 > lippumäärä | *N | Tapahtumaan myytävien lippujen lukumäärä
 > kesto| TIME | Tapahtuman kesto tunteina/minuutteina
 
+> ### _Postinumerot_
+> _Postinumerot-taulu sisältää postinumerot._
+>
+> Kenttä | Tyyppi | Kuvaus
+> ------ | ------ | ------
+> postinro | PK* N | Osoitteen postinumero, joka määrittää paikkakunnan.
+> paikkakunta | *C(100) |  Paikkakunnan nimi
+
+> ### _Ostotapahtuma_
+> _Ostotapahtuma-taulu sisältää ostotapahtuman tiedot. Yhteen ostotapahtumaan voi sisältyä useampi lippuostos._
+>
+> Kenttä | Tyyppi | Kuvaus
+> ------ | ------ | ------
+> ostatapahtuma_id | PK* AN | Ostotapahtuman id
+> asiakas_id | FK* N | Asiakkaan idnumero, viittaus [Asiakas](#Asiakas)-tauluun
+> pvm | *DATE |  Ostotapahtuman päivämäärä
+> lippu_id| FK* N | Ostetun lipun idnumero, viittaus [Lippu](#Lippu)-tauluun
+> myyja_id| FK* N | Ostotapahtuman tehneen myyjän idnumero, viittaus [Lipun myyjä](#Lipun myyjä)-tauluun
+
 
 
 ## Tekninen kuvaus
