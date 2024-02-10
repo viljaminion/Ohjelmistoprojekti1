@@ -45,15 +45,20 @@ Lisäksi kukin järjestelmän tietoelementti ja sen attribuutit kuvataan
 tietohakemistossa. Tietohakemisto tarkoittaa yksinkertaisesti vain jokaisen elementin (taulun) ja niiden
 attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän tyyliin:
 
-> ### _Tilit_
-> _Tilit-taulu sisältää käyttäjätilit. Käyttäjällä voi olla monta tiliä. Tili kuuluu aina vain yhdelle käyttäjälle._
+> ### _Selitykset_
+> _Tässä on selitykset tietokannan taulujen tyypeille._
 >
-> Kenttä | Tyyppi | Kuvaus
-> ------ | ------ | ------
-> id | int PK | Tilin id
-> nimimerkki | varchar(30) |  Tilin nimimerkki
-> avatar | int FK | Tilin avatar, viittaus [avatar](#Avatar)-tauluun
-> kayttaja | int FK | Viittaus käyttäjään [käyttäjä](#Kayttaja)-taulussa
+>  Tyyppi | Kuvaus
+> ------ | ------ 
+> PK | Pääavain
+> FK |  Viiteavain
+> "*" |  Pakollinen tieto
+> AN | Autonumber/laskuri
+> C/10 | Teksti/pituus
+> N| TNumero
+> DATE | Päivämäärä
+> DATETIME | Päivämäärä ja kellonaika
+> TIME | kellonaika
 
 > ### _Asiakas_
 > _Asiakas-taulu sisältää asiakkaan yhteystiedot. Asiakkaalla voi olla vain yksi asiakasid käytössä._
