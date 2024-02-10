@@ -55,7 +55,7 @@ attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän t
 > "*" |  Pakollinen tieto
 > AN | Autonumber/laskuri
 > C/10 | Teksti/pituus
-> N| TNumero
+> N| Numero
 > DATE | Päivämäärä
 > DATETIME | Päivämäärä ja kellonaika
 > TIME | kellonaika
