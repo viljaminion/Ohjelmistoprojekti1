@@ -60,7 +60,7 @@ attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän t
 >
 > Kenttä | Tyyppi | Kuvaus
 > ------ | ------ | ------
-> asiakas_id | PK* AN | Asiakkaan id
+> asiakas_id | PK* AN | Asiakkaan idnumero
 > etunimi | *C(50) |  Asiakkaan etunimi
 > sukunimi | *C(50) |  Asiakkaan sukunimi
 > katuosoite | *C(100) |  Katuosoite missä asiakas asuu
@@ -73,7 +73,7 @@ attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän t
 >
 > Kenttä | Tyyppi | Kuvaus
 > ------ | ------ | ------
-> tapahtuma_id | PK* AN | Tapahtuman id
+> tapahtuma_id | PK* AN | Tapahtuman idnumero
 > tapahtuma | *C(100) |  Tapahtuman nimi
 > katuosoite | *C(100) |  Katuosoite missä tapahtuma sijaitsee
 > postinro | FK* N | Postinumero, viittaus [Postinumerot](#Postinumerot)-tauluun
@@ -95,13 +95,61 @@ attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän t
 >
 > Kenttä | Tyyppi | Kuvaus
 > ------ | ------ | ------
-> ostatapahtuma_id | PK* AN | Ostotapahtuman id
+> ostotapahtuma_id | PK* AN | Ostotapahtuman idnumero
 > asiakas_id | FK* N | Asiakkaan idnumero, viittaus [Asiakas](#Asiakas)-tauluun
 > pvm | *DATE |  Ostotapahtuman päivämäärä
 > lippu_id| FK* N | Ostetun lipun idnumero, viittaus [Lippu](#Lippu)-tauluun
 > myyja_id| FK* N | Ostotapahtuman tehneen myyjän idnumero, viittaus [Lipun myyjä](#Lipun myyjä)-tauluun
 
+> ### _Lippu_
+> _Lippu-taulu sisältää ostetun lipun tiedot._
+>
+> Kenttä | Tyyppi | Kuvaus
+> ------ | ------ | ------
+> lippu_id | PK* AN | Lipun idnumero
+> tapahtuma_id | FK* N | Tapahtuman idnumero, viittaus [Tapahtuma](#Tapahtuma)-tauluun
+> lipputyyppi_id| FK* N | Ostetun lipun lipputyypin idnumero, viittaus [Lipputyyppi](#Lipputyyppi)-tauluun
+> istumapaikka_id| FK* N | Istumapaikan idnumero, viittaus [Istumapaikat](#Istumapaikat)-tauluun
 
+> ### _Lipputyyppi_
+> _Lippu-taulu sisältää ostetun lipun tiedot._
+>
+> Kenttä | Tyyppi | Kuvaus
+> ------ | ------ | ------
+> lipputyyppi_id | PK* AN | Lipputyypin idnumero
+> lipputyyppi | *C/30 | Selitys lipputyypistä, esimerkiksi aikuinen/lapsi/opiskelija tms.
+> kuvaus | *C/100 | Tarkempi kuvaus lipputyypistä, esimerkiksi esteettömyys.
+> hinta | *DOUBLE | Lipun hinta.
+
+> ### _Istumapaikat_
+> _Istumapaikat-taulu sisältää ostetun lipun istumapaikan tiedot._
+>
+> Kenttä | Tyyppi | Kuvaus
+> ------ | ------ | ------
+> istumapaikka_id | PK* AN | Istumapaikan idnumero
+>istumapaikka | *C/6 | Istumapaikan paikkanumero
+
+> ### _Maksutapahtuma_
+> _Maksutapahtuma-taulu sisältää maksutapahtuman tiedot. Yhteen ostotapahtumaan voi sisältyä useampi maksutapahtuma._
+>
+> Kenttä | Tyyppi | Kuvaus
+> ------ | ------ | ------
+> maksu_id | PK* AN | Maksutapahtuman idnumero
+> pvm | *DATETIME |  Maksutapahtuman päivämäärä ja kellonaika
+> ostotapahtuma_id | FK* N | Ostotapahtuman idnumero, viittaus [Ostotapahtuma](#Ostotapahtuma)-tauluun
+
+> ### _Lipun myyjä_
+> _Lipun myyjä-taulu sisältää myyjän yhteystiedot. Myyjällä voi olla vain yksi myyja_id käytössä._
+>
+> Kenttä | Tyyppi | Kuvaus
+> ------ | ------ | ------
+> myyja_id | PK* AN | Myyjän idnumero
+> m_etunimi | *C(50) |  Myyjän etunimi
+> m_sukunimi | *C(50) |  Myyjän sukunimi
+> m_katuosoite | *C(100) |  Katuosoite missä myyjä asuu
+> postinro | FK* N | Postinumero, viittaus [Postinumerot](#Postinumerot)-tauluun
+> m_puhelinnro | *C/20 | Myyjän puhelinnumero
+> m_email | C/100 | Myyjän sähköpostiosoite
 
 ## Tekninen kuvaus
 
