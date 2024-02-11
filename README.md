@@ -69,7 +69,7 @@ attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän t
 > etunimi | *C(50) |  Asiakkaan etunimi
 > sukunimi | *C(50) |  Asiakkaan sukunimi
 > katuosoite | *C(100) |  Katuosoite missä asiakas asuu
-> postinro | FK* N | Postinumero, viittaus [Postinumerot](#Postinumerot)-tauluun
+> postinro | FK* C/5 | Postinumero, viittaus [Postinumerot](#Postinumerot)-tauluun
 > puhelinnro | *C/20 | Asiakkaan puhelinnumero
 > email | C/100 | Asiakkaan sähköpostiosoite
 
@@ -81,7 +81,7 @@ attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän t
 > tapahtuma_id | PK* AN | Tapahtuman idnumero
 > tapahtuma | *C(100) |  Tapahtuman nimi
 > katuosoite | *C(100) |  Katuosoite missä tapahtuma sijaitsee
-> postinro | FK* N | Postinumero, viittaus [Postinumerot](#Postinumerot)-tauluun
+> postinro | FK* C/5 | Postinumero, viittaus [Postinumerot](#Postinumerot)-tauluun
 > ajankohta | *DATETIME | Tapahtuman ajankohta
 > kuvaus | *C/500 | Tarkempi kuvaus tapahtumasta
 > lippumäärä | *N | Tapahtumaan myytävien lippujen lukumäärä
@@ -92,7 +92,7 @@ attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän t
 >
 > Kenttä | Tyyppi | Kuvaus
 > ------ | ------ | ------
-> postinro | PK* N | Osoitteen postinumero, joka määrittää paikkakunnan.
+> postinro | PK* C/5 | Osoitteen postinumero, joka määrittää paikkakunnan.
 > paikkakunta | *C(100) |  Paikkakunnan nimi
 
 > ### _Ostotapahtuma_
@@ -152,7 +152,7 @@ attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän t
 > m_etunimi | *C(50) |  Myyjän etunimi
 > m_sukunimi | *C(50) |  Myyjän sukunimi
 > m_katuosoite | *C(100) |  Katuosoite missä myyjä asuu
-> postinro | FK* N | Postinumero, viittaus [Postinumerot](#Postinumerot)-tauluun
+> postinro | FK* C/5 | Postinumero, viittaus [Postinumerot](#Postinumerot)-tauluun
 > m_puhelinnro | *C/20 | Myyjän puhelinnumero
 > m_email | C/100 | Myyjän sähköpostiosoite
 
