@@ -26,10 +26,14 @@ tietoa ja keskittyä siihen.
 
 ## Käyttöliittymä
 
-- Lipunmyyntisivu
-- Tapahtumasivu
+- Lipunmyyntisivu:
+Tällä sivulla näkyy järjestelmän lippujen ja asiakkaiden tiedot, näiden välisenä siirtyämänä käytetään Ostotapahtuma-taulua.
+- Tapahtumasivu:
+Tällä sivulla näkyy tapahtumien ja tarkemmat lipputiedot.
 - Tapahtumien hallinta
+???
 - Myyntiraportti
+Tällä sivulla näkyy maksutapahtumien tiedot.
 
 Esitetään käyttöliittymän tärkeimmät (vain ne!) näkymät sekä niiden väliset siirtymät käyttöliittymäkaaviona. 
 
