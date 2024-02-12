@@ -1,8 +1,14 @@
 package ohjelmistoprojekti.ticketGuru.Classes;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 public class Seats {
 
@@ -13,7 +19,9 @@ public class Seats {
     private String seatNumber;
 
 
-    // Tarvii vielä viittauksen "Ticket"-luokkaan
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "seats")
+    private List<Ticket> tickets;
 
     public Seats(Long seatId, String seatNumber) {
         this.seatId = seatId;
