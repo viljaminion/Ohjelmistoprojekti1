@@ -49,6 +49,8 @@ Lisäksi kukin järjestelmän tietoelementti ja sen attribuutit kuvataan
 tietohakemistossa. Tietohakemisto tarkoittaa yksinkertaisesti vain jokaisen elementin (taulun) ja niiden
 attribuuttien (kentät/sarakkeet) listausta ja lyhyttä kuvausta esim. tähän tyyliin:
 
+![Alt text](tietokanta1.png)
+
 > ### _Selitykset_
 > _Tässä on selitykset tietokannan taulujen tyypeille._
 >
