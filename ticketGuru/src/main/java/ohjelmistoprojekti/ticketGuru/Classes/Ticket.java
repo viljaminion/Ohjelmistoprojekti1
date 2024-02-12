@@ -14,7 +14,9 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    // PUUTTUU TAPAHTUMA_ID
+    @ManyToOne
+    @JoinColumn(name = "eventid")
+    private Event event;
 
     @ManyToOne
 	@JoinColumn(name = "transactionid")
