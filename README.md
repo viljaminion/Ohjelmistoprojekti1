@@ -59,9 +59,9 @@ Tällä sivulla näkyy maksutapahtumien tiedot.
 > Kenttä | Tyyppi | Kuvaus
 > ------ | ------ | ------
 > asiakas_id | PK* AN | Asiakkaan idnumero
-> etunimi | *C(50) |  Asiakkaan etunimi
-> sukunimi | *C(50) |  Asiakkaan sukunimi
-> katuosoite | *C(100) |  Katuosoite missä asiakas asuu
+> etunimi | *C/50 |  Asiakkaan etunimi
+> sukunimi | *C/50 |  Asiakkaan sukunimi
+> katuosoite | *C/100 |  Katuosoite missä asiakas asuu
 > postinro | FK* C/5 | Postinumero, viittaus [Postinumerot](#Postinumerot)-tauluun
 > puhelinnro | *C/20 | Asiakkaan puhelinnumero
 > email | C/100 | Asiakkaan sähköpostiosoite
@@ -72,8 +72,8 @@ Tällä sivulla näkyy maksutapahtumien tiedot.
 > Kenttä | Tyyppi | Kuvaus
 > ------ | ------ | ------
 > tapahtuma_id | PK* AN | Tapahtuman idnumero
-> tapahtuma | *C(100) |  Tapahtuman nimi
-> katuosoite | *C(100) |  Katuosoite missä tapahtuma sijaitsee
+> tapahtuma | *C/100 |  Tapahtuman nimi
+> katuosoite | *C/100 |  Katuosoite missä tapahtuma sijaitsee
 > postinro | FK* C/5 | Postinumero, viittaus [Postinumerot](#Postinumerot)-tauluun
 > ajankohta | *DATETIME | Tapahtuman ajankohta
 > kuvaus | *C/500 | Tarkempi kuvaus tapahtumasta
@@ -86,7 +86,7 @@ Tällä sivulla näkyy maksutapahtumien tiedot.
 > Kenttä | Tyyppi | Kuvaus
 > ------ | ------ | ------
 > postinro | PK* C/5 | Osoitteen postinumero, joka määrittää paikkakunnan.
-> paikkakunta | *C(100) |  Paikkakunnan nimi
+> paikkakunta | *C/100 |  Paikkakunnan nimi
 
 > ### _Ostotapahtuma_
 > _Ostotapahtuma-taulu sisältää ostotapahtuman tiedot. Yhteen ostotapahtumaan voi sisältyä useampi lippuostos._
@@ -142,9 +142,9 @@ Tällä sivulla näkyy maksutapahtumien tiedot.
 > Kenttä | Tyyppi | Kuvaus
 > ------ | ------ | ------
 > myyja_id | PK* AN | Myyjän idnumero
-> m_etunimi | *C(50) |  Myyjän etunimi
-> m_sukunimi | *C(50) |  Myyjän sukunimi
-> m_katuosoite | *C(100) |  Katuosoite missä myyjä asuu
+> m_etunimi | *C/50 |  Myyjän etunimi
+> m_sukunimi | *C/50 |  Myyjän sukunimi
+> m_katuosoite | *C/100 |  Katuosoite missä myyjä asuu
 > postinro | FK* C/5 | Postinumero, viittaus [Postinumerot](#Postinumerot)-tauluun
 > m_puhelinnro | *C/20 | Myyjän puhelinnumero
 > m_email | C/100 | Myyjän sähköpostiosoite
