@@ -10,50 +10,20 @@
 
 5. Järjestelmän ylläpitäjän on pystyttävä hallinnoimaan eri näkymiä ja niiden toimintoja, sekä käyttäjien oikeuksia.
 
----
-
 6. Järjestelmässä täytyy olla mahdollista ostaa lippu myös erityisryhmille, kuten eläkeläisille, jotta nämä saavat heille kuuluvat edut myös tässä lipunmyyntitoimistossa.
 
-7. Asiakkaan pitää pystyä selaamaan verkkokaupassa eri tapahtumia, valita istumapaikat, suorittaa maksun ja vastaanottaa liput sähköpostiin.
+7. Asiakkaan on voitava ostaa useampi lippu kerrallaan, jotta esimerkiksi perheenjäsenille ei tarvitse yksittäin ostaa omia, eikä turhaan tarvitse tehdä useaa ostoa.
 
-8. Asiakkaan pitää voida peruuttaa tai vaihtaa liput verkkokaupassa.
+8. Asiakkaan pitää pystyä tallentamaan lippu tiedostona, jotta sitä ei tarvitse tulostaa.
 
-9. Lipunmyyntitoimiston on pystyttävä luomaan erilaisia kampanjoita, kuten alennuksia tai erikoistarjouksia.
+9. Asiakkaan on nähtävä suunnilleen saatavilla oleva lippujen määrä tapahtumaan (paljon, vähän, loppu)
 
-10. Asiakkaan on voitava ostaa useampi lippu kerrallaan, jotta esimerkiksi perheenjäsenille ei tarvitse yksittäin ostaa omia, eikä turhaan tarvitse tehdä useaa ostoa.
-
-11. Asiakkaan pitää pystyä tallentamaan lippu tiedostona, jotta sitä ei tarvitse tulostaa.
-
-12. Asiakkaan sekä lipunmyyntitoimiston on pystyttävä nähdä, kuinka paljon myytäviä lippuja on jäljellä. 
-
-13. Asioinnin järjestelmässä on oltava nopeaa ja helppoa, ilman turhia vaiheita, jotta käyttäjäkokemus on mahdollisimman hyvä.
-
-14. Järjestelmän pitää lukita myytävät paikat tietyksi määräajaksi, jotta samoille paikoille ei tapahdu päällekkäisiä ostoksia.
-
-15. Järjestelmän ylläpitäjällä pitää olla mahdollisuus muokata ja tallentaa lipunmyyjien oikeuksia.
-
-16. Asiakkaan pitää olla mahdollista ostaa lippu erityisryhmänä, kuten opiskelijana tai eläkeläisenä, jolloin järjestelmä huomioi automaattisesti kyseiset alennukset tai edut.
-
-17. Asiakkaan on voitava tehdä ryhmävaraus ja ostaa useampi lippu kerrallaan yhdellä maksutapahtumalla.
-
-18. Järjestelmän on luotava jokaiselle myydylle lipulle automaattisesti uniikki koodi, joka varmistaa lipun aitouden ja ehkäisee väärennöksiä.
-
-19. Lipunmyyjän on voitava tarkistaa myyntitapahtumista, onko vahingossa tapahtunut tuplakatevaraus veloitettu oikeasti kaksi kertaa.
+10. Järjestelmän pitää lukita myytävät paikat tietyksi määräajaksi, jotta samoille paikoille ei tapahdu päällekkäisiä ostoksia.
 
 ---
 
-20. Asiakkaan on pystyttävä nähdä tapahtumien saatavilla olevat liput valitsemansa paikan perusteella. (Esim. Helsingin tapahtumat)
+11. Asioinnin järjestelmässä on oltava nopeaa ja helppoa, ilman turhia vaiheita, jotta käyttäjäkokemus on mahdollisimman hyvä.
 
-21. Asiakkaan pitää pystyä lähettämään lippu toiselle, jos itse estyy menemästä tapahtumaan.
+12. Asiakkaan pitää pystyä selaamaan verkkokaupassa eri tapahtumia, valita istumapaikat, suorittaa maksun ja vastaanottaa liput sähköpostiin.
 
-22. Asiakkaana haluaisin tehdä ryhmätilauksen ystäväni kanssa, siten että voimme ostaa vierekkäiset paikat tapahtumaan erillisillä maksukerroilla.
-
-
-23. Asiakkaan on voitava ostaa lippu lahjaksi toiselle henkilölle.
-
-
-24. Järjestelmän on oltava visuaalisesti selkeä ja mukavan näköinen, jotta käyttäjäkokemus on mahdollisimman hyvä. 
-
-
-25. Lipunmyyntitoimiston markkinointivastaavan on pystyä käynnistää alennuskampanja.
-
+13. Asiakkaan pitää voida peruuttaa tai vaihtaa liput verkkokaupassa.
