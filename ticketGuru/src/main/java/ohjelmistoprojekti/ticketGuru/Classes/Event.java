@@ -24,17 +24,25 @@ public class Event {
     private int duration;
 
     @ManyToOne
-    @JoinColumn(name = "zipcodeid") //KORJAA MUUTTUJAN NIMI
-    private PostalCode id;
+    @JoinColumn(name = "zipcodeid")
+    private PostalCode postalCode;
 
-    public Event(String event, String address, LocalDate showtime, String description, int maxTickets, int duration, PostalCode id) {
+    public PostalCode getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(PostalCode postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public Event(String event, String address, LocalDate showtime, String description, int maxTickets, int duration, PostalCode postalCode) {
         this.event = event;
         this.address = address;
         this.showtime = showtime;
         this.description = description;
         this.maxTickets = maxTickets;
         this.duration = duration;
-        this.id = id;
+        this.postalCode = postalCode;
     }
 
     public Event () {
