@@ -30,14 +30,9 @@ tietoa ja keskittyä siihen.
 Tällä sivulla näkyy järjestelmän lippujen ja asiakkaiden tiedot, näiden välisenä siirtyämänä käytetään Ostotapahtuma-taulua.
 - Tapahtumasivu:
 Tällä sivulla näkyy tapahtumien ja tarkemmat lipputiedot.
-- Tapahtumien hallinta
-???
+- Tapahtumien hallinta: Tapahtumien CRUD-toiminnot (Rest)
 - Myyntiraportti
 Tällä sivulla näkyy maksutapahtumien tiedot.
-
-Esitetään käyttöliittymän tärkeimmät (vain ne!) näkymät sekä niiden väliset siirtymät käyttöliittymäkaaviona. 
-
-Jos näkymän tarkoitus ei ole itsestään selvä, se pitää kuvata lyhyesti.
 
 ## Tietokanta
 
