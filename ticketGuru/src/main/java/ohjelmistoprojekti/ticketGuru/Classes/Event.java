@@ -1,6 +1,6 @@
 package ohjelmistoprojekti.ticketGuru.Classes;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,16 +14,17 @@ public class Event {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String event;
+    private Long eventid;
+    
+    private String eventname;
     private String address;
-    private LocalDate showtime;
+    private LocalDateTime showtime;
     private String description;
     private int maxTickets;
     private int duration;
 
     @ManyToOne
-    @JoinColumn(name = "zipcodeid")
+    @JoinColumn(name = "postalCode")
     private PostalCode postalCode;
 
     public PostalCode getPostalCode() {
@@ -34,8 +35,8 @@ public class Event {
         this.postalCode = postalCode;
     }
 
-    public Event(String event, String address, LocalDate showtime, String description, int maxTickets, int duration, PostalCode postalCode) {
-        this.event = event;
+    public Event(String eventname, String address, LocalDateTime showtime, String description, int maxTickets, int duration, PostalCode postalCode) {
+        this.eventname = eventname;
         this.address = address;
         this.showtime = showtime;
         this.description = description;
@@ -49,19 +50,19 @@ public class Event {
     }
 
     public Long getId() {
-        return id;
+        return eventid;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.eventid = id;
     }
 
-    public String getEvent() {
-        return event;
+    public String getEventname() {
+        return eventname;
     }
 
-    public void setEvent(String event) {
-        this.event = event;
+    public void setEventname(String eventname) {
+        this.eventname = eventname;
     }
 
     public String getAddress() {
@@ -72,11 +73,11 @@ public class Event {
         this.address = address;
     }
 
-    public LocalDate getShowtime() {
+    public LocalDateTime getShowtime() {
         return showtime;
     }
 
-    public void setShowtime(LocalDate showtime) {
+    public void setShowtime(LocalDateTime showtime) {
         this.showtime = showtime;
     }
 
@@ -103,5 +104,12 @@ public class Event {
     public void setDuration(int duration) {
         this.duration = duration;
     }
+
+	@Override
+	public String toString() {
+		return "Event [eventid=" + eventid + ", eventname=" + eventname + ", address=" + address + ", showtime=" + showtime
+				+ ", description=" + description + ", maxTickets=" + maxTickets + ", duration=" + duration
+				+ ", postalCode=" + postalCode + "]";
+	}
 
 }

@@ -20,11 +20,11 @@ public class Transaction {
 	private LocalDate transactiondate;
 	
 @OneToMany
-	(cascade = CascadeType.ALL, mappedBy = "customer")
+	(cascade = CascadeType.ALL, mappedBy = "customerid")
 	private List<Customer>customers;
 
 @OneToMany
-(cascade = CascadeType.ALL, mappedBy = "seller")	
+(cascade = CascadeType.ALL, mappedBy = "sellerid")	
 	private List<Seller>sellers;
 
 

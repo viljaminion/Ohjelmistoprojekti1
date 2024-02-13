@@ -15,15 +15,14 @@ public class TicketType {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long tickettypeid;
-
-    private String tickettype;
+    private String ticketType;
     private String description;
     private double price;
 
     //LIPPUTYYPPI TÄHÄN
 
     @OneToMany
-	(cascade = CascadeType.ALL, mappedBy = "ticket")
+	(cascade = CascadeType.ALL, mappedBy = "ticketid")
 	private List<Ticket>tickets;
 
     public TicketType(){
@@ -39,11 +38,11 @@ public class TicketType {
     }
 
     public String getTickettype() {
-        return tickettype;
+        return ticketType;
     }
 
-    public void setTickettype(String tickettype) {
-		this.tickettype = tickettype;
+    public void setTickettype(String ticketType) {
+		this.ticketType = ticketType;
     }
 
     public String getDescription() {
@@ -72,7 +71,7 @@ public class TicketType {
 
     @Override
 		public String toString(){
-            return "TicketType [tickettypeid=" + tickettypeid + ", tickettype=" + tickettype + ", description=" + description + ",price=" + price + "]";
+            return "TicketType [tickettypeid=" + tickettypeid + ", ticketType=" + ticketType + ", description=" + description + ",price=" + price + "]";
         }
 
 }

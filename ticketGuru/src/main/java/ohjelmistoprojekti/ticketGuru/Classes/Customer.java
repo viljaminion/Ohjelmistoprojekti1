@@ -13,7 +13,7 @@ public class Customer {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long customerid;
 	
 	private String firstname;
 	private String surname;
@@ -25,6 +25,10 @@ public class Customer {
 	@ManyToOne
 	@JoinColumn(name = "transactionid")
 	private Transaction transaction;
+	
+	@ManyToOne
+    @JoinColumn(name = "postalCode")
+    private PostalCode postalCode;
 	
 	public Customer(String firstname, String surname, String address, String zipcode, String phone,
 			String email) {
@@ -41,14 +45,14 @@ public class Customer {
 	
 	public Customer(Long id) {
 		super();
-		this.id = id;
+		this.customerid = id;
 	}
 
 	public Long getId() {
-		return id;
+		return customerid;
 	}
 	public void setId(Long id) {
-		this.id = id;
+		this.customerid = id;
 	}
 	public String getFirstname() {
 		return firstname;
@@ -93,11 +97,11 @@ public class Customer {
 		
 		if (this.transaction != null)
 		
-		return "Customer [id=" + id + ", firstname=" + firstname + ", surname=" + surname + ", address=" + address
+		return "Customer [id=" + customerid + ", firstname=" + firstname + ", surname=" + surname + ", address=" + address
 				+ ", zipcode=" + zipcode + ", phone=" + phone + ", email=" + email + ", transaction=" + transaction
 				+ "]";
 		else
-		return "Customer [id=" + id + ", firstname=" + firstname + ", surname=" + surname + ", address=" + address
+		return "Customer [id=" + customerid + ", firstname=" + firstname + ", surname=" + surname + ", address=" + address
 				+ ", zipcode=" + zipcode + ", phone=" + phone + ", email=" + email + "]";
 	}
 	

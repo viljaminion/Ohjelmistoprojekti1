@@ -19,6 +19,10 @@ public class PostalCode {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    private String postalCode;
+
+    private String district;
+    
     public Long getId() {
         return id;
     }
@@ -27,22 +31,18 @@ public class PostalCode {
         this.id = id;
     }
 
-    private String zipcode;
-
-    private String district;
-
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "postalcode")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "postalCode")
     private List<Customer> customers;
 
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "postalcode")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "postalCode")
     private List<Event> events;
 
     //PITÄÄ TEHDÄ VIELÄ OneToMany LIPUN MYYJÄLLE
 
-    public PostalCode(String zipcode, String district) {
-        this.zipcode = zipcode;
+    public PostalCode(String postalCode, String district) {
+        this.postalCode = postalCode;
         this.district = district;
     }
 
@@ -50,12 +50,12 @@ public class PostalCode {
 
     }
 
-    public String getZipId() {
-        return zipcode;
+    public String getPostalCodeId() {
+        return postalCode;
     }
 
-    public void setZipId(String zipcode) {
-        this.zipcode = zipcode;
+    public void setPostalCodeId(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     public String getDistrict() {
@@ -68,7 +68,7 @@ public class PostalCode {
 
     @Override
     public String toString() {
-        return "PostalCode [zipId=" + zipcode + ", district=" + district + "]";
+        return "PostalCode [postalCodeId=" + postalCode + ", district=" + district + "]";
     }
 
     

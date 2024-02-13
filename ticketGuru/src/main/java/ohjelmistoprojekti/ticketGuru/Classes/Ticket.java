@@ -12,7 +12,8 @@ public class Ticket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long ticketid;
+    
 
     @ManyToOne
 	@JoinColumn(name = "transactionid")
@@ -35,11 +36,12 @@ public class Ticket {
     }
 
     public Long getId() {
-        return id;
+        return ticketid;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.ticketid = id;
     }
+
     
 }

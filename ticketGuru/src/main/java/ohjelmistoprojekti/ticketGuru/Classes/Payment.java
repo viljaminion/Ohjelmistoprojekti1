@@ -3,13 +3,15 @@ package ohjelmistoprojekti.ticketGuru.Classes;
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Payment {
-    private Long id;
-
+	@Id
+    private Long paymentid;
+	private String payment;
     private LocalDate date;
 
     @ManyToOne
@@ -34,11 +36,11 @@ public class Payment {
     }
 
     public Long getId() {
-        return id;
+        return paymentid;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.paymentid = id;
     }
 
     public LocalDate getDate() {
@@ -48,6 +50,14 @@ public class Payment {
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
+	public String getPayment() {
+		return payment;
+	}
+
+	public void setPayment(String payment) {
+		this.payment = payment;
+	}
 
 
 }
