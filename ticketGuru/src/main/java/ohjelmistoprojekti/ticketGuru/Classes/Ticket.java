@@ -15,32 +15,15 @@ public class Ticket {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "eventid")
-    private Event event;
-
-    @ManyToOne
 	@JoinColumn(name = "transactionid")
 	private Transaction transaction;
-
-    @ManyToOne
-	@JoinColumn(name = "seatId")
-	private Seats seat;
-
-    public Seats getSeat() {
-        return seat;
-    }
-
-    public void setSeat(Seats seat) {
-        this.seat = seat;
-    }
 
     public Transaction getTransaction() {
         return transaction;
     }
 
-    public void setTransaction(Transaction transaction, Seats seat) {
+    public void setTransaction(Transaction transaction) {
         this.transaction = transaction;
-        this.seat = seat;
     }
 
     public Ticket() {

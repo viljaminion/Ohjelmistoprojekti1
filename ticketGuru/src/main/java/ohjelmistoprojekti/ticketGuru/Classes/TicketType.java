@@ -20,6 +20,8 @@ public class TicketType {
     private String description;
     private double price;
 
+    //LIPPUTYYPPI TÄHÄN
+
     @OneToMany
 	(cascade = CascadeType.ALL, mappedBy = "ticket")
 	private List<Ticket>tickets;
