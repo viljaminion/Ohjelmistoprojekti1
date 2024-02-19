@@ -109,6 +109,15 @@ Tällä sivulla näkyy maksutapahtumien tiedot.
 > lipputyyppi_id| FK* N | Ostetun lipun lipputyypin idnumero, viittaus [Lipputyyppi](#Lipputyyppi)-tauluun
 > istumapaikka_id| FK* N | Istumapaikan idnumero, viittaus [Istumapaikat](#Istumapaikat)-tauluun
 
+> ### _TapahtumanLippuTyyppi_
+> _TapahtumanLippuTyyppi-taulu sisältää tapahtumaa varten luodut lipputyypit._
+>
+> Kenttä | Tyyppi | Kuvaus
+> ------ | ------ | ------
+> tap_lip_tyyppi_id | PK* AN | Tapahtumaan luodun lipputyypin idnumero
+> tap_lip_tyyppi | * C/50 | Tapahtumaan luodun lipputyypin selite
+> tapahtuma_id | FK* N | Tapahtuman idnumero, viittaus [Tapahtuma](#Tapahtuma)-tauluun
+
 > ### _Lipputyyppi_
 > _Lippu-taulu sisältää ostetun lipun tiedot._
 >
