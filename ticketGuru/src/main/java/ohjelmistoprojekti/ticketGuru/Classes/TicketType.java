@@ -14,16 +14,19 @@ public class TicketType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	private Long tickettypeid;
+	  private Long tickettypeid;
     private String ticketType;
     private String description;
     private double price;
 
-    //LIPPUTYYPPI TÄHÄN
+    //ONKO TÄÄ OIKEIN?
+    @OneToMany
+	  (cascade = CascadeType.ALL, mappedBy = "eventtickettypeid")
+	  private List<EventTicketType>eventtickettypes;
 
     @OneToMany
-	(cascade = CascadeType.ALL, mappedBy = "ticketid")
-	private List<Ticket>tickets;
+	  (cascade = CascadeType.ALL, mappedBy = "ticketid")
+	  private List<Ticket>tickets;
 
     public TicketType(){
 

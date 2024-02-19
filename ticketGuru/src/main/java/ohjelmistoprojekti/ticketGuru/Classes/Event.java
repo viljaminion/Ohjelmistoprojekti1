@@ -23,6 +23,11 @@ public class Event {
     private int maxTickets;
     private int duration;
 
+//ONKO TÄÄ OIKEIN?
+    @OneToMany
+	(cascade = CascadeType.ALL, mappedBy = "eventtickettypeid")
+	private List<EventTicketType>eventtickettypes;
+
     @ManyToOne
     @JoinColumn(name = "postalCode")
     private PostalCode postalCode;
