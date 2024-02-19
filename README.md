@@ -36,7 +36,7 @@ Tällä sivulla näkyy maksutapahtumien tiedot.
 
 ## Tietokanta
 
-![Alt text](tietokanta2.png)
+![Alt text](tietokanta3.png)
 
 > ### _Selitykset_
 > _Tässä on selitykset tietokannan taulujen tyypeille._
