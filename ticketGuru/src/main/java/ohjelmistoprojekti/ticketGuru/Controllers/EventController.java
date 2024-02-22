@@ -44,16 +44,16 @@ public class EventController {
         return "redirect:/eventlist";
     }
 
-//Tapahtuman poisto (käyttöliittymätasolla, coming soon)
+//Tapahtuman poisto
     
     @GetMapping("/events/delete/{id}")
-    public String deleteEvent(@PathVariable Long eventid) {
-        eventRepository.deleteById(eventid);
+    public String deleteEvent(@PathVariable Long id) {
+        eventRepository.deleteById(id);
         return "redirect:/eventlist";
     }
     
     
-//Tapahtuman muokkaus (käyttöliittymätasolla, coming soon)
+//Tapahtuman muokkaus
     
     @GetMapping("/events/edit/{id}")
     public String editEvent(@PathVariable("id") Long eventid, Model model) {
@@ -62,14 +62,14 @@ public class EventController {
         
         if (existingEvent != null) {
             model.addAttribute("event", existingEvent);
-            model.addAttribute("postalCodes", postalCodeRepository.findAll());
+            model.addAttribute("postalCode", postalCodeRepository.findAll());
             return "editEvent";
         } else {
             return "error";
         }
     }
 
-//Tallennetun tapahtuman muokkaus (käyttöliittymätasolla, coming soon)
+//Muokatun tapahtuman tallennus
     
     @PostMapping("/events/edit/{id}")
     public String updateEvent(@PathVariable("id") Long eventid, @ModelAttribute Event updatedEvent) {
