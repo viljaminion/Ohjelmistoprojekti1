@@ -20,6 +20,10 @@
 </head>
 <body>
 <h2>Event List</h2>
+
+	<a th:href="@{/events/add}" class="btn btn-success">Add Event</a><br>
+    <table border="1" class="table table-striped">
+		
 <table>
     <tr>
         <th>ID</th>
@@ -32,7 +36,7 @@
         <th>Postal Code</th>
     </tr>
     <tr th:each="event : ${events}">
-        <td th:text="${event.id}"></td>
+		<td th:text="${event.id}"></td>
         <td th:text="${event.eventname}"></td>
         <td th:text="${event.address}"></td>
         <td th:text="${event.showtime}"></td>
@@ -42,6 +46,11 @@
         
         <td th:if="${event.postalCode != null}" th:text="${event.postalCode.postalCode}">Postal Code</td>
     	<td th:unless="${event.postalCode != null}">No Postal Code Available</td>
+    	
+    	<td>
+                <a th:href="@{/events/delete/{id}(id=${event.id})}" class="btn btn-danger">Delete</a>
+                <a th:href="@{/events/edit/{id}(id=${event.id})}" class="btn btn-primary">Edit</a>
+        </td>
     </tr>
 </table>
 </body>
