@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <title>Edit Ticket type</title>
+</head>
+
+<body>
+    <h1>Edit Ticket type</h1>
+
+    <form th:object="${tickettype}" th:action="@{/tickettypes/save}" action="#" method="post">
+        <div><input type="hidden" th:field="*{id}" /></div>
+        <div>
+            <label>Ticket type:</label>
+            <input type="text" th:field="*{tickettype}" />
+            <div th:if="${#fields.hasErrors('tickettype')}" th:errors="*{tickettype}">Error</div>
+        </div>
+
+        <div>
+            <label>Description:</label>
+            <input type="text" th:field="*{description}" />
+            <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Error</div>
+        </div>
+
+        <div>
+            <label>Price:</label>
+            <input type="text" th:field="*{price}" />
+            <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Error</div>
+        </div>
+
+        <br>
+
+        <button type="submit">OK</button>
+    </form>
+</body>
+
+</html>
