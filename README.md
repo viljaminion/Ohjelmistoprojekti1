@@ -179,6 +179,15 @@ Tämän lisäksi
 -   ohjelmiston pitää olla organisoitu komponentteihin niin, että turhalta toistolta
     vältytään
 
+EventControllerin endpointit
+
+- Listaa kaikki tapahtumat: GET/eventlist
+- Lisää tapahtuma: GET/events/add
+- Tapahtuman tallennus: POST/events/save
+- Tapahtuman poisto: DELETE/events/delete/{id}
+- Tapahtuman muokkaus: GET/events/edit/{id}
+- Muokatun tapahtuman tallennus: POST/events/edit/{id}
+
 ## Testaus
 
 Tässä kohdin selvitetään, miten ohjelmiston oikea toiminta varmistetaan
