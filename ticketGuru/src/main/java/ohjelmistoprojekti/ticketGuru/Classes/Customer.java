@@ -18,7 +18,6 @@ public class Customer {
 	private String firstname;
 	private String surname;
 	private String address;
-	private String zipcode;
 	private String phone;
 	private String email;
 	
@@ -30,13 +29,13 @@ public class Customer {
     @JoinColumn(name = "postalCode")
     private PostalCode postalCode;
 	
-	public Customer(String firstname, String surname, String address, String zipcode, String phone,
+	public Customer(String firstname, String surname, String address, PostalCode postalCode, String phone,
 			String email) {
 		super();
 		this.firstname = firstname;
 		this.surname = surname;
 		this.address = address;
-		this.zipcode = zipcode;
+		this.postalCode = postalCode;
 		this.phone = phone;
 		this.email = email;
 	}
@@ -72,11 +71,11 @@ public class Customer {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getZipcode() {
-		return zipcode;
+	public String getPostalCode() {
+		return postalCode;
 	}
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
+	public void setPostalCode(PostalCode postalCode) {
+		this.postalCode = postalCode;
 	}
 	public String getPhone() {
 		return phone;
@@ -98,11 +97,11 @@ public class Customer {
 		if (this.transaction != null)
 		
 		return "Customer [id=" + customerid + ", firstname=" + firstname + ", surname=" + surname + ", address=" + address
-				+ ", zipcode=" + zipcode + ", phone=" + phone + ", email=" + email + ", transaction=" + transaction
+				+ ", postalCode=" + postalCode + ", phone=" + phone + ", email=" + email + ", transaction=" + transaction
 				+ "]";
 		else
 		return "Customer [id=" + customerid + ", firstname=" + firstname + ", surname=" + surname + ", address=" + address
-				+ ", zipcode=" + zipcode + ", phone=" + phone + ", email=" + email + "]";
+				+ ", postalCode=" + postalCode + ", phone=" + phone + ", email=" + email + "]";
 	}
 	
 	

@@ -16,7 +16,6 @@ public class Seller {
 	private String sellerfirstname;
 	private String sellersurname;
 	private String selleraddress;
-	private String sellerzipcode;
 	private String sellerphone;
 	private String selleremail;
 	
@@ -25,12 +24,12 @@ public class Seller {
 	private Transaction transaction;
 
 	public Seller(String sellerfirstname, String sellersurname, String selleraddress,
-			String sellerzipcode, String sellerphone, String selleremail) {
+			PostalCode postalCode, String sellerphone, String selleremail) {
 		super();
 		this.sellerfirstname = sellerfirstname;
 		this.sellersurname = sellersurname;
 		this.selleraddress = selleraddress;
-		this.sellerzipcode = sellerzipcode;
+		this.postalCode = postalCode;
 		this.sellerphone = sellerphone;
 		this.selleremail = selleremail;
 	}
@@ -69,12 +68,11 @@ public class Seller {
 		this.selleraddress = selleraddress;
 	}
 
-	public String getSellerzipcode() {
-		return sellerzipcode;
+	public String getPostalCode() {
+		return postalCode;
 	}
-
-	public void setSellerzipcode(String sellerzipcode) {
-		this.sellerzipcode = sellerzipcode;
+	public void setPostalCode(PostalCode postalCode) {
+		this.postalCode = postalCode;
 	}
 
 	public String getSellerphone() {
@@ -98,15 +96,13 @@ public class Seller {
 		if (this.transaction != null)
 			
 		return "Seller [sellerid=" + sellerid + ", sellerfirstname=" + sellerfirstname + ", sellersurname="
-				+ sellersurname + ", selleraddress=" + selleraddress + ", sellerzipcode=" + sellerzipcode
-				+ ", sellerphone=" + sellerphone + ", selleremail=" + selleremail + ", transaction=" + transaction
+				+ sellersurname + ", selleraddress=" + selleraddress + ", postalCode=" + postalCode + ", sellerphone=" + sellerphone + ", selleremail=" + selleremail + ", transaction=" + transaction
 				+ "]";
 		
 		else 
 		return
 				"Seller [sellerid=" + sellerid + ", sellerfirstname=" + sellerfirstname + ", sellersurname="
-				+ sellersurname + ", selleraddress=" + selleraddress + ", sellerzipcode=" + sellerzipcode
-				+ ", sellerphone=" + sellerphone + ", selleremail=" + selleremail + "]";
+				+ sellersurname + ", selleraddress=" + selleraddress + ", postalCode=" + postalCode + ", sellerphone=" + sellerphone + ", selleremail=" + selleremail + "]";
 	}
 	
 	
