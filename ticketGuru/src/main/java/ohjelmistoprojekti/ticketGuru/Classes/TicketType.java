@@ -19,7 +19,6 @@ public class TicketType {
     private String description;
     private double price;
 
-    //ONKO TÄÄ OIKEIN?
     @OneToMany
 	  (cascade = CascadeType.ALL, mappedBy = "eventtickettypeid")
 	  private List<EventTicketType>eventtickettypes;

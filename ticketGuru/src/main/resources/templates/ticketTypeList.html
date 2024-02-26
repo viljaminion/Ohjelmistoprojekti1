@@ -20,14 +20,14 @@
             <th>Price</th>
         </tr>
         <tr th:each="tickettype : ${tickettypes}">
-            <td th:text="{tickettype.id}"></td>
-            <td th:text="{tickettype.tickettype}"></td>
-            <td th:text="{tickettype.description}"></td>
-            <td th:text="{tickettype.price}"></td>
+            <td th:text="${tickettype.id}"></td>
+            <td th:text="${tickettype.tickettype}"></td>
+            <td th:text="${tickettype.description}"></td>
+            <td th:text="${tickettype.price}"></td>
 
             <td>
                 <a th:href="@{/tickettypes/delete/{id}(id=${tickettype.id})}" class="btn btn-danger">Delete</a>
-                <a th:href="@{/tickettypes/edit/{id}(id=${tickettype.id})}" class="btn btn-primary">Edit</a>
+                <a th:href="@{/editTicketType/{id}(id=${tickettype.id})}" class="btn btn-primary">Edit</a>
             </td>
         </tr>
 </body>

@@ -14,27 +14,27 @@ import ohjelmistoprojekti.ticketGuru.Classes.TicketTypeRepository;
 
 @Controller
 public class TicketTypeController {
-    
+
     @Autowired
     private TicketTypeRepository ticketTypeRepository;
 
-    //Listanäkymä
-    
+    // Listanäkymä
+
     @RequestMapping("/tickettypelist")
     public String ticketTypeList(Model model) {
         model.addAttribute("tickettypes", ticketTypeRepository.findAll());
         return "ticketTypeList";
     }
 
-    //Lisäys
-    
+    // Lisäys
+
     @GetMapping("/tickettypes/add")
     public String addTicketType(Model model) {
         model.addAttribute("tickettype", new TicketType());
         return "addTicketType";
     }
 
-    //Tallennus
+    // Tallennus
 
     @PostMapping("/tickettypes/save")
     public String saveTicketType(@ModelAttribute TicketType ticketType, Model model) {
@@ -42,19 +42,25 @@ public class TicketTypeController {
         return "redirect:/tickettypelist";
     }
 
-    //Poisto
+    // Poisto
 
     @GetMapping("/tickettypes/delete/{id}")
-    public String deleteTicketType(@PathVariable Long tickettypeid) {
-        ticketTypeRepository.deleteById(tickettypeid);
+    public String deleteTicketType(@PathVariable Long id) {
+        ticketTypeRepository.deleteById(id);
         return "redirect:/tickettypelist";
     }
 
-    //Muokkaus
+    // Muokkaus
 
     @GetMapping("/editTicketType/{id}")
-	public String editTicketType(@PathVariable("id") Long tickettypeid, Model model) {
-		model.addAttribute("editTicketType", ticketTypeRepository.findById(tickettypeid));
-		return "editTicketType"; 
-	}
+    public String editTicketType(@PathVariable("id") Long tickettypeid, Model model) {
+        TicketType ticketType = ticketTypeRepository.findById(tickettypeid).orElse(null);
+
+        if (ticketType == null) {
+            return "error";
+        }
+
+        model.addAttribute("tickettype", ticketType);
+        return "editTicketType";
+    }
 }
