@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 
 @Entity
@@ -21,7 +22,7 @@ public class Customer {
 	private String phone;
 	private String email;
 	
-	@ManyToOne
+	@OneToMany
 	@JoinColumn(name = "transactionid")
 	private Transaction transaction;
 	
@@ -71,7 +72,7 @@ public class Customer {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getPostalCode() {
+	public PostalCode getPostalCode() {
 		return postalCode;
 	}
 	public void setPostalCode(PostalCode postalCode) {

@@ -160,6 +160,28 @@ Tällä sivulla näkyy maksutapahtumien tiedot.
 
 ## Tekninen kuvaus
 
+Endpointtien autentikointia ei ole vielä tässä vaiheessa määritelty.
+
+EventControllerin endpointit
+
+- Listaa kaikki tapahtumat: GET/eventlist
+- Lisää tapahtuma: GET/events/add
+- Tapahtuman tallennus: POST/events/save
+- Tapahtuman poisto: DELETE/events/delete/{id}
+- Tapahtuman muokkaus: GET/events/edit/{id}
+- Muokatun tapahtuman tallennus: POST/events/edit/{id}
+
+TicketTypeControllerin endpointit
+
+- Listanäkymä: GET/tickettypelist
+- Lisäys: GET/tickettypes/add
+- Tallennus: POST/tickettypes/save
+- Poisto: DELETE/tickettypes/delete/{id}
+- Muokkaus: GET/editTicketType/{id}
+
+
+
+
 Teknisessä kuvauksessa esitetään järjestelmän toteutuksen suunnittelussa tehdyt tekniset
 ratkaisut, esim.
 
@@ -178,15 +200,6 @@ Tämän lisäksi
     johdonmukaisia nimeämiskäytäntöjä
 -   ohjelmiston pitää olla organisoitu komponentteihin niin, että turhalta toistolta
     vältytään
-
-EventControllerin endpointit
-
-- Listaa kaikki tapahtumat: GET/eventlist
-- Lisää tapahtuma: GET/events/add
-- Tapahtuman tallennus: POST/events/save
-- Tapahtuman poisto: DELETE/events/delete/{id}
-- Tapahtuman muokkaus: GET/events/edit/{id}
-- Muokatun tapahtuman tallennus: POST/events/edit/{id}
 
 ## Testaus
 

@@ -23,6 +23,10 @@ public class Seller {
 	@JoinColumn(name = "transactionid")
 	private Transaction transaction;
 
+	@ManyToOne
+    @JoinColumn(name = "postalCode")
+    private PostalCode postalCode;
+
 	public Seller(String sellerfirstname, String sellersurname, String selleraddress,
 			PostalCode postalCode, String sellerphone, String selleremail) {
 		super();
@@ -68,7 +72,7 @@ public class Seller {
 		this.selleraddress = selleraddress;
 	}
 
-	public String getPostalCode() {
+	public PostalCode getPostalCode() {
 		return postalCode;
 	}
 	public void setPostalCode(PostalCode postalCode) {
