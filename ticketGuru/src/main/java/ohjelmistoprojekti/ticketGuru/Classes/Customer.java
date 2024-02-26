@@ -22,7 +22,7 @@ public class Customer {
 	private String phone;
 	private String email;
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name = "transactionid")
 	private Transaction transaction;
 	

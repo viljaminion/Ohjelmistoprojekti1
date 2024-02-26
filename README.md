@@ -162,24 +162,40 @@ Tällä sivulla näkyy maksutapahtumien tiedot.
 
 Endpointtien autentikointia ei ole vielä tässä vaiheessa määritelty.
 
-EventControllerin endpointit
+EventControllerin endpointit selaimessa:
 
-- Listaa kaikki tapahtumat: GET/eventlist
-- Lisää tapahtuma: GET/events/add
-- Tapahtuman tallennus: POST/events/save
-- Tapahtuman poisto: DELETE/events/delete/{id}
-- Tapahtuman muokkaus: GET/events/edit/{id}
-- Muokatun tapahtuman tallennus: POST/events/edit/{id}
+- Tapahtumalistaus: "/eventlist"
+- Tapahtuman lisäys: "/events/add"
+- Tapahtuman tallennus: "/events/save"
+- Tapahtuman poisto: "/events/delete/{id}"
+- Tapahtuman muokkaus: "/events/edit/{id}"
 
-TicketTypeControllerin endpointit
+EventRestControllerin endpointit (Postman)
 
-- Listanäkymä: GET/tickettypelist
-- Lisäys: GET/tickettypes/add
-- Tallennus: POST/tickettypes/save
-- Poisto: DELETE/tickettypes/delete/{id}
-- Muokkaus: GET/editTicketType/{id}
+- Kaikki tiedot JSON-muodossa: <span style="color:green">GET</span> "/events"
+- Tietyn tapahtuman tiedot ID:n avulla: <span style="color:green">GET</span> "/event/{id}"
+- Tapahtuman lisäys Postmanilla: <span style="color:yellow">POST</span> "/event"
+- Tapahtuman poisto Postmanilla: <span style="color:red">DELETE</span> "/event/{id}"
 
 
+
+TicketTypeControllerin endpointit selaimessa:
+
+- Listanäkymä: "/tickettypelist"
+- Lisäys: "/tickettypes/add"
+- Tallennus: "/tickettypes/save"
+- Poisto: "tickettypes/delete/{id}"
+- Muokkaus: "/editTicketType/{id}"
+
+TicketTypeRestControllerin endpointit (Postman):
+- Kaikki tiedot JSON-muodossa:
+<span style="color:green">GET</span> "/tickettypes"
+- Tietyn lipputyypin tiedot ID:n avulla:
+<span style="color:green">GET</span> "/tickettype/{id}"
+- Lipputyypin lisäys Postmanilla:
+<span style="color:yellow">POST</span> "/addtickettype"
+- Lipputyypin poisto Postmanilla:
+<span style="color:red">DELETE</span> "/tickettype/delete/{id}"
 
 
 Teknisessä kuvauksessa esitetään järjestelmän toteutuksen suunnittelussa tehdyt tekniset
