@@ -26,6 +26,8 @@ public class Customer {
 	@JoinColumn(name = "transactionid")
 	private Transaction transaction;
 	
+	
+	//ONKO TÄMÄ ONETOMANY?
 	@ManyToOne
     @JoinColumn(name = "postalCode")
     private PostalCode postalCode;

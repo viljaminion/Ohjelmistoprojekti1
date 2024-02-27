@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 
@@ -31,19 +33,26 @@ public class PostalCode {
         this.id = id;
     }
 
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "postalCode")
-    private List<Customer> customers;
+    @ManyToOne
+    @JoinColumn(name = "customer")
+    private Customer customer;
 
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "postalCode")
-    private List<Event> events;
+    @ManyToOne
+    @JoinColumn(name= "event")
+    private Event event;
+
+    @ManyToOne
+    @JoinColumn(name = "seller")
+    private Seller seller;
 
     //PITÄÄ TEHDÄ VIELÄ OneToMany LIPUN MYYJÄLLE
 
-    public PostalCode(String postalCode, String district) {
+    public PostalCode(String postalCode, String district, Customer customer, Event event, Seller seller) {
         this.postalCode = postalCode;
         this.district = district;
+        this.customer = customer;
+        this.event = event;
+        this.seller = seller;
     }
 
     public PostalCode () {
@@ -66,10 +75,44 @@ public class PostalCode {
         this.district = district;
     }
 
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomers(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
+    public Seller getSeller() {
+        return seller;
+    }
+
+    public void setSellers(Seller seller) {
+        this.seller = seller;
+    }
+
     @Override
     public String toString() {
         return "PostalCode [postalCodeId=" + postalCode + ", district=" + district + "]";
     }
+
+    
 
     
    

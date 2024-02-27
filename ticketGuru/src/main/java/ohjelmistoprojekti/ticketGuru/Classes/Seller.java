@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Seller {
@@ -23,6 +24,8 @@ public class Seller {
 	@JoinColumn(name = "transactionid")
 	private Transaction transaction;
 
+	
+	//ONKO TÄMÄ ONETOMANY?
 	@ManyToOne
     @JoinColumn(name = "postalCode")
     private PostalCode postalCode;
