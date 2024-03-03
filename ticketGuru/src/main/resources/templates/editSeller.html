@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <title>Edit Seller</title>
+</head>
+<body>
+    <h1>Edit Seller</h1>
+    
+    <form th:action="@{/logout}" method="post">
+        <div><input type="submit" value="Logout" class="btn btn-danger"/></div>
+    </form>
+    <br>
+    <form th:object="${seller}" th:action="@{/sellers/save}" action="#" method="post">
+		<div><input type="hidden" th:field="*{id}" /></div>
+        <div>
+            <label>Seller firstname:</label>
+            <input type="text" th:field="*{sellerfirstname}"/>
+            <div th:if="${#fields.hasErrors('sellerfirstname')}" th:errors="*{sellerfirstname}">Error</div>
+        </div>
+
+        <div>
+            <label>Seller surname:</label>
+            <input type="text" th:field="*{sellersurname}"/>
+            <div th:if="${#fields.hasErrors('sellersurname')}" th:errors="*{sellersurname}">Error</div>
+        </div>
+        
+        <div>
+            <label>Address:</label>
+            <input type="text" th:field="*{selleraddress}"/>
+            <div th:if="${#fields.hasErrors('selleraddress')}" th:errors="*{selleraddress}">Error</div>
+        </div>
+        
+        <div>
+            <label for="postalCodeList">Postal Code:</label>
+            <select id="postalCodeList" th:field="*{postalCode}" class="form-control">
+                <option th:each="postalCode: ${postalCodes}" th:value="${postalCode.id}" th:text="${postalCode.code}"></option>
+            </select>
+        </div>
+        
+        <div>
+            <label>Phone number:</label>
+            <input type="text" th:field="*{sellerphone}"></input>
+            <div th:if="${#fields.hasErrors('sellerphone')}" th:errors="*{sellerphone}">Error</div>
+        </div>
+        
+        <div>
+            <label>Email:</label>
+            <input type="text" th:field="*{selleremail}"></input>
+            <div th:if="${#fields.hasErrors('selleremail')}" th:errors="*{selleremail}">Error</div>
+        </div>
+        
+        <br>
+        
+        <button type="submit">Confirm changes</button>
+    </form>
+</body>
+</html>
