@@ -21,21 +21,29 @@ public class CustomerRestController {
     @Autowired
     private CustomerRepository customerrepository;
 
+    //Kaikki tiedot JSON-muodossa
+
     @RequestMapping(value = "/customers", method = RequestMethod.GET)
     public List<Customer> CustomerListRest() {
         return (List<Customer>) customerrepository.findAll();
     }
+
+    //ID:n avulla haettavat tiedot tietystä tapahtumasta
 
     @RequestMapping(value = "/customer/{id}", method = RequestMethod.GET)
     public Optional<Customer> findCustomerRest(@PathVariable("id") Long customerid) {
         return customerrepository.findById(customerid);
     }
 
+    //Tapahtuman lisääminen Postmanissa
+
     @RequestMapping(value = "/customer", method = RequestMethod.POST)
     public Customer addCustomer(@RequestBody Customer customer) {
         return customerrepository.save(customer);
 
     }
+
+    //Tapahtuman poisto ID:llä Postmanissa
 
     @RequestMapping(value = "/customer/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteCustomer(@PathVariable("id") Long customerid) {
