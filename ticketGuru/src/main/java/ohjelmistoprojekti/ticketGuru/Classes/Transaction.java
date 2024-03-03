@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -25,15 +27,27 @@ public class Transaction {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "sellerid")
 	private List<Seller> sellers;
 
+	@ManyToOne
+	@JoinColumn(name = "ticketid")
+	private Ticket ticket;
+
 	public Transaction() {
 
 	}
 
-	public Transaction(Long id, LocalDate transactiondate, List<Customer> customers, List<Seller> sellers) {
+	public Transaction(Long id, LocalDate transactiondate, List<Customer> customers, List<Seller> sellers, Ticket ticket) {
 		super();
 		this.transactiondate = transactiondate;
 
 	}
+
+	public Ticket getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(Ticket ticket) {
+        this.ticket = ticket;
+    }
 
 	public Long getId() {
 		return transactionid;

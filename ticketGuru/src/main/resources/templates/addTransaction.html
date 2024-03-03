@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <title>Add Transaction</title>
+</head>
+<body>
+    <h1>Add Transaction</h1>
+    
+    <br>
+    <form th:object="${transaction}" th:action="@{/transactions/save}" action="#" method="post">
+        
+        <div>
+            <label>Transaction date:</label>
+            <input type="datetime-local" th:field="*{transactiondate}"/>
+            <div th:if="${#fields.hasErrors('transactiondate')}" th:errors="*{transactiondate}">Error</div>
+        </div>
+        
+        <div>
+            <label for="customerList">Customer id:</label>
+            <select id="customerList" th:field="*{customer}"class="form-control">
+                <option th:each="customer: ${customers}" th:value="${customer.customerid}" th:text="${customer.customerid}"></option>
+        </select>
+        </div>
+
+        <div>
+            <label for="sellerList">Seller id:</label>
+            <select id="sellerList" th:field="*{seller}"class="form-control">
+                <option th:each="seller: ${sellers}" th:value="${seller.sellerid}" th:text="${seller.sellerid}"></option>
+        </select>
+        </div>
+
+        <div>
+            <label for="ticketList">Ticket id:</label>
+            <select id="ticketList" th:field="*{ticket}"class="form-control">
+                <option th:each="ticket: ${tickets}" th:value="${ticket.ticketid}" th:text="${ticket.ticketid}"></option>
+        </select>
+        </div>
+ 
+        <br>
+        
+        <button type="submit">Add Transaction</button>
+    </form>
+</body>
+</html>
