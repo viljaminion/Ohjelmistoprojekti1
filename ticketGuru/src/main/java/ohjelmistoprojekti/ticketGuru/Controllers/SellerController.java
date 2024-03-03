@@ -18,7 +18,7 @@ public class SellerController {
 
     @Autowired
     private SellerRepository sellerRepository;
-    
+
     @Autowired
     private TransactionRepository transactionRepository;
 
@@ -42,10 +42,10 @@ public class SellerController {
     }
 
     @GetMapping("/editSeller/{id}")
-	public String editSeller(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("editSeller", sellerRepository.findById(id));
-		return "editSeller"; 
-	}
+    public String editSeller(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("editSeller", sellerRepository.findById(id));
+        return "editSeller";
+    }
 
     @GetMapping("/sellers/delete/{id}")
     public String deleteSeller(@PathVariable Long id) {
