@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import ohjelmistoprojekti.ticketGuru.Classes.CustomerRepository;
+import ohjelmistoprojekti.ticketGuru.Classes.SellerRepository;
 import ohjelmistoprojekti.ticketGuru.Classes.Transaction;
 import ohjelmistoprojekti.ticketGuru.Classes.TransactionRepository;
 
@@ -18,7 +20,13 @@ public class TransactionController {
     @Autowired
     private TransactionRepository transactionRepository;
 
-    // Tarvitaanko muita @Autowired annotaatioita niinkun jossain toisessa controllerissa näytti olevan?
+    @Autowired
+    private SellerRepository sellerRepository;
+
+    @Autowired
+    private CustomerRepository customerRepository;
+
+    //
 
     
     // näkymä
@@ -34,6 +42,8 @@ public class TransactionController {
     @GetMapping("/transactions/add")
     public String addTransaction(Model model) {
         model.addAttribute("transaction", new Transaction());
+        model.addAttribute("transactions", sellerRepository.findAll());
+        model.addAttribute("transactions", customerRepository.findAll());
         return "addTransaction";
     }
 
