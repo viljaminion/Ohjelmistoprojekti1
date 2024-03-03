@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+
 
 @Entity
 public class Seller {
@@ -25,7 +25,7 @@ public class Seller {
 	private Transaction transaction;
 
 	
-	//ONKO TÄMÄ ONETOMANY?
+	
 	@ManyToOne
     @JoinColumn(name = "postalCode")
     private PostalCode postalCode;
@@ -43,7 +43,7 @@ public class Seller {
 	
 	public Seller () {};
 
-	public Long getSellerid() {
+	public Long getId() {
 		return sellerid;
 	}
 
@@ -111,6 +111,8 @@ public class Seller {
 				"Seller [sellerid=" + sellerid + ", sellerfirstname=" + sellerfirstname + ", sellersurname="
 				+ sellersurname + ", selleraddress=" + selleraddress + ", postalCode=" + postalCode + ", sellerphone=" + sellerphone + ", selleremail=" + selleremail + "]";
 	}
+
+
 	
 	
 }

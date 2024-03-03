@@ -9,11 +9,8 @@
 <body>
     <h1>Edit Seller</h1>
     
-    <form th:action="@{/logout}" method="post">
-        <div><input type="submit" value="Logout" class="btn btn-danger"/></div>
-    </form>
-    <br>
-    <form th:object="${seller}" th:action="@{/sellers/save}" action="#" method="post">
+    
+    <form th:object="${seller}" th:action="@{/sellers/edit/{id}(id=${seller.id})}" action="#" method="post">
 		<div><input type="hidden" th:field="*{id}" /></div>
         <div>
             <label>Seller firstname:</label>

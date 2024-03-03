@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import ohjelmistoprojekti.ticketGuru.Classes.PostalCodeRepository;
 import ohjelmistoprojekti.ticketGuru.Classes.Seller;
 import ohjelmistoprojekti.ticketGuru.Classes.SellerRepository;
 import ohjelmistoprojekti.ticketGuru.Classes.TransactionRepository;
@@ -20,12 +21,15 @@ public class SellerController {
     private SellerRepository sellerRepository;
     
     @Autowired
+    private PostalCodeRepository postalCodeRepository;
+    
+    @Autowired
     private TransactionRepository transactionRepository;
 
     @RequestMapping("/sellerlist")
     public String sellerList(Model model) {
         model.addAttribute("sellers", sellerRepository.findAll());
-        return "sellerlist";
+        return "sellerList";
     }
 
     @GetMapping("/sellers/add")
@@ -41,11 +45,41 @@ public class SellerController {
         return "redirect:/sellerlist";
     }
 
-    @GetMapping("/editSeller/{id}")
+    @GetMapping("/sellers/edit/{id}")
 	public String editSeller(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("editSeller", sellerRepository.findById(id));
-		return "editSeller"; 
-	}
+
+        Seller existingSeller = sellerRepository.findById(id).orElse(null);
+        
+        if (existingSeller != null) {
+            model.addAttribute("seller", existingSeller);
+            model.addAttribute("postalCode", postalCodeRepository.findAll());
+            return "editSeller";
+        } else {
+            return "error";
+        }
+    }
+    
+    @PostMapping("/sellers/edit/{id}")
+    
+    public String updateSeller(@PathVariable("id") Long sellerid, @ModelAttribute Seller updatedSeller) {
+        
+    	Seller existingSeller = sellerRepository.findById(sellerid).orElse(null);
+        
+        if (existingSeller != null) {
+            existingSeller.setSellerfirstname(updatedSeller.getSellerfirstname());
+            existingSeller.setSellersurname(updatedSeller.getSellersurname());
+            existingSeller.setSelleraddress(updatedSeller.getSelleraddress());
+            existingSeller.setSellerphone(updatedSeller.getSellerphone());
+            existingSeller.setSelleremail(updatedSeller.getSelleremail());
+            
+            
+            sellerRepository.save(existingSeller);
+        }
+        return "redirect:/sellerlist";
+    }
+
+
+	
 
     @GetMapping("/sellers/delete/{id}")
     public String deleteSeller(@PathVariable Long id) {

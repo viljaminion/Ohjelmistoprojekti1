@@ -9,10 +9,7 @@
 <body>
     <h1>Edit Event</h1>
     
-    <form th:action="@{/logout}" method="post">
-        <div><input type="submit" value="Logout" class="btn btn-danger"/></div>
-    </form>
-    <br>
+    
     <form th:object="${event}" th:action="@{/events/save}" action="#" method="post">
 		<div><input type="hidden" th:field="*{id}" /></div>
         <div>
