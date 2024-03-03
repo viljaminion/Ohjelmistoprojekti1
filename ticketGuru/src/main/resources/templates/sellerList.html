@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Seller List</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Seller List</h2>
+
+    <a th:href="@{/sellers/add}" class="btn btn-success">Add Seller</a><br>
+    <table border="1" class="table table-striped">
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Seller firstname</th>
+                <th>Seller surname</th>
+                <th>Address</th>
+                <th>Postal Code</th>
+                <th>Phone number</th>
+                <th>Email</th>
+            </tr>
+            <tr th:each="seller : ${sellers}">
+                <td th:text="${seller.id}"></td>
+                <td th:text="${seller.sellerfirstname}"></td>
+                <td th:text="${seller.sellersurname}"></td>
+                <td th:text="${seller.selleraddress}"></td>
+                <td th:text="${seller.sellerphone}"></td>
+                <td th:text="${seller.selleremail}"></td>
+
+                <td th:if="${event.postalCode != null}" th:text="${event.postalCode.postalCode}">Postal Code</td>
+                <td th:unless="${event.postalCode != null}">No Postal Code Available</td>
+
+                <td>
+                    <a th:href="@{/sellers/delete/{id}(id=${seller.id})}" class="btn btn-danger">Delete</a>
+                    <a th:href="@{/sellers/edit/{id}(id=${seller.id})}" class="btn btn-primary">Edit</a>
+                </td>
+            </tr>
+        </table>
+</body>
+
+</html>
