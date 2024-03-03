@@ -26,7 +26,6 @@ public class TransactionController {
     @Autowired
     private CustomerRepository customerRepository;
 
-    //
 
     
     // näkymä
@@ -42,8 +41,8 @@ public class TransactionController {
     @GetMapping("/transactions/add")
     public String addTransaction(Model model) {
         model.addAttribute("transaction", new Transaction());
-        model.addAttribute("transactions", sellerRepository.findAll());
         model.addAttribute("transactions", customerRepository.findAll());
+        model.addAttribute("transactions", sellerRepository.findAll());
         return "addTransaction";
     }
 

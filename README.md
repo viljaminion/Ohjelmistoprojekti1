@@ -178,7 +178,6 @@ EventRestControllerin endpointit (Postman)
 - Tapahtuman poisto Postmanilla: <span style="color:red">DELETE</span> "/event/{id}"
 
 
-
 TicketTypeControllerin endpointit selaimessa:
 
 - Listanäkymä: "/tickettypelist"
@@ -196,6 +195,23 @@ TicketTypeRestControllerin endpointit (Postman):
 <span style="color:yellow">POST</span> "/addtickettype"
 - Lipputyypin poisto Postmanilla:
 <span style="color:red">DELETE</span> "/tickettype/delete/{id}"
+
+
+TransactionControllerin endpointit selaimessa:
+
+- Ostotapahtumalistaus: "/transactionlist"
+- Ostotapahtuman lisäys: "/transactions/add"
+- Ostotapahtuman tallennus: "/transactions/save"
+- Ostoapahtuman poisto: "/transactions/delete/{id}"
+- Ostotapahtuman muokkaus: "/editTransaction/{id}"
+
+TransactionRestControllerin endpointit (Postman)
+
+- Kaikki tiedot JSON-muodossa: <span style="color:green">GET</span> "/transactions"
+- Tietyn ostotapahtuman tiedot ID:n avulla: <span style="color:green">GET</span> "/transaction/{id}"
+- Ostoapahtuman lisäys Postmanilla: <span style="color:yellow">POST</span> "/etransaction"
+- Ostotapahtuman poisto Postmanilla: <span style="color:red">DELETE</span> "/eventtransaction/{id}"
+
 
 
 Teknisessä kuvauksessa esitetään järjestelmän toteutuksen suunnittelussa tehdyt tekniset
