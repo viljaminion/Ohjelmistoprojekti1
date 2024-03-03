@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import ohjelmistoprojekti.ticketGuru.Classes.Customer;
 import ohjelmistoprojekti.ticketGuru.Classes.CustomerRepository;
+import ohjelmistoprojekti.ticketGuru.Classes.PostalCodeRepository;
 
 @Controller
 public class CustomerController {
@@ -18,6 +19,8 @@ public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
 
+    @Autowired
+    private PostalCodeRepository postalCodeRepository;
 
     // asiakkaan tiedot ???? EN TIEDÄ ONKO OIKEIN
     @RequestMapping("/customerlist")
@@ -30,6 +33,7 @@ public class CustomerController {
     @GetMapping("/customers/add")
     public String addCustomer(Model model) {
         model.addAttribute("customer", new Customer());
+        model.addAttribute("postalCodes", postalCodeRepository.findAll());
         return "addCustomer";
     }
 
@@ -49,10 +53,36 @@ public class CustomerController {
     
 
     // asiakkaan muokkaus
-    @GetMapping("/editCustomer/{id}")
-    public String editCustomer(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("editCustomer", customerRepository.findById(id));
-        return "editCustomer";
+    @GetMapping("/customers/edit/{id}")
+    public String editCustomer(@PathVariable("id") Long customerid, Model model) {
+
+        Customer existingCustomer = customerRepository.findById(customerid).orElse(null);
+
+        if (existingCustomer != null) {
+            model.addAttribute("customer", existingCustomer);
+            model.addAttribute("postalCode", postalCodeRepository.findAll());
+            return "editCustomer";
+        } else {
+            return "error";
+        }
+        
     }
 
+    // muokatun asiakkaan tallennus
+
+    @PostMapping("/customers/edit/{id}")
+    public String updateCustomer(@PathVariable("id") Long customerid, @ModelAttribute Customer updatedCustomer) {
+        Customer existingCustomer = customerRepository.findById(customerid).orElse(null);
+
+        if(existingCustomer != null) {
+            existingCustomer.setFirstname(updatedCustomer.getFirstname());
+            existingCustomer.setSurname(updatedCustomer.getSurname());
+            existingCustomer.setAddress(updatedCustomer.getAddress());
+            existingCustomer.setPhone(updatedCustomer.getPhone());
+            existingCustomer.setEmail(updatedCustomer.getEmail());
+
+            customerRepository.save(existingCustomer);
+        }
+        return "redirect:/customerlist";
+    }
 }
