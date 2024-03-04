@@ -227,6 +227,20 @@ CustomerRestControllerin endpointit (Postman)
 - Asiakkaan lisäys Postmanilla: <span style="color:yellow">POST</span> "/customer"
 - Asiakkaan poisto Postmanilla: <span style="color:red">DELETE</span> "/customer/{id}"
 
+SellerControllerin endpointit selaimessa:
+- Lista myyjistä: "/sellerlist"
+- Myyjän lisäys: "/sellers/add"
+- Myyjän tietojen tallennus: "/sellers/save"
+- Myyjän tietojen muokkaaminen: "sellers/edit/{id}"
+- Myyjän tietojen poistaminen: "sellers/delete/{id}
+
+SellerRestControllerin endpointit (Postman)
+- Kaikki tiedot JSON-muodossa: <span style="color:green">GET</span> "/sellers"
+- Tietyn myyjän tiedot ID:n avulla: <span style="color:green">GET</span> "/seller/{id}"
+- Myyjän tietojen lisääminen Postmanilla: <span style="color:yellow">POST</span> "/seller"
+- Myyjän poisto Postmanilla: <span style="color:red">DELETE</span> "/seller/{id}"
+
+
 Teknisessä kuvauksessa esitetään järjestelmän toteutuksen suunnittelussa tehdyt tekniset
 ratkaisut, esim.
 

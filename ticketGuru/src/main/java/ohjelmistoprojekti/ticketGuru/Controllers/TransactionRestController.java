@@ -15,47 +15,47 @@ import org.springframework.web.bind.annotation.RestController;
 import ohjelmistoprojekti.ticketGuru.Classes.Transaction;
 import ohjelmistoprojekti.ticketGuru.Classes.TransactionRepository;
 
-
 @RestController
 public class TransactionRestController {
-	
-	@Autowired
-    private TransactionRepository transactionrepository;
 
-	
-//Kaikki tiedot JSON-muodossa
-	
-	
-    @RequestMapping(value="/transactions", method = RequestMethod.GET)
-    public List<Transaction> TransactionListRest() {	
-        return (List<Transaction>) transactionrepository.findAll();
-    }    
+    @Autowired
+    private TransactionRepository transactionRepository;
 
-//ID:n avulla haettavat tiedot tietystä maksutapahtumasta
-    
-    @RequestMapping(value="/transaction/{id}", method = RequestMethod.GET)
-    public Optional<Transaction> findTransactionRest(@PathVariable("id") Long transactionid) {	
-    	return transactionrepository.findById(transactionid);
+
+    // JSON
+
+    @RequestMapping(value = "/transactions", method = RequestMethod.GET)
+    public List<Transaction> TransactionListRest() {
+        return (List<Transaction>) transactionRepository.findAll();
     }
-    
-//Maksutapahtuman lisääminen Postmanissa
-    
-    @RequestMapping (value= "/addtransaction", method = RequestMethod.POST)
+
+    // Maksutapahtuman tietojen haku ID:llä
+
+    @RequestMapping(value = "/transaction/{id}", method = RequestMethod.GET)
+    public Optional<Transaction> findTransactionRest(@PathVariable("id") Long transactionid) {
+        return transactionRepository.findById(transactionid);
+    }
+
+    // Maksutapahtuman lisääminen Postmanissa
+
+    @RequestMapping(value = "/addtransaction", method = RequestMethod.POST)
     public Transaction addTransaction(@RequestBody Transaction transaction) {
-         return transactionrepository.save(transaction);
-            
-}
-    
-//Maksutapahtuman poisto ID:llä Postmanissa
-    
+        return transactionRepository.save(transaction);
+
+    }
+
+    // Maksutapahtuman poisto ID:llä Postmanissa
+
     @RequestMapping(value = "/transaction/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteTransaction(@PathVariable("id") Long transactionid) {
-        Optional<Transaction> transaction = transactionrepository.findById(transactionid);
+        Optional<Transaction> transaction = transactionRepository.findById(transactionid);
         if (transaction.isPresent()) {
-            transactionrepository.deleteById(transactionid);
+            transactionRepository.deleteById(transactionid);
+
             return new ResponseEntity<>("Transaction with ID " + transaction + " has been deleted.", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Transaction with ID " + transaction + " not found.", HttpStatus.NOT_FOUND);
         }
     }
+
 }
