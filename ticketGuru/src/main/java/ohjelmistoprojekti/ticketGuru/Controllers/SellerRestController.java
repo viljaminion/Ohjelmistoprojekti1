@@ -31,14 +31,14 @@ public class SellerRestController {
         return (List<Seller>) sellerrepository.findAll();
     }    
 
-//ID:n avulla haettavat tiedot tietystä tapahtumasta
+//ID:n avulla haettavat tiedot tietystä myyjästä
     
     @RequestMapping(value="/seller/{id}", method = RequestMethod.GET)
     public Optional<Seller> findSellerRest(@PathVariable("id") Long sellerid) {	
     	return sellerrepository.findById(sellerid);
     }
     
-//Tapahtuman lisääminen Postmanissa
+//Myyjän lisääminen Postmanissa
     
     @RequestMapping (value= "/seller", method = RequestMethod.POST)
     public Seller addSeller(@RequestBody Seller seller) {
@@ -46,7 +46,7 @@ public class SellerRestController {
             
 }
     
-//Tapahtuman poisto ID:llä Postmanissa
+//Myyjän poisto ID:llä Postmanissa
     
     @RequestMapping(value = "/seller/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteSeller(@PathVariable("id") Long sellerid) {
