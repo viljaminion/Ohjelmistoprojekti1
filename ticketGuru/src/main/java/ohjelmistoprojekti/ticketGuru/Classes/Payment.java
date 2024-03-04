@@ -14,7 +14,6 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long paymentid;
-    private String payment;
     private LocalDateTime datetime;
 
     @ManyToOne
@@ -54,17 +53,9 @@ public class Payment {
         this.datetime = datetime;
     }
 
-    public String getPayment() {
-        return payment;
-    }
-
-    public void setPayment(String payment) {
-        this.payment = payment;
-    }
-
     @Override
     public String toString() {
-        return "Payment [paymentid=" + paymentid + ",  datetime=" + datetime + ", transaction=" + transaction + "]";
+        return "Payment [paymentid=" + paymentid + ", datetime=" + datetime + ", transaction=" + transaction + "]";
     }
 
 }
