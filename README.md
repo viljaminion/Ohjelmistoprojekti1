@@ -162,6 +162,8 @@ Tällä sivulla näkyy maksutapahtumien tiedot.
 
 Endpointtien autentikointia ei ole vielä tässä vaiheessa määritelty.
 
+Alla olevat endpointit ovat suppea versio REST-dokumentaatiosta.
+
 EventControllerin endpointit selaimessa:
 
 - Tapahtumalistaus: "/eventlist"
@@ -239,6 +241,20 @@ SellerRestControllerin endpointit (Postman)
 - Tietyn myyjän tiedot ID:n avulla: <span style="color:green">GET</span> "/seller/{id}"
 - Myyjän tietojen lisääminen Postmanilla: <span style="color:yellow">POST</span> "/seller"
 - Myyjän poisto Postmanilla: <span style="color:red">DELETE</span> "/seller/{id}"
+
+PaymentControllerin endpointit selaimessa
+- Listanäkymä: "/paymentlist"
+- Lisäys: "/payments/add"
+- Tallennus: "/payments/save"
+- Poisto: "/payments/delete/{id}"
+- Muokkaus: "/payments/edit/{id}"
+
+PaymentRestControllerin endpointit (Postman)
+- Kaikki tiedot JSON-muodossa: <span style="color:green">GET</span> "/payments"
+- Tietyn maksutapahtuman tiedot ID:n avulla: <span style="color:green">GET</span> "/payment/{id}"
+- Maksutapahtuman lisäys Postmanilla: <span style="color:yellow">POST</span> "/addpayment"
+- Maksutapahtuman poisto Postmanilla: <span style="color:red">DELETE</span> "/payment/delete/{id}"
+
 
 
 Teknisessä kuvauksessa esitetään järjestelmän toteutuksen suunnittelussa tehdyt tekniset
