@@ -1,18 +1,21 @@
 package ohjelmistoprojekti.ticketGuru.Classes;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Payment {
-	@Id
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long paymentid;
-	private String payment;
-    private LocalDate date;
+    private String payment;
+    private LocalDateTime datetime;
 
     @ManyToOne
     @JoinColumn(name = "transaction_id")
@@ -26,12 +29,12 @@ public class Payment {
         this.transaction = transaction;
     }
 
-    public Payment () {
+    public Payment() {
 
     }
 
-    public Payment (LocalDate date, Transaction transaction) {
-        this.date = date;
+    public Payment(LocalDateTime datetime, Transaction transaction) {
+        this.datetime = datetime;
         this.transaction = transaction;
     }
 
@@ -43,21 +46,25 @@ public class Payment {
         this.paymentid = id;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDateTime getDatetime() {
+        return datetime;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setDateTime(LocalDateTime datetime) {
+        this.datetime = datetime;
     }
 
-	public String getPayment() {
-		return payment;
-	}
+    public String getPayment() {
+        return payment;
+    }
 
-	public void setPayment(String payment) {
-		this.payment = payment;
-	}
+    public void setPayment(String payment) {
+        this.payment = payment;
+    }
 
+    @Override
+    public String toString() {
+        return "Payment [paymentid=" + paymentid + ",  datetime=" + datetime + ", transaction=" + transaction + "]";
+    }
 
 }

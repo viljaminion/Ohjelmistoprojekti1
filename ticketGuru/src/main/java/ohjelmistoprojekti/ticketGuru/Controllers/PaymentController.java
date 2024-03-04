@@ -1,6 +1,7 @@
 package ohjelmistoprojekti.ticketGuru.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,6 +13,7 @@ import ohjelmistoprojekti.ticketGuru.Classes.Payment;
 import ohjelmistoprojekti.ticketGuru.Classes.PaymentRepository;
 import ohjelmistoprojekti.ticketGuru.Classes.TransactionRepository;
 
+@Controller
 public class PaymentController {
 
     @Autowired
@@ -25,7 +27,7 @@ public class PaymentController {
     @RequestMapping("/paymentlist")
     public String paymentList(Model model) {
         model.addAttribute("payments", paymentRepository.findAll());
-        return "paymentList";
+        return "paymentlist";
     }
 
     // Lisäys
@@ -42,7 +44,7 @@ public class PaymentController {
     @PostMapping("/payments/save")
     public String savePayment(@ModelAttribute Payment payment, Model model) {
         paymentRepository.save(payment);
-        return "redirect:/paymentList";
+        return "redirect:/paymentlist";
     }
 
     // Poisto
@@ -50,12 +52,12 @@ public class PaymentController {
     @GetMapping("/payments/delete/{id}")
     public String deletePayment(@PathVariable Long id) {
         paymentRepository.deleteById(id);
-        return "redirect:/paymentList";
+        return "redirect:/paymentlist";
     }
 
     // Muokkaus
 
-    @GetMapping("/editPayment/{id}")
+    @GetMapping("/payments/edit/{id}")
     public String editPayment(@PathVariable("id") Long paymentid, Model model) {
         Payment payment = paymentRepository.findById(paymentid).orElse(null);
 

@@ -5,25 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
-    <title>Add Payment</title>
+    <title>Edit Payment</title>
 </head>
 
 <body>
-    <h1>Add Payment</h1>
+    <h1>Edit Payment</h1>
 
-    <br>
+
     <form th:object="${payment}" th:action="@{/payments/save}" action="#" method="post">
+        <div><input type="hidden" th:field="*{id}" /></div>
 
         <div>
             <label>Date, time:</label>
             <input type="datetime-local" th:field="*{datetime}" />
             <div th:if="${#fields.hasErrors('datetime')}" th:errors="*{datetime}">Error</div>
-
         </div>
 
 
         <div>
-            <label for="transactionList">Transaction ID:</label>
+            <label for="transactionList">Transaction:</label>
             <select id="transactionList" th:field="*{transaction}" class="form-control">
                 <option th:each="transaction: ${transactions}" th:value="${transaction.transactionid}"
                     th:text="${transaction.transactionid}"></option>
@@ -31,7 +31,7 @@
         </div>
         <br>
 
-        <button type="submit">Add Payment</button>
+        <button type="submit">OK</button>
     </form>
 </body>
 

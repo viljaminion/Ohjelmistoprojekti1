@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment List</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
+
 <body>
     <h2>Payment List</h2>
 
@@ -14,23 +33,24 @@
         <table>
             <tr>
                 <th>Payment</th>
-                <th>Date</th>
+                <th>Date, time</th>
                 <th>Transaction ID</th>
-                
+
             </tr>
             <tr th:each="payment : ${payments}">
                 <td th:text="${payment.id}"></td>
-                <td th:text="${payment.date}"></td>
+                <td th:text="${payment.datetime}"></td>
 
                 <td th:if="${payment.transaction != null}" th:text="${payment.transaction.transaction}">Transaction</td>
                 <td th:unless="${payment.transaction != null}">Transaction Not Found</td>
 
                 <td>
                     <a th:href="@{/payments/delete/{id}(id=${payment.id})}" class="btn btn-danger">Delete</a>
-                    <a th:href="@{/payments/edit/{id}(id=${payments.id})}" class="btn btn-primary">Edit</a>
+                    <a th:href="@{/payments/edit/{id}(id=${payment.id})}" class="btn btn-primary">Edit</a>
                 </td>
             </tr>
         </table>
-    
+
 </body>
+
 </html>

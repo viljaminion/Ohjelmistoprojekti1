@@ -18,17 +18,16 @@ public class EventController {
     @Autowired
     private PostalCodeRepository postalCodeRepository;
 
-    
-//Listanäkymä
-    
+    // Listanäkymä
+
     @RequestMapping("/eventlist")
     public String eventList(Model model) {
         model.addAttribute("events", eventRepository.findAll());
         return "eventList";
     }
-    
-//Tapahtuman lisäys
-    
+
+    // Tapahtuman lisäys
+
     @GetMapping("/events/add")
     public String addEvent(Model model) {
         model.addAttribute("event", new Event());
@@ -36,30 +35,29 @@ public class EventController {
         return "addEvent";
     }
 
-//Tapahtuman tallennus H2:een (vaihtuu oikeaan tietokantaan myöhemmin)
-    
+    // Tapahtuman tallennus H2:een (vaihtuu oikeaan tietokantaan myöhemmin)
+
     @PostMapping("/events/save")
     public String saveEvent(@ModelAttribute Event event, Model model) {
         eventRepository.save(event);
         return "redirect:/eventlist";
     }
 
-//Tapahtuman poisto
-    
+    // Tapahtuman poisto
+
     @GetMapping("/events/delete/{id}")
     public String deleteEvent(@PathVariable Long id) {
         eventRepository.deleteById(id);
         return "redirect:/eventlist";
     }
-    
-    
-//Tapahtuman muokkaus
-    
+
+    // Tapahtuman muokkaus
+
     @GetMapping("/events/edit/{id}")
     public String editEvent(@PathVariable("id") Long eventid, Model model) {
-    	
+
         Event existingEvent = eventRepository.findById(eventid).orElse(null);
-        
+
         if (existingEvent != null) {
             model.addAttribute("event", existingEvent);
             model.addAttribute("postalCode", postalCodeRepository.findAll());
@@ -69,12 +67,12 @@ public class EventController {
         }
     }
 
-//Muokatun tapahtuman tallennus
-    
+    // Muokatun tapahtuman tallennus
+
     @PostMapping("/events/edit/{id}")
     public String updateEvent(@PathVariable("id") Long eventid, @ModelAttribute Event updatedEvent) {
         Event existingEvent = eventRepository.findById(eventid).orElse(null);
-        
+
         if (existingEvent != null) {
             existingEvent.setEventname(updatedEvent.getEventname());
             existingEvent.setAddress(updatedEvent.getAddress());
@@ -82,7 +80,7 @@ public class EventController {
             existingEvent.setDescription(updatedEvent.getDescription());
             existingEvent.setMaxTickets(updatedEvent.getMaxTickets());
             existingEvent.setDuration(updatedEvent.getDuration());
-            
+
             eventRepository.save(existingEvent);
         }
         return "redirect:/eventlist";
