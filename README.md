@@ -232,7 +232,6 @@ SellerControllerin endpointit selaimessa:
 - Myyjän lisäys: "/sellers/add"
 - Myyjän tietojen tallennus: "/sellers/save"
 - Myyjän tietojen muokkaaminen: "sellers/edit/{id}"
-- Myyjän tietojen tallentaminen muokkauksen jälkeen: "sellers/edit/{id}"
 - Myyjän tietojen poistaminen: "sellers/delete/{id}
 
 SellerRestControllerin endpointit (Postman)
