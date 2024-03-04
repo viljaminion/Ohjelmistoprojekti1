@@ -28,14 +28,14 @@ public class CustomerRestController {
         return (List<Customer>) customerrepository.findAll();
     }
 
-    //ID:n avulla haettavat tiedot tietystä tapahtumasta
+    //ID:n avulla haettavat tiedot tietystä asiakkaasta
 
     @RequestMapping(value = "/customer/{id}", method = RequestMethod.GET)
     public Optional<Customer> findCustomerRest(@PathVariable("id") Long customerid) {
         return customerrepository.findById(customerid);
     }
 
-    //Tapahtuman lisääminen Postmanissa
+    //Asiakkaan lisääminen Postmanissa
 
     @RequestMapping(value = "/customer", method = RequestMethod.POST)
     public Customer addCustomer(@RequestBody Customer customer) {
@@ -43,7 +43,7 @@ public class CustomerRestController {
 
     }
 
-    //Tapahtuman poisto ID:llä Postmanissa
+    //Asiakkaan poisto ID:llä Postmanissa
 
     @RequestMapping(value = "/customer/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteCustomer(@PathVariable("id") Long customerid) {

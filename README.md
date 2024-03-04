@@ -212,7 +212,20 @@ TransactionRestControllerin endpointit (Postman)
 - Ostoapahtuman lisäys Postmanilla: <span style="color:yellow">POST</span> "/etransaction"
 - Ostotapahtuman poisto Postmanilla: <span style="color:red">DELETE</span> "/eventtransaction/{id}"
 
+CustomerControllerin endpointit selaimessa:
 
+- Asiakaslista: "/customerlist"
+- Asiakkaan lisäys: "/customers/add"
+- Asiakkaan tietojen tallennus: "/customers/save"
+- Asiakkaan tilin poisto: "/customers/delete/{id}"
+- Asiakkaan tietojen muokkaus: "/customers/edit/{id}"
+
+CustomerRestControllerin endpointit (Postman)
+
+- Kaikki tiedot JSON-muodossa: <span style="color:green">GET</span> "/customers"
+- Tietyn asiakkaan tiedot ID:n avulla: <span style="color:green">GET</span> "/customer/{id}"
+- Asiakkaan lisäys Postmanilla: <span style="color:yellow">POST</span> "/customer"
+- Asiakkaan poisto Postmanilla: <span style="color:red">DELETE</span> "/customer/{id}"
 
 Teknisessä kuvauksessa esitetään järjestelmän toteutuksen suunnittelussa tehdyt tekniset
 ratkaisut, esim.
