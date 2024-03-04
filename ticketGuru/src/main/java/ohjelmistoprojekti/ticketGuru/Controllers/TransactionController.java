@@ -27,6 +27,7 @@ public class TransactionController {
     private CustomerRepository customerRepository;
 
 
+
     
     // näkymä
 
@@ -56,10 +57,36 @@ public class TransactionController {
 
     // muokkaus
 
-    @GetMapping("/editTransaction/{id}")
-    public String editTransaction(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("editTransaction", transactionRepository.findById(id));
-        return "editTransaction";
+    @GetMapping("/transactions/edit/{id}")
+    public String editTransaction(@PathVariable("id") Long transactionid, Model model) {
+    	
+        Transaction existingTransaction = transactionRepository.findById(transactionid).orElse(null);
+        
+        if (existingTransaction != null) {
+            model.addAttribute("transaction", existingTransaction);
+            model.addAttribute("seller", sellerRepository.findAll());
+            model.addAttribute("customer", customerRepository.findAll());
+            
+            return "editTransaction";
+        } else {
+            return "error";
+        }
+    }
+    
+    // muokkauksen tallennus
+    @PostMapping("/transaction/edit/{id}")
+    public String updateTransaction(@PathVariable("id") Long transactionid, @ModelAttribute Transaction updatedTransaction) {
+        Transaction existingTransaction = transactionRepository.findById(transactionid).orElse(null);
+        
+        if (existingTransaction != null) {
+            existingTransaction.setTransactiondate(updatedTransaction.getTransactiondate());
+            existingTransaction.setCustomers(updatedTransaction.getCustomers());
+            existingTransaction.setSellers(updatedTransaction.getSellers());
+
+            
+            transactionRepository.save(existingTransaction);
+        }
+        return "redirect:/transactionlist";
     }
 
     // poisto

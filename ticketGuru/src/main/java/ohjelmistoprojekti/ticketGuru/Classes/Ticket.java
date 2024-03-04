@@ -13,6 +13,7 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ticketid;
+    private String ticketnumber;
     
 
     @ManyToOne
@@ -42,6 +43,14 @@ public class Ticket {
     public void setId(Long id) {
         this.ticketid = id;
     }
+
+	public String getTicketnumber() {
+		return ticketnumber;
+	}
+
+	public void setTicketnumber(String ticketnumber) {
+		this.ticketnumber = ticketnumber;
+	}
 
     
 }
