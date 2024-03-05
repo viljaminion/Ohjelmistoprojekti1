@@ -36,12 +36,12 @@ public class TicketController {
 
     // Lisäys
 
-    @GetMapping("/tickets/add")
+    @GetMapping("/addticket")
     public String addTicket(Model model) {
         model.addAttribute("ticket", new Ticket());
         model.addAttribute("transactions", transactionRepository.findAll());
-        model.addAttribute("tickettypes", ticketTypeRepository.findAll());
-        return "addTicket";
+        model.addAttribute("ticketTypes", ticketTypeRepository.findAll());
+        return "addticket";
     }
 
     // Tallennus

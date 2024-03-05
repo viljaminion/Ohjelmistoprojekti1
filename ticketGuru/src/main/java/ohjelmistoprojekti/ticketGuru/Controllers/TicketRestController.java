@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import ohjelmistoprojekti.ticketGuru.Classes.Ticket;
 import ohjelmistoprojekti.ticketGuru.Classes.TicketRepository;
 
+@RestController
 public class TicketRestController {
 
     @Autowired
@@ -26,16 +28,16 @@ public class TicketRestController {
         return (List<Ticket>) ticketRepository.findAll();
     }
 
-    // Tiedot maksutapahtumasta
+    // Tiedot lipusta
 
-    @RequestMapping(value = "/ticket/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/tickets/{id}", method = RequestMethod.GET)
     public Optional<Ticket> findTicketRest(@PathVariable("id") Long ticketid) {
         return ticketRepository.findById(ticketid);
     }
 
     // Lisäys
 
-    @RequestMapping(value = "/addticket", method = RequestMethod.POST)
+    @RequestMapping(value = "/tickets", method = RequestMethod.POST)
     public Ticket addTicket(@RequestBody Ticket ticket) {
         return ticketRepository.save(ticket);
 
@@ -43,7 +45,7 @@ public class TicketRestController {
 
     // Poisto
 
-    @RequestMapping(value = "/ticket/delete/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/tickets/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteTicket(@PathVariable("id") Long ticketid) {
         Optional<Ticket> ticket = ticketRepository.findById(ticketid);
         if (ticket.isPresent()) {

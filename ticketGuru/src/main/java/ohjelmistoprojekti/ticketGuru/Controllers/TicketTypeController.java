@@ -22,7 +22,7 @@ public class TicketTypeController {
 
     @RequestMapping("/tickettypelist")
     public String ticketTypeList(Model model) {
-        model.addAttribute("tickettypes", ticketTypeRepository.findAll());
+        model.addAttribute("ticketTypes", ticketTypeRepository.findAll());
         return "ticketTypeList";
     }
 
@@ -30,7 +30,7 @@ public class TicketTypeController {
 
     @GetMapping("/tickettypes/add")
     public String addTicketType(Model model) {
-        model.addAttribute("tickettype", new TicketType());
+        model.addAttribute("ticketType", new TicketType());
         return "addTicketType";
     }
 
@@ -60,7 +60,7 @@ public class TicketTypeController {
             return "error";
         }
 
-        model.addAttribute("tickettype", ticketType);
+        model.addAttribute("ticketType", ticketType);
         return "editTicketType";
     }
 }

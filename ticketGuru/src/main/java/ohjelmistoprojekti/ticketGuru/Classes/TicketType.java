@@ -12,68 +12,73 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class TicketType {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-	  private Long tickettypeid;
-    private String ticketType;
-    private String description;
-    private double price;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long tickettypeid;
+  private String ticketType;
+  private String description;
+  private double price;
 
-    @OneToMany
-	  (cascade = CascadeType.ALL, mappedBy = "eventtickettypeid")
-	  private List<EventTicketType>eventtickettypes;
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "eventtickettypeid")
+  private List<EventTicketType> eventtickettypes;
 
-    @OneToMany
-	  (cascade = CascadeType.ALL, mappedBy = "ticketid")
-	  private List<Ticket>tickets;
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "ticketid")
+  private List<Ticket> tickets;
 
-    public TicketType(){
+  public TicketType() {
 
-    }
+  }
 
-    public Long getId() {
-        return tickettypeid;
-    }
+  public TicketType(String ticketType, String description, double price) {
+    this.ticketType = ticketType;
+    this.description = description;
+    this.price = price;
+  }
 
-    public void setId(Long tickettypeid) {
-		this.tickettypeid = tickettypeid;
-    }
+  public Long getId() {
+    return tickettypeid;
+  }
 
-    public String getTickettype() {
-        return ticketType;
-    }
+  public void setId(Long tickettypeid) {
+    this.tickettypeid = tickettypeid;
+  }
 
-    public void setTickettype(String ticketType) {
-		this.ticketType = ticketType;
-    }
+  public String getTickettype() {
+    return ticketType;
+  }
 
-    public String getDescription() {
-        return description;
-    }
+  public void setTickettype(String ticketType) {
+    this.ticketType = ticketType;
+  }
 
-    public void setDescription(String description) {
-		this.description = description;
-    }
+  public String getDescription() {
+    return description;
+  }
 
-    public double getPrice() {
-        return price;
-    }
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-    public void setPrice(double price) {
-		this.price = price;
-    }
+  public double getPrice() {
+    return price;
+  }
 
-    public List<Ticket> getTickets() {
-		return tickets;
-    }
+  public void setPrice(double price) {
+    this.price = price;
+  }
 
-    public void setTickets(List<Ticket> tickets) {
-		this.tickets = tickets;
-    }
+  public List<Ticket> getTickets() {
+    return tickets;
+  }
 
-    @Override
-		public String toString(){
-            return "TicketType [tickettypeid=" + tickettypeid + ", ticketType=" + ticketType + ", description=" + description + ",price=" + price + "]";
-        }
+  public void setTickets(List<Ticket> tickets) {
+    this.tickets = tickets;
+  }
+
+  @Override
+  public String toString() {
+    return "TicketType [tickettypeid=" + tickettypeid + ", ticketType=" + ticketType + ", description=" + description
+        + ", price=" + price + "]";
+  }
 
 }

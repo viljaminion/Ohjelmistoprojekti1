@@ -27,8 +27,7 @@ public class Transaction {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "sellerid")
 	private List<Seller> sellers;
 
-	@ManyToOne
-	@JoinColumn(name = "ticketid")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ticketid")
 	private Ticket ticket;
 
 	public Transaction() {

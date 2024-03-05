@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <title>Add Ticket</title>
+</head>
+
+<body>
+    <h1>Add Ticket</h1>
+
+    <form th:object="${ticket}" th:action="@{/tickets/save}" action="#" method="post">
+        <div>
+            <label>Ticket number:</label>
+            <input type="text" th:field="*{ticketnumber}" />
+            <div th:if="${#fields.hasErrors('ticketnumber')}" th:errors="*{ticketnumber}">Error</div>
+        </div>
+
+        <div>
+            <label for="transactionList">Transaction ID:</label>
+            <select id="transactionList" th:field="*{transaction}" class="form-control">
+                <option th:each="transaction: ${transactions}" th:value="${transaction.transactionid}"
+                    th:text="${transaction.transactionid}"></option>
+            </select>
+        </div>
+
+        <div>
+            <label for="ticketTypeList">Ticket type:</label>
+            <select id="ticketTypeList" th:field="*{ticketType}" class="form-control">
+                <option th:each="ticketType: ${ticketTypes}" th:value="${ticketType.tickettypeid}"
+                    th:text="${ticketType.tickettypeid}"></option>
+            </select>
+        </div>
+        <br>
+
+        <button type="submit">Add Ticket</button>
+    </form>
+</body>
+
+</html>

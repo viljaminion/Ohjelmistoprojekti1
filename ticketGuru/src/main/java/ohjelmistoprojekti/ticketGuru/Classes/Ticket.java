@@ -19,6 +19,18 @@ public class Ticket {
     @JoinColumn(name = "transactionid")
     private Transaction transaction;
 
+    @ManyToOne
+    @JoinColumn(name = "tickettypeid")
+    private TicketType ticketType;
+
+    public TicketType getTicketType() {
+        return ticketType;
+    }
+
+    public void setTicketType(TicketType ticketType) {
+        this.ticketType = ticketType;
+    }
+
     public Transaction getTransaction() {
         return transaction;
     }
@@ -31,9 +43,10 @@ public class Ticket {
 
     }
 
-    public Ticket(String ticketnumber, Transaction transaction) {
+    public Ticket(String ticketnumber, Transaction transaction, TicketType ticketType) {
         this.ticketnumber = ticketnumber;
         this.transaction = transaction;
+        this.ticketType = ticketType;
     }
 
     public Long getId() {
@@ -55,7 +68,7 @@ public class Ticket {
     @Override
     public String toString() {
         return "Seller [ticketid=" + ticketid + ",  ticketnumber=" + ticketnumber + ", transaction=" + transaction
-                + "]";
+                + ", ticketType=" + ticketType + "]";
     }
 
 }

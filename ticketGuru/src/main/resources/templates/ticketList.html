@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket list</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a th:href="@{/addticket}" class="btn btn-success">Add Ticket</a><br>
+    <table border="1" class="table table-striped"></table>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Ticket number</th>
+            <th>Transaction ID</th>
+            <th>Ticket type ID</th>
+        </tr>
+        <tr th:each="ticket : ${tickets}">
+            <td th:text="${ticket.id}"></td>
+            <td th:text="${ticket.ticketnumber}"></td>
+
+            <td th:if="${ticket.transaction != null}" th:text="${ticket.transaction.transaction}">Transaction</td>
+                <td th:unless="${ticket.transaction != null}">Transaction Not Found</td>
+
+                <td th:if="${ticket.ticketType != null}" th:text="${ticket.ticketType.ticketType}">Ticket type</td>
+                <td th:unless="${ticket.ticketType != null}">Ticket type Not Found</td>
+
+            <td>
+                <a th:href="@{/tickets/delete/{id}(id=${ticket.id})}" class="btn btn-danger">Delete</a>
+                <a th:href="@{/tickets/edit/{id}(id=${ticket.id})}" class="btn btn-primary">Edit</a>
+            </td>
+        </tr>
+</body>
+
+</html>
