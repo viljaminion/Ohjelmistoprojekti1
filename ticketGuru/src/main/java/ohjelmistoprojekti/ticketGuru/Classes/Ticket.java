@@ -14,11 +14,10 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ticketid;
     private String ticketnumber;
-    
 
     @ManyToOne
-	@JoinColumn(name = "transactionid")
-	private Transaction transaction;
+    @JoinColumn(name = "transactionid")
+    private Transaction transaction;
 
     public Transaction getTransaction() {
         return transaction;
@@ -32,8 +31,9 @@ public class Ticket {
 
     }
 
-    public Ticket(Transaction transaction) {
-
+    public Ticket(String ticketnumber, Transaction transaction) {
+        this.ticketnumber = ticketnumber;
+        this.transaction = transaction;
     }
 
     public Long getId() {
@@ -44,13 +44,18 @@ public class Ticket {
         this.ticketid = id;
     }
 
-	public String getTicketnumber() {
-		return ticketnumber;
-	}
+    public String getTicketnumber() {
+        return ticketnumber;
+    }
 
-	public void setTicketnumber(String ticketnumber) {
-		this.ticketnumber = ticketnumber;
-	}
+    public void setTicketnumber(String ticketnumber) {
+        this.ticketnumber = ticketnumber;
+    }
 
-    
+    @Override
+    public String toString() {
+        return "Seller [ticketid=" + ticketid + ",  ticketnumber=" + ticketnumber + ", transaction=" + transaction
+                + "]";
+    }
+
 }

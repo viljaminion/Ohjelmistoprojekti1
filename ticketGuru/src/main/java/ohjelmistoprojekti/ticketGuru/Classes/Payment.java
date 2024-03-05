@@ -49,7 +49,7 @@ public class Payment {
         return datetime;
     }
 
-    public void setDateTime(LocalDateTime datetime) {
+    public void setDatetime(LocalDateTime datetime) {
         this.datetime = datetime;
     }
 
