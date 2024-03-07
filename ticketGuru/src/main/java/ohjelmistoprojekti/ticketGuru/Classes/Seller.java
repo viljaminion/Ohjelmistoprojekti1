@@ -1,31 +1,40 @@
 package ohjelmistoprojekti.ticketGuru.Classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Seller {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long sellerid;
-	
+
 	private String sellerfirstname;
 	private String sellersurname;
 	private String selleraddress;
 	private String sellerphone;
 	private String selleremail;
-	
-	@ManyToOne
-	@JoinColumn(name = "transactionid")
-	private Transaction transaction;
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "seller")
+	private List<Transaction> transactions = new ArrayList<>();
 
-	public Seller(String sellerfirstname, String sellersurname, String selleraddress, String sellerphone, String selleremail) {
+	public List<Transaction> getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(List<Transaction> transactions) {
+		this.transactions = transactions;
+	}
+
+	public Seller(String sellerfirstname, String sellersurname, String selleraddress, String sellerphone,
+			String selleremail) {
 		super();
 		this.sellerfirstname = sellerfirstname;
 		this.sellersurname = sellersurname;
@@ -33,8 +42,9 @@ public class Seller {
 		this.sellerphone = sellerphone;
 		this.selleremail = selleremail;
 	}
-	
-	public Seller () {};
+
+	public Seller() {
+	};
 
 	public Long getId() {
 		return sellerid;
@@ -86,19 +96,17 @@ public class Seller {
 
 	@Override
 	public String toString() {
-		if (this.transaction != null)
-			
-		return "Seller [sellerid=" + sellerid + ", sellerfirstname=" + sellerfirstname + ", sellersurname="
-				+ sellersurname + ", selleraddress=" + selleraddress + ", sellerphone=" + sellerphone + ", selleremail=" + selleremail + ", transaction=" + transaction
-				+ "]";
-		
-		else 
-		return
-				"Seller [sellerid=" + sellerid + ", sellerfirstname=" + sellerfirstname + ", sellersurname="
-				+ sellersurname + ", selleraddress=" + selleraddress + ", sellerphone=" + sellerphone + ", selleremail=" + selleremail + "]";
+		if (this.transactions != null)
+
+			return "Seller [sellerid=" + sellerid + ", sellerfirstname=" + sellerfirstname + ", sellersurname="
+					+ sellersurname + ", selleraddress=" + selleraddress + ", sellerphone=" + sellerphone
+					+ ", selleremail=" + selleremail + ", transactions=" + transactions
+					+ "]";
+
+		else
+			return "Seller [sellerid=" + sellerid + ", sellerfirstname=" + sellerfirstname + ", sellersurname="
+					+ sellersurname + ", selleraddress=" + selleraddress + ", sellerphone=" + sellerphone
+					+ ", selleremail=" + selleremail + ", transactions= " + transactions + "]";
 	}
 
-
-	
-	
 }

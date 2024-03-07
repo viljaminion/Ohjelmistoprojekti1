@@ -1,14 +1,12 @@
 package ohjelmistoprojekti.ticketGuru.Classes;
 
 import java.time.LocalDate;
-import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Transaction {
@@ -19,30 +17,33 @@ public class Transaction {
 
 	private LocalDate transactiondate;
 
+	private Double ticketSum;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "sellerid")
-	private List<Seller> sellers;
+	@ManyToOne
+	private Seller seller;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ticketid")
-	private List<Ticket> tickets;
+	@ManyToOne
+	private Ticket ticket;
 
 	public Transaction() {
 
 	}
 
-	public Transaction(Long id, LocalDate transactiondate, List<Seller> sellers, Ticket ticket) {
+	public Transaction(Long id, LocalDate transactiondate, Double ticketSum, Seller seller, Ticket ticket) {
 		super();
 		this.transactiondate = transactiondate;
+		this.ticketSum = ticketSum;
+		this.seller = seller;
+		this.ticket = ticket;
 
 	}
 
-
-	public List<Ticket> getTickets() {
-		return tickets;
+	public Ticket getTicket() {
+		return ticket;
 	}
 
-	public void setTickets(List<Ticket> tickets) {
-		this.tickets = tickets;
+	public void setTicket(Ticket tickets) {
+		this.ticket = tickets;
 	}
 
 	public Long getId() {
@@ -61,18 +62,27 @@ public class Transaction {
 		this.transactiondate = transactiondate;
 	}
 
-
-	public List<Seller> getSellers() {
-		return sellers;
+	public Double getTicketSum() {
+		return ticketSum;
 	}
 
-	public void setSellers(List<Seller> sellers) {
-		this.sellers = sellers;
+	public void setTicketSum(Double ticketSum) {
+		this.ticketSum = ticketSum;
+	}
+
+	public Seller getSeller() {
+		return seller;
+	}
+
+	public void setSeller(Seller seller) {
+		this.seller = seller;
 	}
 
 	@Override
 	public String toString() {
-		return "Transaction [transactionid=" + transactionid + ", transactiondate=" + transactiondate + "]";
+		return "Transaction [transactionid=" + transactionid + ", transactiondate=" + transactiondate + ", ticketSum="
+				+ ticketSum + ", seller="
+				+ seller + ", ticket=" + ticket + "]";
 	}
 
 }

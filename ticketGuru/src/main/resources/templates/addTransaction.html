@@ -19,10 +19,9 @@
         </div>
         
         <div>
-            <label for="customerList">Customer id:</label>
-            <select id="customerList" th:field="*{customer}"class="form-control">
-                <option th:each="customer: ${customers}" th:value="${customer.customerid}" th:text="${customer.customerid}"></option>
-        </select>
+            <label>Ticket sum:</label>
+            <input type="number" th:field="*{ticketSum}"/>
+            <div th:if="${#fields.hasErrors('ticketSum')}" th:errors="*{ticketSum}">Error</div>
         </div>
 
         <div>

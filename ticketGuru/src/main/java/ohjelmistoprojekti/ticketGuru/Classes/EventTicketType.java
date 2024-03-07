@@ -1,4 +1,4 @@
-package ohjelmistoprojekti.ticketGuru.Classes;
+/*package ohjelmistoprojekti.ticketGuru.Classes;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -54,4 +54,4 @@ public class EventTicketType {
     }  
 
 
-}
+}*/

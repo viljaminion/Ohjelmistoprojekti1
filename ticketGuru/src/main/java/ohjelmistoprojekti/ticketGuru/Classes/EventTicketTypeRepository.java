@@ -1,4 +1,4 @@
-package ohjelmistoprojekti.ticketGuru.Classes;
+/*package ohjelmistoprojekti.ticketGuru.Classes;
 
 import org.springframework.data.repository.CrudRepository;
 
@@ -6,4 +6,4 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface EventTicketTypeRepository extends CrudRepository<EventTicketType, Long> {
     TicketType findByEventTicketType(String eventTicketType);
-}
+}*/

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ohjelmistoprojekti.ticketGuru.Classes.SellerRepository;
+import ohjelmistoprojekti.ticketGuru.Classes.TicketRepository;
 import ohjelmistoprojekti.ticketGuru.Classes.Transaction;
 import ohjelmistoprojekti.ticketGuru.Classes.TransactionRepository;
 
@@ -21,6 +22,9 @@ public class TransactionController {
 
     @Autowired
     private SellerRepository sellerRepository;
+
+    @Autowired 
+    private TicketRepository ticketRepository;
 
     
     // näkymä
@@ -37,6 +41,7 @@ public class TransactionController {
     public String addTransaction(Model model) {
         model.addAttribute("transaction", new Transaction());
         model.addAttribute("transactions", sellerRepository.findAll());
+        model.addAttribute("tickets", ticketRepository.findAll());
         return "addTransaction";
     }
 
@@ -58,6 +63,7 @@ public class TransactionController {
         if (existingTransaction != null) {
             model.addAttribute("transaction", existingTransaction);
             model.addAttribute("seller", sellerRepository.findAll());
+            model.addAttribute("tickets", ticketRepository.findAll());
        
             return "editTransaction";
         } else {
@@ -72,7 +78,7 @@ public class TransactionController {
         
         if (existingTransaction != null) {
             existingTransaction.setTransactiondate(updatedTransaction.getTransactiondate());
-            existingTransaction.setSellers(updatedTransaction.getSellers());
+            existingTransaction.setSeller(updatedTransaction.getSeller());
 
             
             transactionRepository.save(existingTransaction);
