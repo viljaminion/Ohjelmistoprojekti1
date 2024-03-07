@@ -40,7 +40,7 @@ public class SellerRestController {
     
 //Myyjän lisääminen Postmanissa
     
-    @RequestMapping (value= "/seller", method = RequestMethod.POST)
+    @RequestMapping (value= "/sellers", method = RequestMethod.POST)
     public Seller addSeller(@RequestBody Seller seller) {
          return sellerrepository.save(seller);
             

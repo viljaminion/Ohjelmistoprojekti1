@@ -20,8 +20,12 @@ public class Ticket {
     private Transaction transaction;
 
     @ManyToOne
-    @JoinColumn(name = "tickettypeid")
+    @JoinColumn
     private TicketType ticketType;
+    
+    @ManyToOne
+    @JoinColumn
+    private Event event;
 
     public TicketType getTicketType() {
         return ticketType;

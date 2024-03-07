@@ -40,7 +40,7 @@ public class EventRestController {
     
 //Tapahtuman lisääminen Postmanissa
     
-    @RequestMapping (value= "/event", method = RequestMethod.POST)
+    @RequestMapping (value= "/events", method = RequestMethod.POST)
     public Event addEvent(@RequestBody Event event) {
          return eventrepository.save(event);
             

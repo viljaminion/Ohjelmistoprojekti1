@@ -37,14 +37,14 @@ public class TicketTypeRestController {
 
     // Lisäys
 
-    @RequestMapping(value = "/addtickettype", method = RequestMethod.POST)
+    @RequestMapping(value = "/tickettypes", method = RequestMethod.POST)
     public TicketType addTicketType(@RequestBody TicketType ticketType) {
         return tickettyperepository.save(ticketType);
     }
 
     // Poisto
 
-    @RequestMapping(value = "/tickettype/delete/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/tickettype/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteTicketType(@PathVariable("id") Long tickettypeid) {
         Optional<TicketType> ticketType = tickettyperepository.findById(tickettypeid);
         if (ticketType.isPresent()) {

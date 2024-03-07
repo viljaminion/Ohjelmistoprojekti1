@@ -11,28 +11,25 @@
 <body>
     <h1>Add Ticket type</h1>
 
-    <form th:object="${ticketType}" th:action="@{/ticketTypes/save}" action="#" method="post">
+    <form th:object="${ticketType}" th:action="@{/events/{eventId}/saveTicketType(eventId=${eventId})}" action="#" method="post">
         <div>
+
+			
             <label>Ticket type:</label>
-            <input type="text" th:field="*{ticketType}" />
-            <div th:if="${#fields.hasErrors('ticketType')}" th:errors="*{ticketType}">Error</div>
+            <input type="text" th:field="*{ticketTypeName}" />
+            <div th:if="${#fields.hasErrors('ticketTypeName')}" th:errors="*{ticketTypeName}">Error</div>
         </div>
-
-        <div>
-            <label>Description:</label>
-            <input type="text" th:field="*{description}" />
-            <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Error</div>
-        </div>
-
         <div>
             <label>Price:</label>
             <input type="text" th:field="*{price}" />
             <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Error</div>
         </div>
         <br>
-
-        <button type="submit">Add Ticket type</button>
+        <button type="submit">Add Ticket Type</button>
     </form>
+
 </body>
+
+
 
 </html>

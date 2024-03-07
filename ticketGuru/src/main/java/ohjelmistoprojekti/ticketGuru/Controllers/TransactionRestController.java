@@ -38,7 +38,7 @@ public class TransactionRestController {
 
     // Maksutapahtuman lisääminen Postmanissa
 
-    @RequestMapping(value = "/addtransaction", method = RequestMethod.POST)
+    @RequestMapping(value = "/transactions", method = RequestMethod.POST)
     public Transaction addTransaction(@RequestBody Transaction transaction) {
         return transactionRepository.save(transaction);
 

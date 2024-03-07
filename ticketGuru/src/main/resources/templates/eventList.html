@@ -51,6 +51,7 @@
 
 
                 <td>
+					<a th:href="@{/events/{eventId}/addTicketType(eventId=${event.id})}" class="btn btn-primary">Add Ticket Type</a><br>
                     <a th:href="@{/events/delete/{id}(id=${event.id})}" class="btn btn-danger">Delete</a>
                     <a th:href="@{/events/edit/{id}(id=${event.id})}" class="btn btn-primary">Edit</a>
                 </td>

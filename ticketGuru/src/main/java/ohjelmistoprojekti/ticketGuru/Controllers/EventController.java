@@ -7,11 +7,16 @@ import org.springframework.web.bind.annotation.*;
 
 import ohjelmistoprojekti.ticketGuru.Classes.Event;
 import ohjelmistoprojekti.ticketGuru.Classes.EventRepository;
+import ohjelmistoprojekti.ticketGuru.Classes.TicketType;
+import ohjelmistoprojekti.ticketGuru.Classes.TicketTypeRepository;
 @Controller
 public class EventController {
 
     @Autowired
     private EventRepository eventRepository;
+    
+    @Autowired
+    private TicketTypeRepository ticketTypeRepository;
 
     // Listanäkymä
 
@@ -48,9 +53,9 @@ public class EventController {
     // Tapahtuman muokkaus
 
     @GetMapping("/events/edit/{id}")
-    public String editEvent(@PathVariable("id") Long eventid, Model model) {
+    public String editEvent(@PathVariable("id") Long eventId, Model model) {
 
-        Event existingEvent = eventRepository.findById(eventid).orElse(null);
+        Event existingEvent = eventRepository.findById(eventId).orElse(null);
 
         if (existingEvent != null) {
             model.addAttribute("event", existingEvent);
@@ -63,8 +68,8 @@ public class EventController {
     // Muokatun tapahtuman tallennus
 
     @PostMapping("/events/edit/{id}")
-    public String updateEvent(@PathVariable("id") Long eventid, @ModelAttribute Event updatedEvent) {
-        Event existingEvent = eventRepository.findById(eventid).orElse(null);
+    public String updateEvent(@PathVariable("id") Long eventId, @ModelAttribute Event updatedEvent) {
+        Event existingEvent = eventRepository.findById(eventId).orElse(null);
 
         if (existingEvent != null) {
             existingEvent.setEventname(updatedEvent.getEventname());
@@ -78,4 +83,32 @@ public class EventController {
         }
         return "redirect:/eventlist";
     }
+
+	//Lipputyypin lisääminen
+
+	@GetMapping("/events/{eventId}/addTicketType")
+	public String addTicketType(@PathVariable Long eventId, Model model) {
+    	model.addAttribute("eventId", eventId);
+        model.addAttribute("ticketType", new TicketType());
+        return "addTicketType";
+}
+	//Lipputyypin tallentaminen
+	
+	
+	@PostMapping("/events/{eventId}/saveTicketType")
+	public String saveTicketType(@PathVariable Long eventId, @ModelAttribute TicketType ticketType) {
+	    Event event = eventRepository.findById(eventId).orElse(null);
+	    if (event != null) {
+	        ticketType.setEvent(event);
+	        ticketTypeRepository.save(ticketType);
+	        event.getTicketTypes().add(ticketType); 
+	        eventRepository.save(event);
+	    }
+	    return "redirect:/eventlist";
+	}
+
+
+
+
+
 }

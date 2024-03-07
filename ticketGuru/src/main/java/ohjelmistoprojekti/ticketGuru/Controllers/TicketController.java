@@ -36,7 +36,7 @@ public class TicketController {
 
     // Lisäys
 
-    @GetMapping("/addticket")
+    @GetMapping("/tickets/add")
     public String addTicket(Model model) {
         model.addAttribute("ticket", new Ticket());
         model.addAttribute("transactions", transactionRepository.findAll());

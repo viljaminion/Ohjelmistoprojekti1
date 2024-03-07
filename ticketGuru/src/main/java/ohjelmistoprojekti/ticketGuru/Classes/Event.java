@@ -1,6 +1,7 @@
 package ohjelmistoprojekti.ticketGuru.Classes;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -10,12 +11,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
+
 @Entity
 public class Event {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long eventid;
+    private Long eventId;
     
     private String eventname;
     private String address;
@@ -24,14 +26,18 @@ public class Event {
     private int maxTickets;
     private int duration;
 
-//ONKO TÄÄ OIKEIN?
-    @OneToMany
-	(cascade = CascadeType.ALL, mappedBy = "eventtickettypeid")
-	private List<EventTicketType>eventtickettypes;
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
+    private List<TicketType> ticketTypes = new ArrayList<>();
 
-    
+	public List<TicketType> getTicketTypes() {
+		return ticketTypes;
+	}
 
-    public Event(String eventname, String address, LocalDateTime showtime, String description, int maxTickets, int duration) {
+	public void setTicketTypes(List<TicketType> ticketTypes) {
+		this.ticketTypes = ticketTypes;
+	}
+
+	public Event(String eventname, String address, LocalDateTime showtime, String description, int maxTickets, int duration) {
         this.eventname = eventname;
         this.address = address;
         this.showtime = showtime;
@@ -46,11 +52,11 @@ public class Event {
     }
 
     public Long getId() {
-        return eventid;
+        return eventId;
     }
 
-    public void setId(Long id) {
-        this.eventid = id;
+    public void setId(Long eventId) {
+        this.eventId = eventId;
     }
 
     public String getEventname() {
@@ -103,9 +109,9 @@ public class Event {
 
 	@Override
 	public String toString() {
-		return "Event [eventid=" + eventid + ", eventname=" + eventname + ", address=" + address + ", showtime=" + showtime
+		return "Event [eventId=" + eventId + ", eventname=" + eventname + ", address=" + address + ", showtime=" + showtime
 				+ ", description=" + description + ", maxTickets=" + maxTickets + ", duration=" + duration
-				+ ", postalCode=" + "]";
+				+ "]";
 	}
 
 }
