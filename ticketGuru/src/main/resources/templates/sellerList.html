@@ -35,7 +35,6 @@
                 <th>Seller firstname</th>
                 <th>Seller surname</th>
                 <th>Address</th>
-                <th>Postal Code</th>
                 <th>Phone number</th>
                 <th>Email</th>
             </tr>
@@ -47,8 +46,6 @@
                 <td th:text="${seller.sellerphone}"></td>
                 <td th:text="${seller.selleremail}"></td>
 
-                <td th:if="${seller.postalCode != null}" th:text="${seller.postalCode.postalCode}">Postal Code</td>
-                <td th:unless="${seller.postalCode != null}">No Postal Code Available</td>
 
                 <td>
                     <a th:href="@{/sellers/delete/{id}(id=${seller.id})}" class="btn btn-danger">Delete</a>

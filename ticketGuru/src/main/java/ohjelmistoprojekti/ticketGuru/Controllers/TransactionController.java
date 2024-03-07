@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import ohjelmistoprojekti.ticketGuru.Classes.CustomerRepository;
 import ohjelmistoprojekti.ticketGuru.Classes.SellerRepository;
 import ohjelmistoprojekti.ticketGuru.Classes.Transaction;
 import ohjelmistoprojekti.ticketGuru.Classes.TransactionRepository;
@@ -22,11 +21,6 @@ public class TransactionController {
 
     @Autowired
     private SellerRepository sellerRepository;
-
-    @Autowired
-    private CustomerRepository customerRepository;
-
-
 
     
     // näkymä
@@ -42,7 +36,6 @@ public class TransactionController {
     @GetMapping("/transactions/add")
     public String addTransaction(Model model) {
         model.addAttribute("transaction", new Transaction());
-        model.addAttribute("transactions", customerRepository.findAll());
         model.addAttribute("transactions", sellerRepository.findAll());
         return "addTransaction";
     }
@@ -65,8 +58,7 @@ public class TransactionController {
         if (existingTransaction != null) {
             model.addAttribute("transaction", existingTransaction);
             model.addAttribute("seller", sellerRepository.findAll());
-            model.addAttribute("customer", customerRepository.findAll());
-            
+       
             return "editTransaction";
         } else {
             return "error";
@@ -80,7 +72,6 @@ public class TransactionController {
         
         if (existingTransaction != null) {
             existingTransaction.setTransactiondate(updatedTransaction.getTransactiondate());
-            existingTransaction.setCustomers(updatedTransaction.getCustomers());
             existingTransaction.setSellers(updatedTransaction.getSellers());
 
             

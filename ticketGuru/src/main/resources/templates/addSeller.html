@@ -32,12 +32,6 @@
             <div th:if="${#fields.hasErrors('selleraddress')}" th:errors="*{selleraddress}">Error</div>
         </div>
 
-        <div>
-            <label for="postalCodeList">Postal Code:</label>
-            <select id="postalCodeList" th:field="*{postalCode}" class="form-control">
-                <option th:each="postalCode: ${postalCodes}" th:value="${postalCode.id}" th:text="${postalCode.code}"></option>
-            </select>
-        </div>
         
         <div>
             <label>Phone number:</label>

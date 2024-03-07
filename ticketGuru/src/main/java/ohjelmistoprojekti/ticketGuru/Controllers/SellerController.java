@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import ohjelmistoprojekti.ticketGuru.Classes.PostalCodeRepository;
 import ohjelmistoprojekti.ticketGuru.Classes.Seller;
 import ohjelmistoprojekti.ticketGuru.Classes.SellerRepository;
 import ohjelmistoprojekti.ticketGuru.Classes.TransactionRepository;
@@ -19,9 +18,6 @@ public class SellerController {
 
     @Autowired
     private SellerRepository sellerRepository;
-    
-    @Autowired
-    private PostalCodeRepository postalCodeRepository;
     
     @Autowired
     private TransactionRepository transactionRepository;
@@ -52,7 +48,6 @@ public class SellerController {
         
         if (existingSeller != null) {
             model.addAttribute("seller", existingSeller);
-            model.addAttribute("postalCode", postalCodeRepository.findAll());
             return "editSeller";
         } else {
             return "error";

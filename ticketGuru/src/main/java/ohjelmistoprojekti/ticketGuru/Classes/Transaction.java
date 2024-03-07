@@ -8,8 +8,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -21,32 +19,31 @@ public class Transaction {
 
 	private LocalDate transactiondate;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customerid")
-	private List<Customer> customers;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "sellerid")
 	private List<Seller> sellers;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ticketid")
-	private Ticket ticket;
+	private List<Ticket> tickets;
 
 	public Transaction() {
 
 	}
 
-	public Transaction(Long id, LocalDate transactiondate, List<Customer> customers, List<Seller> sellers, Ticket ticket) {
+	public Transaction(Long id, LocalDate transactiondate, List<Seller> sellers, Ticket ticket) {
 		super();
 		this.transactiondate = transactiondate;
 
 	}
 
-	public Ticket getTicket() {
-        return ticket;
-    }
 
-    public void setTicket(Ticket ticket) {
-        this.ticket = ticket;
-    }
+	public List<Ticket> getTickets() {
+		return tickets;
+	}
+
+	public void setTickets(List<Ticket> tickets) {
+		this.tickets = tickets;
+	}
 
 	public Long getId() {
 		return transactionid;
@@ -64,13 +61,6 @@ public class Transaction {
 		this.transactiondate = transactiondate;
 	}
 
-	public List<Customer> getCustomers() {
-		return customers;
-	}
-
-	public void setCustomers(List<Customer> customers) {
-		this.customers = customers;
-	}
 
 	public List<Seller> getSellers() {
 		return sellers;

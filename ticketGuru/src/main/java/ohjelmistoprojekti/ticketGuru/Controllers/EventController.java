@@ -7,16 +7,11 @@ import org.springframework.web.bind.annotation.*;
 
 import ohjelmistoprojekti.ticketGuru.Classes.Event;
 import ohjelmistoprojekti.ticketGuru.Classes.EventRepository;
-import ohjelmistoprojekti.ticketGuru.Classes.PostalCodeRepository;
-
 @Controller
 public class EventController {
 
     @Autowired
     private EventRepository eventRepository;
-
-    @Autowired
-    private PostalCodeRepository postalCodeRepository;
 
     // Listanäkymä
 
@@ -31,7 +26,6 @@ public class EventController {
     @GetMapping("/events/add")
     public String addEvent(Model model) {
         model.addAttribute("event", new Event());
-        model.addAttribute("postalCodes", postalCodeRepository.findAll());
         return "addEvent";
     }
 
@@ -60,7 +54,6 @@ public class EventController {
 
         if (existingEvent != null) {
             model.addAttribute("event", existingEvent);
-            model.addAttribute("postalCode", postalCodeRepository.findAll());
             return "editEvent";
         } else {
             return "error";

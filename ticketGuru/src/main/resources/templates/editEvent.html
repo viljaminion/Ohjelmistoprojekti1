@@ -48,12 +48,6 @@
             <div th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}">Error</div>
         </div>
         
-        <div>
-            <label for="postalCodeList">Postal Code:</label>
-            <select id="postalCodeList" th:field="*{postalCode}" class="form-control">
-                <option th:each="postalCode: ${postalCodes}" th:value="${postalCode.id}" th:text="${postalCode.code}"></option>
-            </select>
-        </div>
         <br>
         
         <button type="submit">Confirm changes</button>

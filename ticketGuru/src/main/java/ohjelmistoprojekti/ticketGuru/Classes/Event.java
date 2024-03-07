@@ -8,8 +8,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -31,26 +29,16 @@ public class Event {
 	(cascade = CascadeType.ALL, mappedBy = "eventtickettypeid")
 	private List<EventTicketType>eventtickettypes;
 
-    @ManyToOne
-    @JoinColumn(name = "postalCode")
-    private PostalCode postalCode;
+    
 
-    public PostalCode getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(PostalCode postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public Event(String eventname, String address, LocalDateTime showtime, String description, int maxTickets, int duration, PostalCode postalCode) {
+    public Event(String eventname, String address, LocalDateTime showtime, String description, int maxTickets, int duration) {
         this.eventname = eventname;
         this.address = address;
         this.showtime = showtime;
         this.description = description;
         this.maxTickets = maxTickets;
         this.duration = duration;
-        this.postalCode = postalCode;
+        
     }
 
     public Event () {
@@ -117,7 +105,7 @@ public class Event {
 	public String toString() {
 		return "Event [eventid=" + eventid + ", eventname=" + eventname + ", address=" + address + ", showtime=" + showtime
 				+ ", description=" + description + ", maxTickets=" + maxTickets + ", duration=" + duration
-				+ ", postalCode=" + postalCode + "]";
+				+ ", postalCode=" + "]";
 	}
 
 }

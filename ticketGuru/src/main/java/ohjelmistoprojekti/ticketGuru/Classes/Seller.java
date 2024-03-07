@@ -24,19 +24,12 @@ public class Seller {
 	@JoinColumn(name = "transactionid")
 	private Transaction transaction;
 
-	
-	
-	@ManyToOne
-    @JoinColumn(name = "postalCode")
-    private PostalCode postalCode;
 
-	public Seller(String sellerfirstname, String sellersurname, String selleraddress,
-			PostalCode postalCode, String sellerphone, String selleremail) {
+	public Seller(String sellerfirstname, String sellersurname, String selleraddress, String sellerphone, String selleremail) {
 		super();
 		this.sellerfirstname = sellerfirstname;
 		this.sellersurname = sellersurname;
 		this.selleraddress = selleraddress;
-		this.postalCode = postalCode;
 		this.sellerphone = sellerphone;
 		this.selleremail = selleremail;
 	}
@@ -75,13 +68,6 @@ public class Seller {
 		this.selleraddress = selleraddress;
 	}
 
-	public PostalCode getPostalCode() {
-		return postalCode;
-	}
-	public void setPostalCode(PostalCode postalCode) {
-		this.postalCode = postalCode;
-	}
-
 	public String getSellerphone() {
 		return sellerphone;
 	}
@@ -103,13 +89,13 @@ public class Seller {
 		if (this.transaction != null)
 			
 		return "Seller [sellerid=" + sellerid + ", sellerfirstname=" + sellerfirstname + ", sellersurname="
-				+ sellersurname + ", selleraddress=" + selleraddress + ", postalCode=" + postalCode + ", sellerphone=" + sellerphone + ", selleremail=" + selleremail + ", transaction=" + transaction
+				+ sellersurname + ", selleraddress=" + selleraddress + ", sellerphone=" + sellerphone + ", selleremail=" + selleremail + ", transaction=" + transaction
 				+ "]";
 		
 		else 
 		return
 				"Seller [sellerid=" + sellerid + ", sellerfirstname=" + sellerfirstname + ", sellersurname="
-				+ sellersurname + ", selleraddress=" + selleraddress + ", postalCode=" + postalCode + ", sellerphone=" + sellerphone + ", selleremail=" + selleremail + "]";
+				+ sellersurname + ", selleraddress=" + selleraddress + ", sellerphone=" + sellerphone + ", selleremail=" + selleremail + "]";
 	}
 
 

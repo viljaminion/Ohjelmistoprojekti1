@@ -38,7 +38,7 @@
                 <th>Description</th>
                 <th>Max Tickets</th>
                 <th>Duration</th>
-                <th>Postal Code</th>
+                
             </tr>
             <tr th:each="event : ${events}">
                 <td th:text="${event.id}"></td>
@@ -49,8 +49,6 @@
                 <td th:text="${event.maxTickets}"></td>
                 <td th:text="${event.duration}"></td>
 
-                <td th:if="${event.postalCode != null}" th:text="${event.postalCode.postalCode}">Postal Code</td>
-                <td th:unless="${event.postalCode != null}">No Postal Code Available</td>
 
                 <td>
                     <a th:href="@{/events/delete/{id}(id=${event.id})}" class="btn btn-danger">Delete</a>
