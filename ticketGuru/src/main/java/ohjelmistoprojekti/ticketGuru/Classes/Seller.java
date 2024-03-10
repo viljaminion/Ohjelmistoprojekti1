@@ -10,16 +10,29 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
 @Entity
 public class Seller {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long sellerid;
 
+	@NotBlank(message = "First name cannot be blank")
 	private String sellerfirstname;
+
+	@NotBlank(message = "Surname name cannot be blank")
 	private String sellersurname;
+
+	@NotBlank(message = "Address cannot be blank")
 	private String selleraddress;
+
+	@NotBlank(message = "Phone cannot be blank")
 	private String sellerphone;
+
+	@NotBlank(message = "Email cannot be blank")
+	@Email(message = "Email must be valid")
 	private String selleremail;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "seller")

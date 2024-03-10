@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import ohjelmistoprojekti.ticketGuru.Classes.Seller;
 import ohjelmistoprojekti.ticketGuru.Classes.SellerRepository;
 
@@ -40,8 +41,10 @@ public class SellerRestController {
     
 //Myyjän lisääminen Postmanissa
     
+//@Valid annotaatio ennen @RequestBody annotaatiota mahdollistaa validoinnin
+
     @RequestMapping (value= "/sellers", method = RequestMethod.POST)
-    public Seller addSeller(@RequestBody Seller seller) {
+    public Seller addSeller(@Valid @RequestBody Seller seller) {
          return sellerrepository.save(seller);
             
 }
