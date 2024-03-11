@@ -12,6 +12,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 
 
@@ -23,11 +25,11 @@ public class Event {
     private Long eventId;
     
     @NotBlank(message = "Event name cannot be blank")
-    @Min(value =2, message = "Event name cannot be less than 2 letters")
+    @Size(min = 2, message = "Event name cannot be less than 2 letters")
     private String eventname;
 
     @NotBlank(message = "Address cannot be blank")
-    @Min(value =2, message = "Address cannot be less than 2 letters")
+    @Size(min = 2, message = "Address cannot be less than 2 letters")
     private String address;
 
     @NotNull(message = "Showtime cannot be null")
@@ -37,9 +39,11 @@ public class Event {
     private String description;
 
     @Min(value =1, message = "maxTickets cannot be less than 1")
+    @Max(10000)
     private int maxTickets;
 
     @Min(value =1, message = "Duration cannot be less than 1")
+    @Max(500)
     private int duration;
 
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)

@@ -3,6 +3,7 @@ package ohjelmistoprojekti.ticketGuru.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
@@ -39,6 +40,7 @@ public class EventController {
 
     @PostMapping("/events/save")
     public String saveEvent(@Valid @ModelAttribute Event event, Model model) {
+        
         eventRepository.save(event);
         return "redirect:/eventlist";
     }

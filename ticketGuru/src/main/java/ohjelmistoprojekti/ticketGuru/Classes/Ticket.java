@@ -6,9 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Ticket {
@@ -18,8 +17,8 @@ public class Ticket {
     private Long ticketid;
 
     @NotBlank(message = "Ticket number cannot be blank")
-    @Min(value = 1, message = "Ticket number should not be less than 1")
-    @Max(value = 999999, message = "Ticket number should not be greater than 999999")
+    @Size(min = 1, message = "Ticket number should not be less than 1")
+    @Size(max = 999999, message = "Ticket number should not be greater than 999999")
     private String ticketnumber;
 
     @ManyToOne
