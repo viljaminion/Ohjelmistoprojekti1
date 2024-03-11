@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import ohjelmistoprojekti.ticketGuru.Classes.Ticket;
 import ohjelmistoprojekti.ticketGuru.Classes.TicketRepository;
 
@@ -38,7 +39,7 @@ public class TicketRestController {
     // Lisäys
 
     @RequestMapping(value = "/tickets", method = RequestMethod.POST)
-    public Ticket addTicket(@RequestBody Ticket ticket) {
+    public Ticket addTicket(@Valid @RequestBody Ticket ticket) {
         return ticketRepository.save(ticket);
 
     }
