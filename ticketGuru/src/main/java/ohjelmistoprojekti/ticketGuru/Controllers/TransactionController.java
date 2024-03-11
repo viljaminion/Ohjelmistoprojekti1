@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jakarta.validation.Valid;
 import ohjelmistoprojekti.ticketGuru.Classes.SellerRepository;
 import ohjelmistoprojekti.ticketGuru.Classes.TicketRepository;
 import ohjelmistoprojekti.ticketGuru.Classes.Transaction;
@@ -48,7 +49,7 @@ public class TransactionController {
     // tallennus
 
     @PostMapping("/transactions/save")
-    public String saveTransaction(@ModelAttribute Transaction transaction, Model model) {
+    public String saveTransaction(@Valid @ModelAttribute Transaction transaction, Model model) {
         transactionRepository.save(transaction);
         return "redirect:/transactionlist";
     }

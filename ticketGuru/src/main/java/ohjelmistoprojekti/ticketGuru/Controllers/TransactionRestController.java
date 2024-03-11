@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import ohjelmistoprojekti.ticketGuru.Classes.Transaction;
 import ohjelmistoprojekti.ticketGuru.Classes.TransactionRepository;
 
@@ -39,12 +40,12 @@ public class TransactionRestController {
     // Maksutapahtuman lisääminen Postmanissa
 
     @RequestMapping(value = "/transactions", method = RequestMethod.POST)
-    public Transaction addTransaction(@RequestBody Transaction transaction) {
+    public Transaction addTransaction(@Valid @RequestBody Transaction transaction) {
         return transactionRepository.save(transaction);
 
     }
 
-    // Maksutapahtuman poisto ID:llä Postmanissa
+    // Maksutapahtuman poisto ID:llä Postmanissa 
 
     @RequestMapping(value = "/transaction/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteTransaction(@PathVariable("id") Long transactionid) {

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jakarta.validation.Valid;
 import ohjelmistoprojekti.ticketGuru.Classes.Seller;
 import ohjelmistoprojekti.ticketGuru.Classes.SellerRepository;
 import ohjelmistoprojekti.ticketGuru.Classes.TransactionRepository;
@@ -36,7 +37,7 @@ public class SellerController {
     }
 
     @PostMapping("/sellers/save")
-    public String saveSeller(@ModelAttribute Seller seller, Model model) {
+    public String saveSeller(@Valid @ModelAttribute Seller seller, Model model) {
         sellerRepository.save(seller);
         return "redirect:/sellerlist";
     }

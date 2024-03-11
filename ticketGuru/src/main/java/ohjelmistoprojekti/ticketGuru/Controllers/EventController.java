@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.validation.Valid;
 import ohjelmistoprojekti.ticketGuru.Classes.Event;
 import ohjelmistoprojekti.ticketGuru.Classes.EventRepository;
 import ohjelmistoprojekti.ticketGuru.Classes.TicketType;
@@ -37,7 +38,7 @@ public class EventController {
     // Tapahtuman tallennus H2:een (vaihtuu oikeaan tietokantaan myöhemmin)
 
     @PostMapping("/events/save")
-    public String saveEvent(@ModelAttribute Event event, Model model) {
+    public String saveEvent(@Valid @ModelAttribute Event event, Model model) {
         eventRepository.save(event);
         return "redirect:/eventlist";
     }
