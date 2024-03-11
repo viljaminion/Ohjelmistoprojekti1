@@ -17,7 +17,7 @@ Alla olevat endpointit ovat suppea versio REST-dokumentaatiosta.
 
 - Kaikki tiedot JSON-muodossa: <span style="color:green">GET</span> "/events"
 - Tietyn tapahtuman tiedot ID:n avulla: <span style="color:green">GET</span> "/event/{id}"
-- Tapahtuman lisäys Postmanilla: <span style="color:yellow">POST</span> "/event"
+- Tapahtuman lisäys Postmanilla: <span style="color:yellow">POST</span> "/events"
 - Tapahtuman poisto Postmanilla: <span style="color:red">DELETE</span> "/event/{id}"
 
 
@@ -36,9 +36,9 @@ Alla olevat endpointit ovat suppea versio REST-dokumentaatiosta.
 - Tietyn lipputyypin tiedot ID:n avulla:
 <span style="color:green">GET</span> "/tickettype/{id}"
 - Lipputyypin lisäys Postmanilla:
-<span style="color:yellow">POST</span> "/addtickettype"
+<span style="color:yellow">POST</span> "/tickettypes"
 - Lipputyypin poisto Postmanilla:
-<span style="color:red">DELETE</span> "/tickettype/delete/{id}"
+<span style="color:red">DELETE</span> "/tickettype/{id}"
 
 
 **TransactionControllerin endpointit selaimessa:**
@@ -53,8 +53,8 @@ Alla olevat endpointit ovat suppea versio REST-dokumentaatiosta.
 
 - Kaikki tiedot JSON-muodossa: <span style="color:green">GET</span> "/transactions"
 - Tietyn ostotapahtuman tiedot ID:n avulla: <span style="color:green">GET</span> "/transaction/{id}"
-- Ostoapahtuman lisäys Postmanilla: <span style="color:yellow">POST</span> "/etransaction"
-- Ostotapahtuman poisto Postmanilla: <span style="color:red">DELETE</span> "/eventtransaction/{id}"
+- Ostoapahtuman lisäys Postmanilla: <span style="color:yellow">POST</span> "/transactions"
+- Ostotapahtuman poisto Postmanilla: <span style="color:red">DELETE</span> "/transaction/{id}"
 
 **SellerControllerin endpointit selaimessa:**
 
@@ -68,6 +68,21 @@ Alla olevat endpointit ovat suppea versio REST-dokumentaatiosta.
 
 - Kaikki tiedot JSON-muodossa: <span style="color:green">GET</span> "/sellers"
 - Tietyn myyjän tiedot ID:n avulla: <span style="color:green">GET</span> "/seller/{id}"
-- Myyjän tietojen lisääminen Postmanilla: <span style="color:yellow">POST</span> "/seller"
+- Myyjän tietojen lisääminen Postmanilla: <span style="color:yellow">POST</span> "/sellers"
 - Myyjän poisto Postmanilla: <span style="color:red">DELETE</span> "/seller/{id}"
+
+**TicketControllerin endpointit selaimessa:**
+
+- Lista lipuista: "/ticketlist"
+- Lipun lisäys: "/tickets/add"
+- Lipun tietojen tallennus: "/tickets/save"
+- Lipun tietojen muokkaaminen: "tickets/edit/{id}"
+- Lipun tietojen poistaminen: "tickets/delete/{id}
+
+**TicketRestControllerin endpointit (Postman)**
+
+- Kaikki tiedot JSON-muodossa: <span style="color:green">GET</span> "/tickets"
+- Tietyn myyjän tiedot ID:n avulla: <span style="color:green">GET</span> "/tickets/{id}"
+- Myyjän tietojen lisääminen Postmanilla: <span style="color:yellow">POST</span> "/tickets"
+- Myyjän poisto Postmanilla: <span style="color:red">DELETE</span> "/tickets/{id}"
 
