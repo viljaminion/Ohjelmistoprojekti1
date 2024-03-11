@@ -10,6 +10,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Min;
 
 
 @Entity
@@ -19,11 +22,24 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long eventId;
     
+    @NotBlank(message = "Event name cannot be blank")
+    @Min(value =2, message = "Event name cannot be less than 2 letters")
     private String eventname;
+
+    @NotBlank(message = "Address cannot be blank")
+    @Min(value =2, message = "Address cannot be less than 2 letters")
     private String address;
+
+    @NotNull(message = "Showtime cannot be null")
     private LocalDateTime showtime;
+
+    @NotBlank(message = "Description cannot be blank")
     private String description;
+
+    @Min(value =1, message = "maxTickets cannot be less than 1")
     private int maxTickets;
+
+    @Min(value =1, message = "Duration cannot be less than 1")
     private int duration;
 
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)

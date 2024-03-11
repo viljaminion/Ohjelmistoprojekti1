@@ -8,6 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 
 @Entity
@@ -17,7 +19,10 @@ public class TicketType {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long ticketTypeId;
   
+  @NotBlank(message = "Must include a ticket type")
   private String ticketTypeName;
+
+  @NotNull(message = "Price cannot be null")
   private double price;
 
   @ManyToOne
