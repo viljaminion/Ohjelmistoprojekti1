@@ -7,6 +7,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 
 @Entity
 public class Transaction {
@@ -15,8 +17,11 @@ public class Transaction {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long transactionid;
 
+	@Past
+	@NotNull(message = "Transaction must have a date")
 	private LocalDate transactiondate;
 
+	@NotNull(message = "Ticket sum cannot be null")
 	private Double ticketSum;
 
 	@ManyToOne
