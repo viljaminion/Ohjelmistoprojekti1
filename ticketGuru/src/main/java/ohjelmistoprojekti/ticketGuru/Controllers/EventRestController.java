@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import ohjelmistoprojekti.ticketGuru.Classes.Event;
 import ohjelmistoprojekti.ticketGuru.Classes.EventRepository;
 
@@ -41,7 +42,7 @@ public class EventRestController {
 //Tapahtuman lisääminen Postmanissa
     
     @RequestMapping (value= "/events", method = RequestMethod.POST)
-    public Event addEvent(@RequestBody Event event) {
+    public Event addEvent(@Valid @RequestBody Event event) {
          return eventrepository.save(event);
             
 }
