@@ -7,11 +7,13 @@ Alla olevat endpointit ovat suppea versio REST-dokumentaatiosta.
 
 **EventControllerin endpointit selaimessa:**
 
-- Tapahtumalistaus: "/eventlist"
+- Tapahtuman listanäkymä: "/eventlist"
 - Tapahtuman lisäys: "/events/add"
 - Tapahtuman tallennus: "/events/save"
 - Tapahtuman poisto: "/events/delete/{id}"
 - Tapahtuman muokkaus: "/events/edit/{id}"
+- Tapahtumaan lipputyypin lisääminen: "/events/{eventId}/addTicketType"
+- Tapahtuman lipputyypin tallentaminen: "/events/{eventId}/saveTicketType" <!--tarviiko nää kaks vikaa olla tässä-->
 
 **EventRestControllerin endpointit (Postman)**
 
@@ -47,7 +49,7 @@ Alla olevat endpointit ovat suppea versio REST-dokumentaatiosta.
 - Ostotapahtuman lisäys: "/transactions/add"
 - Ostotapahtuman tallennus: "/transactions/save"
 - Ostoapahtuman poisto: "/transactions/delete/{id}"
-- Ostotapahtuman muokkaus: "/editTransaction/{id}"
+- Ostotapahtuman muokkaus: "/editTransaction/{id}"  <!--täytyy vielä vikana tarkistaa tarviiko korjata-->
 
 **TransactionRestControllerin endpointit (Postman)**
 
