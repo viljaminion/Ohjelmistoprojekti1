@@ -8,8 +8,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+import ohjelmistoprojekti.ticketGuru.Controllers.UserDetailServiceImpl;
 
 // IMPORTTAA USERDETAILSERVICEIMPL
 
@@ -29,7 +32,7 @@ public class WebSecurityConfig {
 	}
 
 	@Autowired
-	//private UserDetailServiceImpl userDetailsService;
+	private UserDetailServiceImpl userDetailsService;
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
