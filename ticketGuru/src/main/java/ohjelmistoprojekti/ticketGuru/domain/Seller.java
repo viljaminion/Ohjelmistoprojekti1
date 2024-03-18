@@ -1,4 +1,4 @@
-package ohjelmistoprojekti.ticketGuru.Classes;
+package ohjelmistoprojekti.ticketGuru.domain;
 
 import java.util.ArrayList;
 import java.util.List;

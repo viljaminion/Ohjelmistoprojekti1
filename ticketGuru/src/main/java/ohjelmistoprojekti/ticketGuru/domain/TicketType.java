@@ -1,4 +1,4 @@
-package ohjelmistoprojekti.ticketGuru.Classes;
+package ohjelmistoprojekti.ticketGuru.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;

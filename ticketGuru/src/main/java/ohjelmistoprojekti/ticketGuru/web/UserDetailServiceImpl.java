@@ -1,4 +1,4 @@
-package ohjelmistoprojekti.ticketGuru.Controllers;
+package ohjelmistoprojekti.ticketGuru.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -7,8 +7,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import ohjelmistoprojekti.ticketGuru.Classes.User;
-import ohjelmistoprojekti.ticketGuru.Classes.UserRepository;
+import ohjelmistoprojekti.ticketGuru.domain.User;
+import ohjelmistoprojekti.ticketGuru.domain.UserRepository;
 
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
@@ -18,15 +18,14 @@ public class UserDetailServiceImpl implements UserDetailsService {
 	public UserDetailServiceImpl(UserRepository userRepository) {
 		this.repository = userRepository;
 	}
-	
+
 	@Override
-	public UserDetails loadUserByUsername(String username) throws
-	UsernameNotFoundException {
-	User curruser = repository.findByUsername(username);
-	UserDetails user = new org.springframework.security.core.userdetails.User(username,
-	curruser.getPasswordHash(),
-	AuthorityUtils.createAuthorityList(curruser.getRole()));
-	return user;
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		User curruser = repository.findByUsername(username);
+		UserDetails user = new org.springframework.security.core.userdetails.User(username,
+				curruser.getPasswordHash(),
+				AuthorityUtils.createAuthorityList(curruser.getRole()));
+		return user;
 	}
-	
+
 }

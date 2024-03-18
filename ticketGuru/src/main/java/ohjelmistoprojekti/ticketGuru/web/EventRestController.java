@@ -1,4 +1,4 @@
-package ohjelmistoprojekti.ticketGuru.Controllers;
+package ohjelmistoprojekti.ticketGuru.web;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import ohjelmistoprojekti.ticketGuru.Classes.Event;
-import ohjelmistoprojekti.ticketGuru.Classes.EventRepository;
+import ohjelmistoprojekti.ticketGuru.domain.Event;
+import ohjelmistoprojekti.ticketGuru.domain.EventRepository;
 
 
 @RestController
@@ -50,6 +51,7 @@ public class EventRestController {
 //Tapahtuman poisto ID:llä Postmanissa
     
     @RequestMapping(value = "/event/{id}", method = RequestMethod.DELETE)
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteEvent(@PathVariable("id") Long eventid) {
         Optional<Event> event = eventrepository.findById(eventid);
         if (event.isPresent()) {

@@ -1,4 +1,4 @@
-package ohjelmistoprojekti.ticketGuru.Controllers;
+package ohjelmistoprojekti.ticketGuru.web;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import ohjelmistoprojekti.ticketGuru.Classes.Transaction;
-import ohjelmistoprojekti.ticketGuru.Classes.TransactionRepository;
+import ohjelmistoprojekti.ticketGuru.domain.Transaction;
+import ohjelmistoprojekti.ticketGuru.domain.TransactionRepository;
 
 @RestController
 public class TransactionRestController {

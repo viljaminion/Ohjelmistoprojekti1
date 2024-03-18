@@ -1,4 +1,4 @@
-package ohjelmistoprojekti.ticketGuru.Controllers;
+package ohjelmistoprojekti.ticketGuru.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.validation.Valid;
-import ohjelmistoprojekti.ticketGuru.Classes.TicketType;
-import ohjelmistoprojekti.ticketGuru.Classes.TicketTypeRepository;
+import ohjelmistoprojekti.ticketGuru.domain.TicketType;
+import ohjelmistoprojekti.ticketGuru.domain.TicketTypeRepository;
 
 @Controller
 public class TicketTypeController {

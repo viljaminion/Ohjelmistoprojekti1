@@ -1,3 +1,4 @@
+package ohjelmistoprojekti.ticketGuru.domain;
 /*package ohjelmistoprojekti.ticketGuru.Classes;
 
 import org.springframework.data.repository.CrudRepository;

@@ -12,9 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import ohjelmistoprojekti.ticketGuru.Controllers.UserDetailServiceImpl;
-
-// IMPORTTAA USERDETAILSERVICEIMPL
+import ohjelmistoprojekti.ticketGuru.web.UserDetailServiceImpl;
 
 @EnableWebSecurity
 @EnableMethodSecurity(securedEnabled = true)
@@ -23,10 +21,11 @@ public class WebSecurityConfig {
 
 	@Bean
 	public SecurityFilterChain configure(HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests(authorizeRequest -> authorizeRequest.requestMatchers(antMatcher("/")).permitAll()
-				//.requestMatchers(antMatcher("/ENDPOINTIT TÄNNE")).hasAuthority("ADMIN").anyRequest().authenticated())
+		http.authorizeHttpRequests(
+				authorizeRequest -> authorizeRequest.requestMatchers(antMatcher("/css/**")).permitAll()
+						.anyRequest().authenticated())
 				.headers(headers -> headers.frameOptions(frameoptions -> frameoptions.disable()))
-				.formLogin(formlogin -> formlogin.defaultSuccessUrl("/recipelist", true).permitAll())
+				.formLogin(formlogin -> formlogin.defaultSuccessUrl("/eventlist", true).permitAll())
 				.logout(logout -> logout.permitAll());
 		return http.build();
 	}
@@ -36,7 +35,7 @@ public class WebSecurityConfig {
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		//auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
+		auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
 	}
 
 }
