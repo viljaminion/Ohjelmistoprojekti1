@@ -1,4 +1,4 @@
-package ohjelmistoprojekti.ticketGuru;
+/*package ohjelmistoprojekti.ticketGuru;
 
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
@@ -25,7 +25,7 @@ public class WebSecurityConfig {
 				authorizeRequest -> authorizeRequest.requestMatchers(antMatcher("/css/**")).permitAll()
 						.anyRequest().authenticated())
 				.headers(headers -> headers.frameOptions(frameoptions -> frameoptions.disable()))
-				.formLogin(formlogin -> formlogin.defaultSuccessUrl("/eventlist", true).permitAll())
+				.formLogin(formlogin -> formlogin.defaultSuccessUrl("/", true).permitAll())
 				.logout(logout -> logout.permitAll());
 		return http.build();
 	}
@@ -38,4 +38,4 @@ public class WebSecurityConfig {
 		auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
 	}
 
-}
+}*/

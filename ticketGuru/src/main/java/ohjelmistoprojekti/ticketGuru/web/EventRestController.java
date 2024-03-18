@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,7 +51,7 @@ public class EventRestController {
 //Tapahtuman poisto ID:llä Postmanissa
     
     @RequestMapping(value = "/event/{id}", method = RequestMethod.DELETE)
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteEvent(@PathVariable("id") Long eventid) {
         Optional<Event> event = eventrepository.findById(eventid);
         if (event.isPresent()) {

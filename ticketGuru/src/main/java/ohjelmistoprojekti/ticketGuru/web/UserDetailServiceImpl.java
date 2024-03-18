@@ -1,4 +1,4 @@
-package ohjelmistoprojekti.ticketGuru.web;
+/*package ohjelmistoprojekti.ticketGuru.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -26,6 +26,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
 				curruser.getPasswordHash(),
 				AuthorityUtils.createAuthorityList(curruser.getRole()));
 		return user;
-	}
+	} 
 
-}
+} */

@@ -13,13 +13,13 @@ import ohjelmistoprojekti.ticketGuru.domain.UserRepository;
 @SpringBootApplication
 public class TicketGuruApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(TicketGuruApplication.class);
+	//private static final Logger log = LoggerFactory.getLogger(TicketGuruApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(TicketGuruApplication.class, args);
 	}
 
-	@Bean(name = "UserCommandLineRunner")
+	/*@Bean(name = "UserCommandLineRunner")
 	public CommandLineRunner UserCommandLineRunner(UserRepository repository) {
 		return (args) -> {
 			User user1 = new User("user", "$2a$10$6KFw5bwNuXu1Mr80yXcglOCEI9cmSlQlSRJK.D6.XvKbaos5LC7By" , "USER"); //salasana user
@@ -32,6 +32,6 @@ public class TicketGuruApplication {
 				log.info(user.toString());
 			}
 		};
-	}
+	}*/
 
 }
