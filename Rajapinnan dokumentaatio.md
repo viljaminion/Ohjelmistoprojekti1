@@ -74,9 +74,41 @@ Success Responses
     "id": 4
 }
 
-- Tapahtuman lisäys Postmanilla: <span style="color:yellow">POST</span> "/events"
-- Tapahtuman poisto Postmanilla: <span style="color:red">DELETE</span> "/event/{id}"
+**Tapahtuman lisäys Postmanilla: POST /events**
+-	URL:/event/{id}
+-	Method: POST
+-	Auth required: YES
+-	Permission required: YES
 
+Success Responses
+-	Condition: Admin can add an event
+-	Code:  200 OK
+-	Content: Adds an new event
+
+{
+    "eventname": "Ilosaarirock",
+    "address": "Rokkikatu 9",
+    "showtime": "2024-11-11T18:11:00",
+    "description": "upeampi juttu",
+    "maxTickets": 568,
+    "duration": 126,
+    "ticketTypes": null,
+    "id": 6
+}
+
+
+**Tapahtuman poisto Postmanilla: DELETE /event/{id}**
+-	URL:/event/{id}
+-	Method: DELETE
+-	Auth required: YES
+-	Permission required: YES
+
+Success Responses
+-	Condition: Admin can delete an event by id number
+-	Code:  200 OK
+-	Content: Deletes an event
+
+Event with ID Optional[Event [eventId=6, eventname=Ilosaarirock, address=Rokkikatu 9, showtime=2024-11-11T18:11, description=upeampi juttu, maxTickets=568, duration=126]] has been deleted.
 
 ## TicketTypeControllerin endpointit selaimessa:
 
