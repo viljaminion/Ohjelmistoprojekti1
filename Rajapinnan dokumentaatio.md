@@ -53,15 +53,15 @@ Success Responses
 ]
 
 **Tietyn tapahtuman tiedot ID:n avulla: GET /event/{id}**
-	URL: /event/{id }
-	Method: GET
-	Auth required: YES
-	Permission required: None
+-	URL:/event/{id}
+-	Method: GET
+-	Auth required: YES
+-	Permission required: None
 
 Success Responses
-	Condition: User can see event by id number
-	Code:  200 OK
-	Content: Shows event based on id number
+-	Condition: User can see event by id number
+-	Code:  200 OK
+-	Content: Shows event based on id number
 
 	{
 	    	"eventname": "Ruisrock",
