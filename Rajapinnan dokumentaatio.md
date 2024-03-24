@@ -1,11 +1,11 @@
-## REST-dokumentaatio
+# REST-dokumentaatio
 
 Endpointtien autentikointia ei ole vielä tässä vaiheessa määritelty.
 
 Alla olevat endpointit ovat suppea versio REST-dokumentaatiosta.
 
 
-**EventControllerin endpointit selaimessa:**
+## EventControllerin endpointit selaimessa:
 
 - Tapahtuman listanäkymä: "/eventlist"
 - Tapahtuman lisäys: "/events/add"
@@ -15,9 +15,9 @@ Alla olevat endpointit ovat suppea versio REST-dokumentaatiosta.
 - Tapahtumaan lipputyypin lisääminen: "/events/{eventId}/addTicketType"
 - Tapahtuman lipputyypin tallentaminen: "/events/{eventId}/saveTicketType" <!--tarviiko nää kaks vikaa olla tässä-->
 
-**EventRestControllerin endpointit (Postman):**
+## EventRestControllerin endpointit (Postman):
 
-Kaikki tapahtumat JSON-muodossa: GET /events
+**Kaikki tapahtumat JSON-muodossa: GET /events**
 -	URL: /events/
 -	Method: GET
 -	Auth required: YES
@@ -38,6 +38,7 @@ Success Responses
         "ticketTypes": [],
         "id": 1
     },
+    
     {
         "eventname": "Ruisrock",
         "address": "Rokkikatu 1",
