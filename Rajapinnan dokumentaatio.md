@@ -52,12 +52,33 @@ Success Responses
     }
 ]
 
-- Tietyn tapahtuman tiedot ID:n avulla: <span style="color:green">GET</span> "/event/{id}"
+**Tietyn tapahtuman tiedot ID:n avulla: GET /event/{id}**
+	URL: /event/{id }
+	Method: GET
+	Auth required: YES
+	Permission required: None
+
+Success Responses
+	Condition: User can see event by id number
+	Code:  200 OK
+	Content: Shows event based on id number
+
+	{
+	    	"eventname": "Ruisrock",
+	    	"address": "Rokkikatu 1",
+	    	"showtime": "2024-10-11T18:11:00",
+	    	"description": "Rokkia koko kansalll",
+	    	"maxTickets": "450",
+	    	"duration": 180,
+	    	"ticketTypes": null
+	}
+
+
 - Tapahtuman lisäys Postmanilla: <span style="color:yellow">POST</span> "/events"
 - Tapahtuman poisto Postmanilla: <span style="color:red">DELETE</span> "/event/{id}"
 
 
-**TicketTypeControllerin endpointit selaimessa:**
+## TicketTypeControllerin endpointit selaimessa:
 
 - Listanäkymä: "/tickettypelist"
 - Lisäys: "/tickettypes/add"
@@ -65,7 +86,7 @@ Success Responses
 - Poisto: "tickettypes/delete/{id}"
 - Muokkaus: "/editTicketType/{id}"
 
-**TicketTypeRestControllerin endpointit (Postman):**
+## TicketTypeRestControllerin endpointit (Postman):
 
 - Kaikki tiedot JSON-muodossa:
 <span style="color:green">GET</span> "/tickettypes"
@@ -77,7 +98,7 @@ Success Responses
 <span style="color:red">DELETE</span> "/tickettype/{id}"
 
 
-**TransactionControllerin endpointit selaimessa:**
+## TransactionControllerin endpointit selaimessa:
 
 - Ostotapahtumalistaus: "/transactionlist"
 - Ostotapahtuman lisäys: "/transactions/add"
@@ -85,14 +106,14 @@ Success Responses
 - Ostoapahtuman poisto: "/transactions/delete/{id}"
 - Ostotapahtuman muokkaus: "/editTransaction/{id}"  <!--täytyy vielä vikana tarkistaa tarviiko korjata-->
 
-**TransactionRestControllerin endpointit (Postman)**
+## TransactionRestControllerin endpointit (Postman)
 
 - Kaikki tiedot JSON-muodossa: <span style="color:green">GET</span> "/transactions"
 - Tietyn ostotapahtuman tiedot ID:n avulla: <span style="color:green">GET</span> "/transaction/{id}"
 - Ostoapahtuman lisäys Postmanilla: <span style="color:yellow">POST</span> "/transactions"
 - Ostotapahtuman poisto Postmanilla: <span style="color:red">DELETE</span> "/transaction/{id}"
 
-**SellerControllerin endpointit selaimessa:**
+## SellerControllerin endpointit selaimessa:
 
 - Lista myyjistä: "/sellerlist"
 - Myyjän lisäys: "/sellers/add"
@@ -100,14 +121,14 @@ Success Responses
 - Myyjän tietojen muokkaaminen: "sellers/edit/{id}"
 - Myyjän tietojen poistaminen: "sellers/delete/{id}
 
-**SellerRestControllerin endpointit (Postman)**
+## SellerRestControllerin endpointit (Postman)
 
 - Kaikki tiedot JSON-muodossa: <span style="color:green">GET</span> "/sellers"
 - Tietyn myyjän tiedot ID:n avulla: <span style="color:green">GET</span> "/seller/{id}"
 - Myyjän tietojen lisääminen Postmanilla: <span style="color:yellow">POST</span> "/sellers"
 - Myyjän poisto Postmanilla: <span style="color:red">DELETE</span> "/seller/{id}"
 
-**TicketControllerin endpointit selaimessa:**
+## TicketControllerin endpointit selaimessa:
 
 - Lista lipuista: "/ticketlist"
 - Lipun lisäys: "/tickets/add"
@@ -115,7 +136,7 @@ Success Responses
 - Lipun tietojen muokkaaminen: "tickets/edit/{id}"
 - Lipun tietojen poistaminen: "tickets/delete/{id}
 
-**TicketRestControllerin endpointit (Postman)**
+## TicketRestControllerin endpointit (Postman)
 
 - Kaikki tiedot JSON-muodossa: <span style="color:green">GET</span> "/tickets"
 - Tietyn myyjän tiedot ID:n avulla: <span style="color:green">GET</span> "/tickets/{id}"
