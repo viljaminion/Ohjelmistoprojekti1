@@ -63,18 +63,17 @@ Success Responses
 -	Code:  200 OK
 -	Content: Shows event based on id number
 
-[
-    {
-        "eventname": "Ruisrock",
-        "address": "Rokkikatu 1",
-        "showtime": "2024-10-11T18:11:00",
-        "description": "upea juttu",
-        "maxTickets": 567,
-        "duration": 123,
-        "ticketTypes": [],
-        "id": 2
-    }
-]
+
+{
+    "eventname": "Ruisrock",
+    "address": "Rokkikatu 1",
+    "showtime": "2024-10-11T18:11:00",
+    "description": "upea juttu",
+    "maxTickets": 567,
+    "duration": 123,
+    "ticketTypes": [],
+    "id": 2
+}
 
 - Tapahtuman lisäys Postmanilla: <span style="color:yellow">POST</span> "/events"
 - Tapahtuman poisto Postmanilla: <span style="color:red">DELETE</span> "/event/{id}"
