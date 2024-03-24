@@ -1,20 +1,5 @@
 # REST-dokumentaatio
 
-Endpointtien autentikointia ei ole vielä tässä vaiheessa määritelty.
-
-Alla olevat endpointit ovat suppea versio REST-dokumentaatiosta.
-
-
-## EventControllerin endpointit selaimessa:
-
-- Tapahtuman listanäkymä: "/eventlist"
-- Tapahtuman lisäys: "/events/add"
-- Tapahtuman tallennus: "/events/save"
-- Tapahtuman poisto: "/events/delete/{id}"
-- Tapahtuman muokkaus: "/events/edit/{id}"
-- Tapahtumaan lipputyypin lisääminen: "/events/{eventId}/addTicketType"
-- Tapahtuman lipputyypin tallentaminen: "/events/{eventId}/saveTicketType" <!--tarviiko nää kaks vikaa olla tässä-->
-
 ## EventRestControllerin endpointit (Postman):
 
 **Kaikki tapahtumat JSON-muodossa: GET /events**
@@ -116,14 +101,6 @@ Success Responses
 Event with ID Optional[Event [eventId=6, eventname=Ilosaarirock, address=Rokkikatu 9, showtime=2024-11-11T18:11, description=upeampi juttu, maxTickets=568, duration=126]] has been deleted.
 ```
 
-## TicketTypeControllerin endpointit selaimessa:
-
-- Listanäkymä: "/tickettypelist"
-- Lisäys: "/tickettypes/add"
-- Tallennus: "/tickettypes/save"
-- Poisto: "tickettypes/delete/{id}"
-- Muokkaus: "/editTicketType/{id}"
-
 ## TicketTypeRestControllerin endpointit (Postman):
 
 **Kaikki lipputyypit JSON-muodossa: GET /tickettypes**
@@ -217,29 +194,12 @@ Success Responses
 Ticket type with ID Optional[TicketType [ticketTypeId=4, ticketTypeName=eläkeläislippu, price=15.0]] has been deleted.
 ```
 
-
-## TransactionControllerin endpointit selaimessa:
-
-- Ostotapahtumalistaus: "/transactionlist"
-- Ostotapahtuman lisäys: "/transactions/add"
-- Ostotapahtuman tallennus: "/transactions/save"
-- Ostoapahtuman poisto: "/transactions/delete/{id}"
-- Ostotapahtuman muokkaus: "/editTransaction/{id}"  <!--täytyy vielä vikana tarkistaa tarviiko korjata-->
-
 ## TransactionRestControllerin endpointit (Postman)
 
 - Kaikki tiedot JSON-muodossa: <span style="color:green">GET</span> "/transactions"
 - Tietyn ostotapahtuman tiedot ID:n avulla: <span style="color:green">GET</span> "/transaction/{id}"
 - Ostoapahtuman lisäys Postmanilla: <span style="color:yellow">POST</span> "/transactions"
 - Ostotapahtuman poisto Postmanilla: <span style="color:red">DELETE</span> "/transaction/{id}"
-
-## SellerControllerin endpointit selaimessa:
-
-- Lista myyjistä: "/sellerlist"
-- Myyjän lisäys: "/sellers/add"
-- Myyjän tietojen tallennus: "/sellers/save"
-- Myyjän tietojen muokkaaminen: "sellers/edit/{id}"
-- Myyjän tietojen poistaminen: "sellers/delete/{id}
 
 ## SellerRestControllerin endpointit (Postman)
 
@@ -338,17 +298,7 @@ Success Responses
 Seller with ID Optional[Seller [sellerid=2, sellerfirstname=Heikki, sellersurname=Mäki, selleraddress=Mäkikatu 8, sellerphone=05098799, selleremail=heikki@maki.fi, transactions=[]]] has been deleted.
 ```
 
-## TicketControllerin endpointit selaimessa:
-
-- Lista lipuista: "/ticketlist"
-- Lipun lisäys: "/tickets/add"
-- Lipun tietojen tallennus: "/tickets/save"
-- Lipun tietojen muokkaaminen: "tickets/edit/{id}"
-- Lipun tietojen poistaminen: "tickets/delete/{id}
-
 ## TicketRestControllerin endpointit (Postman)
-
-
 
 **Kaikki tiedot JSON-muodossa: <span style="color:green">GET</span> /tickets**
 -	URL: /tickets

@@ -110,6 +110,49 @@ Tällä sivulla näkyy maksutapahtumien tiedot.
 
 ## Tekninen kuvaus
 
+## EventControllerin endpointit selaimessa:
+
+- Tapahtuman listanäkymä: "/eventlist"
+- Tapahtuman lisäys: "/events/add"
+- Tapahtuman tallennus: "/events/save"
+- Tapahtuman poisto: "/events/delete/{id}"
+- Tapahtuman muokkaus: "/events/edit/{id}"
+- Tapahtumaan lipputyypin lisääminen: "/events/{eventId}/addTicketType"
+- Tapahtuman lipputyypin tallentaminen: "/events/{eventId}/saveTicketType" <!--tarviiko nää kaks vikaa olla tässä-->
+
+## TicketTypeControllerin endpointit selaimessa:
+
+- Listanäkymä: "/tickettypelist"
+- Lisäys: "/tickettypes/add"
+- Tallennus: "/tickettypes/save"
+- Poisto: "tickettypes/delete/{id}"
+- Muokkaus: "/editTicketType/{id}"
+
+## TransactionControllerin endpointit selaimessa:
+
+- Ostotapahtumalistaus: "/transactionlist"
+- Ostotapahtuman lisäys: "/transactions/add"
+- Ostotapahtuman tallennus: "/transactions/save"
+- Ostoapahtuman poisto: "/transactions/delete/{id}"
+- Ostotapahtuman muokkaus: "/editTransaction/{id}"  <!--täytyy vielä vikana tarkistaa tarviiko korjata-->
+
+## SellerControllerin endpointit selaimessa:
+
+- Lista myyjistä: "/sellerlist"
+- Myyjän lisäys: "/sellers/add"
+- Myyjän tietojen tallennus: "/sellers/save"
+- Myyjän tietojen muokkaaminen: "sellers/edit/{id}"
+- Myyjän tietojen poistaminen: "sellers/delete/{id}
+
+## TicketControllerin endpointit selaimessa:
+
+- Lista lipuista: "/ticketlist"
+- Lipun lisäys: "/tickets/add"
+- Lipun tietojen tallennus: "/tickets/save"
+- Lipun tietojen muokkaaminen: "tickets/edit/{id}"
+- Lipun tietojen poistaminen: "tickets/delete/{id}
+
+
 Teknisessä kuvauksessa esitetään järjestelmän toteutuksen suunnittelussa tehdyt tekniset
 ratkaisut, esim.
 
