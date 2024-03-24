@@ -28,6 +28,7 @@ Success Responses
 -	Code:  200 OK
 -	Content: List of events
 
+```
 [ 
     {
         "eventname": "Ankkarock",
@@ -38,8 +39,7 @@ Success Responses
         "duration": 11,
         "ticketTypes": [],
         "id": 1
-    }
-
+    },
     {
         "eventname": "Ruisrock",
         "address": "Rokkikatu 1",
@@ -51,6 +51,7 @@ Success Responses
         "id": 2
     }
 ]
+```
 
 **Tietyn tapahtuman tiedot ID:n avulla: GET /event/{id}**
 -	URL:/event/{id}
@@ -63,6 +64,7 @@ Success Responses
 -	Code:  200 OK
 -	Content: Shows event based on id number
 
+```
 {
     "eventname": "Ruisrock",
     "address": "Rokkikatu 1",
@@ -73,6 +75,7 @@ Success Responses
     "ticketTypes": [],
     "id": 4
 }
+```
 
 **Tapahtuman lisäys Postmanilla: POST /events**
 -	URL:/event/{id}
@@ -85,6 +88,7 @@ Success Responses
 -	Code:  200 OK
 -	Content: Adds an new event
 
+```
 {
     "eventname": "Ilosaarirock",
     "address": "Rokkikatu 9",
@@ -95,6 +99,7 @@ Success Responses
     "ticketTypes": null,
     "id": 6
 }
+```
 
 **Tapahtuman poisto Postmanilla: DELETE /event/{id}**
 -	URL:/event/{id}
@@ -107,7 +112,9 @@ Success Responses
 -	Code:  200 OK
 -	Content: Deletes an event
 
+```
 Event with ID Optional[Event [eventId=6, eventname=Ilosaarirock, address=Rokkikatu 9, showtime=2024-11-11T18:11, description=upeampi juttu, maxTickets=568, duration=126]] has been deleted.
+```
 
 ## TicketTypeControllerin endpointit selaimessa:
 
@@ -165,6 +172,7 @@ Success Responses
 -	Code:  200 OK
 -	Content: List of sellers
 
+```
 [
     {
         "sellerfirstname": "Marja",
@@ -185,6 +193,7 @@ Success Responses
         "id": 2
     }
 ]
+```
 
 **Tietyn myyjän tiedot ID:n avulla: GET /seller/{id}**
 -	URL:/seller/{id}
@@ -197,6 +206,7 @@ Success Responses
 -	Code:  200 OK
 -	Content: Shows a seller by id number 
 
+```
 {
     "sellerfirstname": "Heikki",
     "sellersurname": "Mäki",
@@ -206,6 +216,7 @@ Success Responses
     "transactions": [],
     "id": 2
 }
+```
 
 **Myyjän tietojen lisääminen Postmanilla: POST /sellers**
 -	URL:/sellers
@@ -218,6 +229,7 @@ Success Responses
 -	Code:  200 OK
 -	Content: Adds a new seller 
 
+```
 {
     "sellerfirstname": "Marja",
     "sellersurname": "Mäki",
@@ -227,6 +239,7 @@ Success Responses
     "transactions": [],
     "id": 1
 }
+```
 
 **Myyjän poisto Postmanilla: DELETE /seller/{id}**
 -	URL:/seller/{id}
@@ -239,7 +252,9 @@ Success Responses
 -	Code:  200 OK
 -	Content: Deletes a seller by id number 
 
+```
 Seller with ID Optional[Seller [sellerid=2, sellerfirstname=Heikki, sellersurname=Mäki, selleraddress=Mäkikatu 8, sellerphone=05098799, selleremail=heikki@maki.fi, transactions=[]]] has been deleted.
+```
 
 ## TicketControllerin endpointit selaimessa:
 
