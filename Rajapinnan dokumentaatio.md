@@ -266,8 +266,81 @@ Seller with ID Optional[Seller [sellerid=2, sellerfirstname=Heikki, sellersurnam
 
 ## TicketRestControllerin endpointit (Postman)
 
-- Kaikki tiedot JSON-muodossa: <span style="color:green">GET</span> "/tickets"
-- Tietyn myyjän tiedot ID:n avulla: <span style="color:green">GET</span> "/tickets/{id}"
-- Myyjän tietojen lisääminen Postmanilla: <span style="color:yellow">POST</span> "/tickets"
-- Myyjän poisto Postmanilla: <span style="color:red">DELETE</span> "/tickets/{id}"
+
+
+**Kaikki tiedot JSON-muodossa: <span style="color:green">GET</span> /tickets**
+-	URL: /tickets
+-	Method: GET
+-	Auth required: YES
+-	Permission required: YES
+
+Success Responses
+-	Condition: Admin can see all the tickets
+-	Code:  200 OK
+-	Content: List of tickets
+
+```
+[
+    {
+        "ticketnumber": "123",
+        "transaction": null,
+        "ticketType": null,
+        "id": 1
+    }
+]
+```
+
+**Tietyn lipun tiedot ID:n avulla: <span style="color:green">GET</span> /tickets/{id}**
+-	URL:/tickets/{id}
+-	Method: GET
+-	Auth required: YES
+-	Permission required: YES
+
+Success Responses
+-	Condition: Admin can see ticket by id number
+-	Code:  200 OK
+-	Content: Shows a ticket by id number 
+
+```
+{
+    "ticketnumber": "123",
+    "transaction": null,
+    "ticketType": null,
+    "id": 1
+}
+```
+
+**Lipun tietojen lisääminen Postmanilla: <span style="color:yellow">POST</span> /tickets**
+-	URL:/tickets
+-	Method: POST
+-	Auth required: YES
+-	Permission required: YES
+
+Success Responses
+-	Condition: Admin can add a new ticket
+-	Code:  200 OK
+-	Content: Adds a new ticket
+
+```
+{
+    "ticketnumber": "123",
+    "transaction": null,
+    "ticketType": null
+}
+```
+
+**Lipun poisto Postmanilla: <span style="color:red">DELETE</span> /ticket/{id}**
+-	URL:/ticket/{id}
+-	Method: DELETE
+-	Auth required: YES
+-	Permission required: YES
+
+Success Responses
+-	Condition: Admin can delete a ticket by id number
+-	Code:  200 OK
+-	Content: Deletes a ticket by id number 
+
+```
+Ticket with ID Optional[Ticket [ticketid=1,  ticketnumber=123, transaction=null, ticketType=null]] has been deleted.
+```
 
