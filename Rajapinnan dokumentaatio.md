@@ -28,7 +28,7 @@ Success Responses
 -	Code:  200 OK
 -	Content: List of events
 
- 
+[ 
     {
         "eventname": "Ankkarock",
         "address": "Lintukatu 1",
@@ -39,7 +39,8 @@ Success Responses
         "ticketTypes": [],
         "id": 1
     }
-
+]
+[
     {
         "eventname": "Ruisrock",
         "address": "Rokkikatu 1",
@@ -50,7 +51,7 @@ Success Responses
         "ticketTypes": [],
         "id": 2
     }
-
+]
 
 - Tietyn tapahtuman tiedot ID:n avulla: <span style="color:green">GET</span> "/event/{id}"
 - Tapahtuman lisäys Postmanilla: <span style="color:yellow">POST</span> "/events"
