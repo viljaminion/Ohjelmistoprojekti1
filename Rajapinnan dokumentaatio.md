@@ -96,7 +96,6 @@ Success Responses
     "id": 6
 }
 
-
 **Tapahtuman poisto Postmanilla: DELETE /event/{id}**
 -	URL:/event/{id}
 -	Method: DELETE
@@ -155,10 +154,92 @@ Event with ID Optional[Event [eventId=6, eventname=Ilosaarirock, address=Rokkika
 
 ## SellerRestControllerin endpointit (Postman)
 
-- Kaikki tiedot JSON-muodossa: <span style="color:green">GET</span> "/sellers"
-- Tietyn myyjän tiedot ID:n avulla: <span style="color:green">GET</span> "/seller/{id}"
-- Myyjän tietojen lisääminen Postmanilla: <span style="color:yellow">POST</span> "/sellers"
-- Myyjän poisto Postmanilla: <span style="color:red">DELETE</span> "/seller/{id}"
+**Kaikki tiedot JSON-muodossa: GET /sellers**
+-	URL: /sellers
+-	Method: GET
+-	Auth required: YES
+-	Permission required: YES
+
+Success Responses
+-	Condition: Admin can see all the sellers
+-	Code:  200 OK
+-	Content: List of sellers
+
+[
+    {
+        "sellerfirstname": "Marja",
+        "sellersurname": "Mäki",
+        "selleraddress": "Mäkikatu 7",
+        "sellerphone": "05098764",
+        "selleremail": "marja@maki.fi",
+        "transactions": [],
+        "id": 1
+    },
+    {
+        "sellerfirstname": "Heikki",
+        "sellersurname": "Mäki",
+        "selleraddress": "Mäkikatu 8",
+        "sellerphone": "05098799",
+        "selleremail": "heikki@maki.fi",
+        "transactions": [],
+        "id": 2
+    }
+]
+
+**Tietyn myyjän tiedot ID:n avulla: GET /seller/{id}**
+-	URL:/seller/{id}
+-	Method: GET
+-	Auth required: YES
+-	Permission required: YES
+
+Success Responses
+-	Condition: Admin can see seller by id number
+-	Code:  200 OK
+-	Content: Shows a seller by id number 
+
+{
+    "sellerfirstname": "Heikki",
+    "sellersurname": "Mäki",
+    "selleraddress": "Mäkikatu 8",
+    "sellerphone": "05098799",
+    "selleremail": "heikki@maki.fi",
+    "transactions": [],
+    "id": 2
+}
+
+**Myyjän tietojen lisääminen Postmanilla: POST /sellers**
+-	URL:/sellers
+-	Method: POST
+-	Auth required: YES
+-	Permission required: YES
+
+Success Responses
+-	Condition: Admin can add a new seller
+-	Code:  200 OK
+-	Content: Adds a new seller 
+
+{
+    "sellerfirstname": "Marja",
+    "sellersurname": "Mäki",
+    "selleraddress": "Mäkikatu 7",
+    "sellerphone": "05098764",
+    "selleremail": "marja@maki.fi",
+    "transactions": [],
+    "id": 1
+}
+
+**Myyjän poisto Postmanilla: DELETE /seller/{id}**
+-	URL:/seller/{id}
+-	Method: DELETE
+-	Auth required: YES
+-	Permission required: YES
+
+Success Responses
+-	Condition: Admin can delete a seller by id number
+-	Code:  200 OK
+-	Content: Deletes a seller by id number 
+
+Seller with ID Optional[Seller [sellerid=2, sellerfirstname=Heikki, sellersurname=Mäki, selleraddress=Mäkikatu 8, sellerphone=05098799, selleremail=heikki@maki.fi, transactions=[]]] has been deleted.
 
 ## TicketControllerin endpointit selaimessa:
 
