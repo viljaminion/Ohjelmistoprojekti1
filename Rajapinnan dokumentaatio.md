@@ -63,6 +63,7 @@ Success Responses
 -	Code:  200 OK
 -	Content: Shows event based on id number
 
+[
     {
         "eventname": "Ruisrock",
         "address": "Rokkikatu 1",
@@ -73,7 +74,7 @@ Success Responses
         "ticketTypes": [],
         "id": 2
     }
-
+]
 
 - Tapahtuman lisäys Postmanilla: <span style="color:yellow">POST</span> "/events"
 - Tapahtuman poisto Postmanilla: <span style="color:red">DELETE</span> "/event/{id}"
