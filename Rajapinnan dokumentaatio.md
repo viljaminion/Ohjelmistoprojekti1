@@ -126,14 +126,96 @@ Event with ID Optional[Event [eventId=6, eventname=Ilosaarirock, address=Rokkika
 
 ## TicketTypeRestControllerin endpointit (Postman):
 
-- Kaikki tiedot JSON-muodossa:
-<span style="color:green">GET</span> "/tickettypes"
-- Tietyn lipputyypin tiedot ID:n avulla:
-<span style="color:green">GET</span> "/tickettype/{id}"
-- Lipputyypin lisäys Postmanilla:
-<span style="color:yellow">POST</span> "/tickettypes"
-- Lipputyypin poisto Postmanilla:
-<span style="color:red">DELETE</span> "/tickettype/{id}"
+**Kaikki lipputyypit JSON-muodossa: GET /tickettypes**
+
+-	URL: /tickettypes/
+-	Method: GET
+-	Auth required: YES
+-	Permission required: None
+
+Success Responses
+-	Condition: User can see ticket types
+-	Code:  200 OK
+-	Content: List of ticket types
+
+```
+[
+    {
+        "ticketTypeName": "aikuisten lippu",
+        "price": 20.0,
+        "id": 1
+    },
+    {
+        "ticketTypeName": "lasten lippu",
+        "price": 10.0,
+        "id": 2
+    },
+    {
+        "ticketTypeName": "opiskelijalippu",
+        "price": 15.0,
+        "id": 3
+    },
+    {
+        "ticketTypeName": "eläkeläislippu",
+        "price": 15.0,
+        "id": 4
+    }
+]
+```
+
+**Tietyn lipputyypin tiedot ID:n avulla: GET /tickettype/{id}**
+-	URL:/tickettype/{id}
+-	Method: GET
+-	Auth required: YES
+-	Permission required: None
+
+Success Responses
+-	Condition: User can see ticket type by id number
+-	Code:  200 OK
+-	Content: Shows ticket type based on id number
+
+```
+{
+    "ticketTypeName": "opiskelijalippu",
+    "price": 15.0,
+    "id": 3
+}
+```
+
+**Lipputyypin lisäys Postmanilla: POST /tickettypes**
+
+-	URL:/tickettypes/
+-	Method: POST
+-	Auth required: YES
+-	Permission required: YES
+
+Success Responses
+-	Condition: Admin can add ticket types
+-	Code:  200 OK
+-	Content: Adds an new ticket type
+
+```
+{
+    "ticketTypeName": "aikuisten lippu",
+    "price": 20.0,
+    "id": 1
+}
+```
+
+**Lipputyypin poisto Postmanilla: DELETE /tickettype/{id}**
+-	URL:/tickettype/{id}
+-	Method: DELETE
+-	Auth required: YES
+-	Permission required: YES
+
+Success Responses
+-	Condition: Admin can delete a ticket type by id number
+-	Code:  200 OK
+-	Content: Deletes a ticket type
+
+```
+Ticket type with ID Optional[TicketType [ticketTypeId=4, ticketTypeName=eläkeläislippu, price=15.0]] has been deleted.
+```
 
 
 ## TransactionControllerin endpointit selaimessa:
