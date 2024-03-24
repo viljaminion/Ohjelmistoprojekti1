@@ -1,5 +1,4 @@
-package ohjelmistoprojekti.ticketGuru.domain;
-/*package ohjelmistoprojekti.ticketGuru.Classes;
+/*package ohjelmistoprojekti.ticketGuru.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

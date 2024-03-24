@@ -1,4 +1,4 @@
-/*package ohjelmistoprojekti.ticketGuru;
+package ohjelmistoprojekti.ticketGuru;
 
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
@@ -19,14 +19,16 @@ import ohjelmistoprojekti.ticketGuru.web.UserDetailServiceImpl;
 @Configuration
 public class WebSecurityConfig {
 
+	@SuppressWarnings("removal")
 	@Bean
 	public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(
 				authorizeRequest -> authorizeRequest.requestMatchers(antMatcher("/css/**")).permitAll()
 						.anyRequest().authenticated())
 				.headers(headers -> headers.frameOptions(frameoptions -> frameoptions.disable()))
-				.formLogin(formlogin -> formlogin.defaultSuccessUrl("/", true).permitAll())
+				.formLogin(formlogin -> formlogin.defaultSuccessUrl("/eventlist", true).permitAll())
 				.logout(logout -> logout.permitAll());
+		http.cors().disable().csrf().disable().httpBasic();
 		return http.build();
 	}
 
@@ -38,4 +40,4 @@ public class WebSecurityConfig {
 		auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
 	}
 
-}*/
+}
