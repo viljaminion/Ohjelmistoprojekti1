@@ -39,7 +39,7 @@ Success Responses
         "ticketTypes": [],
         "id": 1
     }
-
+,
     {
         "eventname": "Ruisrock",
         "address": "Rokkikatu 1",
