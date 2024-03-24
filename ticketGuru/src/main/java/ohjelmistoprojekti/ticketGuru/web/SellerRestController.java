@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,7 @@ public class SellerRestController {
 	
 	
     @RequestMapping(value="/sellers", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<Seller> SellerListRest() {	
         return (List<Seller>) sellerrepository.findAll();
     }    
@@ -35,6 +37,7 @@ public class SellerRestController {
 //ID:n avulla haettavat tiedot tietystä myyjästä
     
     @RequestMapping(value="/seller/{id}", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public Optional<Seller> findSellerRest(@PathVariable("id") Long sellerid) {	
     	return sellerrepository.findById(sellerid);
     }
@@ -44,6 +47,7 @@ public class SellerRestController {
 //@Valid annotaatio ennen @RequestBody annotaatiota mahdollistaa validoinnin
 
     @RequestMapping (value= "/sellers", method = RequestMethod.POST)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public Seller addSeller(@Valid @RequestBody Seller seller) {
          return sellerrepository.save(seller);
             
@@ -52,6 +56,7 @@ public class SellerRestController {
 //Myyjän poisto ID:llä Postmanissa
     
     @RequestMapping(value = "/seller/{id}", method = RequestMethod.DELETE)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<String> deleteSeller(@PathVariable("id") Long sellerid) {
         Optional<Seller> seller = sellerrepository.findById(sellerid);
         if (seller.isPresent()) {
