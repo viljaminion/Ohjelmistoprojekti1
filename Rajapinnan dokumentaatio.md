@@ -15,9 +15,41 @@ Alla olevat endpointit ovat suppea versio REST-dokumentaatiosta.
 - Tapahtumaan lipputyypin lisääminen: "/events/{eventId}/addTicketType"
 - Tapahtuman lipputyypin tallentaminen: "/events/{eventId}/saveTicketType" <!--tarviiko nää kaks vikaa olla tässä-->
 
-**EventRestControllerin endpointit (Postman)**
+**EventRestControllerin endpointit (Postman):**
 
-- Kaikki tiedot JSON-muodossa: <span style="color:green">GET</span> "/events"
+Kaikki tapahtumat JSON-muodossa: GET /events
+-	URL: /events/
+-	Method: GET
+-	Auth required: YES
+-	Permission required: None
+
+Success Responses
+-	Condition: User can see events
+-	Code:  200 OK
+-	Content: List of events
+
+[ {
+        "eventname": "Ankkarock",
+        "address": "Lintukatu 1",
+        "showtime": "2024-03-11T18:11:00",
+        "description": "upea tilaisuus",
+        "maxTickets": 111,
+        "duration": 11,
+        "ticketTypes": [],
+        "id": 1
+    },
+    {
+        "eventname": "Ruisrock",
+        "address": "Rokkikatu 1",
+        "showtime": "2024-10-11T18:11:00",
+        "description": "upea juttu",
+        "maxTickets": 567,
+        "duration": 123,
+        "ticketTypes": [],
+        "id": 2
+    }
+]
+
 - Tietyn tapahtuman tiedot ID:n avulla: <span style="color:green">GET</span> "/event/{id}"
 - Tapahtuman lisäys Postmanilla: <span style="color:yellow">POST</span> "/events"
 - Tapahtuman poisto Postmanilla: <span style="color:red">DELETE</span> "/event/{id}"
