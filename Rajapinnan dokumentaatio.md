@@ -28,7 +28,8 @@ Success Responses
 -	Code:  200 OK
 -	Content: List of events
 
-[ {
+[ 
+    {
         "eventname": "Ankkarock",
         "address": "Lintukatu 1",
         "showtime": "2024-03-11T18:11:00",
@@ -37,8 +38,8 @@ Success Responses
         "duration": 11,
         "ticketTypes": [],
         "id": 1
-    },
-    
+    }
+
     {
         "eventname": "Ruisrock",
         "address": "Rokkikatu 1",
