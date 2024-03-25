@@ -14,7 +14,7 @@
         
         <div>
             <label>Transaction date:</label>
-            <input type="datetime-local" th:field="*{transactiondate}"/>
+            <input type="date" th:field="*{transactiondate}"/>
             <div th:if="${#fields.hasErrors('transactiondate')}" th:errors="*{transactiondate}">Error</div>
         </div>
         

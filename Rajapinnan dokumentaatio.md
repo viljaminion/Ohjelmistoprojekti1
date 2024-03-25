@@ -196,10 +196,110 @@ Ticket type with ID Optional[TicketType [ticketTypeId=4, ticketTypeName=eläkel�
 
 ## TransactionRestControllerin endpointit (Postman)
 
-- Kaikki tiedot JSON-muodossa: <span style="color:green">GET</span> "/transactions"
-- Tietyn ostotapahtuman tiedot ID:n avulla: <span style="color:green">GET</span> "/transaction/{id}"
-- Ostoapahtuman lisäys Postmanilla: <span style="color:yellow">POST</span> "/transactions"
-- Ostotapahtuman poisto Postmanilla: <span style="color:red">DELETE</span> "/transaction/{id}"
+**Kaikki tiedot JSON-muodossa: GET /transactions**
+
+-	URL: /transactions
+-	Method: GET
+-	Auth required: YES
+-	Permission required: NO
+
+Success Responses
+-	Condition: User can see all the transactions
+-	Code:  200 OK
+-	Content: List of transactions
+
+```
+[
+    {
+        "transactiondate": "2024-03-08",
+        "ticketSum": 50.0,
+        "seller": null,
+        "ticket": null,
+        "id": 1
+    },
+    {
+        "transactiondate": "2024-02-21",
+        "ticketSum": 45.0,
+        "seller": null,
+        "ticket": null,
+        "id": 2
+    },
+    {
+        "transactiondate": "2023-11-16",
+        "ticketSum": 93.0,
+        "seller": null,
+        "ticket": null,
+        "id": 3
+    },
+    {
+        "transactiondate": "2023-10-06",
+        "ticketSum": 76.0,
+        "seller": null,
+        "ticket": null,
+        "id": 4
+    }
+]
+```
+
+**Tietyn ostotapahtuman tiedot ID:n avulla: GET /transaction/{id}**
+
+-	URL: /transaction/{id}
+-	Method: GET
+-	Auth required: YES
+-	Permission required: NO
+
+Success Responses
+-	Condition: User can see transaction by id number
+-	Code:  200 OK
+-	Content: Shows transaction based on id number
+
+```
+{
+    "transactiondate": "2024-03-08",
+    "ticketSum": 50.0,
+    "seller": null,
+    "ticket": null,
+    "id": 1
+}
+```
+
+**Ostotapahtuman lisäys Postmanilla: POST /transactions**
+
+-	URL:/transactions
+-	Method: POST
+-	Auth required: YES
+-	Permission required: NO
+
+Success Responses
+-	Condition: User can add a new transaction
+-	Code:  200 OK
+-	Content: Adds a new transaction
+
+```
+{
+    "transactiondate": "2024-03-03",
+    "ticketSum": 55.0,
+    "seller": null,
+    "ticket": null,
+    "id": 6
+}
+```
+
+**Ostotapahtuman poisto Postmanilla: DELETE /transaction/{id}**
+
+-	URL:/transaction/{id}
+-	Method: DELETE
+-	Auth required: YES
+-	Permission required: NO
+
+Success Responses
+-	Condition: User can delete a transaction by id number
+-	Code:  200 OK
+-	Content: Deletes a transaction by id number 
+
+```
+Transaction with ID Optional[Transaction [transactionid=6, transactiondate=2024-03-03, ticketSum=55.0, seller=null, ticket=null]] has been deleted.
+```
 
 ## SellerRestControllerin endpointit (Postman)
 
