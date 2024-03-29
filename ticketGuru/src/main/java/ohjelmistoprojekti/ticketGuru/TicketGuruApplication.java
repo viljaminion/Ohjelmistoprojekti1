@@ -7,8 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import ohjelmistoprojekti.ticketGuru.domain.User;
-import ohjelmistoprojekti.ticketGuru.domain.UserRepository;
+import ohjelmistoprojekti.ticketGuru.domain.AppUser;
+import ohjelmistoprojekti.ticketGuru.domain.AppUserRepository;
 
 @SpringBootApplication
 public class TicketGuruApplication {
@@ -20,15 +20,17 @@ public class TicketGuruApplication {
 	}
 
 	@Bean(name = "UserCommandLineRunner")
-	public CommandLineRunner UserCommandLineRunner(UserRepository repository) {
+	public CommandLineRunner UserCommandLineRunner(AppUserRepository repository) {
 		return (args) -> {
-			User user1 = new User("user", "$2a$10$6KFw5bwNuXu1Mr80yXcglOCEI9cmSlQlSRJK.D6.XvKbaos5LC7By" , "USER"); //salasana user
-			User user2 = new User("admin", "$2a$10$/U9C/cQ7sudkeFkJS7OUwOfbIoWEzQPLeMd7cI8RgSfxChyKkNeVu" , "ADMIN"); //salasana admin
+			AppUser user1 = new AppUser("maija", "$2a$10$6KFw5bwNuXu1Mr80yXcglOCEI9cmSlQlSRJK.D6.XvKbaos5LC7By" , "USER", "Matti", "Meikäläinen",
+			"Postiosoite 1A", "0441234567", "mattimeikalainen@gmail.com"); //salasana user
+			AppUser user2 = new AppUser("mikko", "$2a$10$/U9C/cQ7sudkeFkJS7OUwOfbIoWEzQPLeMd7cI8RgSfxChyKkNeVu" , "ADMIN", "Matti", "Meikäläinen",
+			"Postiosoite 1A", "0447654321", "meikalainenmatti@gmail.com"); //salasana admin
 			repository.save(user1);
 			repository.save(user2);
 
 			log.info("fetch * users");
-			for (User user : repository.findAll()) {
+			for (AppUser user : repository.findAll()) {
 				log.info(user.toString());
 			}
 		};

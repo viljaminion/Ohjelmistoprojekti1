@@ -25,7 +25,7 @@ public class Transaction {
 	private Double ticketSum;
 
 	@ManyToOne
-	private Seller seller;
+	private AppUser user;
 
 	@ManyToOne
 	private Ticket ticket;
@@ -34,11 +34,11 @@ public class Transaction {
 
 	}
 
-	public Transaction(Long id, LocalDate transactiondate, Double ticketSum, Seller seller, Ticket ticket) {
+	public Transaction(Long id, LocalDate transactiondate, Double ticketSum, AppUser user, Ticket ticket) {
 		super();
 		this.transactiondate = transactiondate;
 		this.ticketSum = ticketSum;
-		this.seller = seller;
+		this.user = user;
 		this.ticket = ticket;
 
 	}
@@ -75,19 +75,19 @@ public class Transaction {
 		this.ticketSum = ticketSum;
 	}
 
-	public Seller getSeller() {
-		return seller;
+	public AppUser getUser() {
+		return user;
 	}
 
-	public void setSeller(Seller seller) {
-		this.seller = seller;
+	public void setUser(AppUser user) {
+		this.user = user;
 	}
 
 	@Override
 	public String toString() {
 		return "Transaction [transactionid=" + transactionid + ", transactiondate=" + transactiondate + ", ticketSum="
 				+ ticketSum + ", seller="
-				+ seller + ", ticket=" + ticket + "]";
+				+ user + ", ticket=" + ticket + "]";
 	}
 
 }

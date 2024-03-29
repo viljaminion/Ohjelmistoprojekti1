@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.validation.Valid;
-import ohjelmistoprojekti.ticketGuru.domain.SellerRepository;
+import ohjelmistoprojekti.ticketGuru.domain.AppUserRepository;
 import ohjelmistoprojekti.ticketGuru.domain.TicketRepository;
 import ohjelmistoprojekti.ticketGuru.domain.Transaction;
 import ohjelmistoprojekti.ticketGuru.domain.TransactionRepository;
@@ -22,7 +22,7 @@ public class TransactionController {
     private TransactionRepository transactionRepository;
 
     @Autowired
-    private SellerRepository sellerRepository;
+    private AppUserRepository userRepository;
 
     @Autowired 
     private TicketRepository ticketRepository;
@@ -41,7 +41,7 @@ public class TransactionController {
     @GetMapping("/transactions/add")
     public String addTransaction(Model model) {
         model.addAttribute("transaction", new Transaction());
-        model.addAttribute("transactions", sellerRepository.findAll());
+        model.addAttribute("transactions", userRepository.findAll());
         model.addAttribute("tickets", ticketRepository.findAll());
         return "addTransaction";
     }
@@ -63,7 +63,7 @@ public class TransactionController {
         
         if (existingTransaction != null) {
             model.addAttribute("transaction", existingTransaction);
-            model.addAttribute("seller", sellerRepository.findAll());
+            model.addAttribute("user", userRepository.findAll());
             model.addAttribute("tickets", ticketRepository.findAll());
        
             return "editTransaction";
@@ -79,7 +79,7 @@ public class TransactionController {
         
         if (existingTransaction != null) {
             existingTransaction.setTransactiondate(updatedTransaction.getTransactiondate());
-            existingTransaction.setSeller(updatedTransaction.getSeller());
+            existingTransaction.setUser(updatedTransaction.getUser());
 
             
             transactionRepository.save(existingTransaction);
