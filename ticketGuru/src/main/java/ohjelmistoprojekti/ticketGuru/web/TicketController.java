@@ -40,7 +40,6 @@ public class TicketController {
     @GetMapping("/tickets/add")
     public String addTicket(Model model) {
         model.addAttribute("ticket", new Ticket());
-        model.addAttribute("transactions", transactionRepository.findAll());
         model.addAttribute("ticketTypes", ticketTypeRepository.findAll());
         return "addticket";
     }
