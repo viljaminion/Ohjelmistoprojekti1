@@ -1,12 +1,16 @@
 package ohjelmistoprojekti.ticketGuru.domain;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 
@@ -27,28 +31,27 @@ public class Transaction {
 	@ManyToOne
 	private AppUser user;
 
-	@ManyToOne
-	private Ticket ticket;
+	@OneToMany(mappedBy = "transaction", cascade = CascadeType.ALL)
+	private List<Ticket> tickets = new ArrayList<>();
 
 	public Transaction() {
 
 	}
 
-	public Transaction(Long id, LocalDate transactiondate, Double ticketSum, AppUser user, Ticket ticket) {
+	public Transaction(Long id, LocalDate transactiondate, Double ticketSum, AppUser user, List<Ticket> tickets) {
 		super();
 		this.transactiondate = transactiondate;
 		this.ticketSum = ticketSum;
 		this.user = user;
-		this.ticket = ticket;
-
+		this.tickets = tickets;
 	}
 
-	public Ticket getTicket() {
-		return ticket;
+	public List<Ticket> getTickets() {
+		return tickets;
 	}
 
-	public void setTicket(Ticket tickets) {
-		this.ticket = tickets;
+	public void setTickets(List<Ticket> tickets) {
+		this.tickets = tickets;
 	}
 
 	public Long getId() {
@@ -87,7 +90,6 @@ public class Transaction {
 	public String toString() {
 		return "Transaction [transactionid=" + transactionid + ", transactiondate=" + transactiondate + ", ticketSum="
 				+ ticketSum + ", seller="
-				+ user + ", ticket=" + ticket + "]";
+				+ user + ", tickets=" + tickets + "]";
 	}
-
 }

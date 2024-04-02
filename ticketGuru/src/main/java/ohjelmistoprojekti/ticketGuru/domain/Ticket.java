@@ -1,5 +1,7 @@
 package ohjelmistoprojekti.ticketGuru.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +24,7 @@ public class Ticket {
     private String ticketnumber;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "transactionid")
     private Transaction transaction;
 
