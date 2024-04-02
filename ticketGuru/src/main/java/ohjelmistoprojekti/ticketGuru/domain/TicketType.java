@@ -26,7 +26,6 @@ public class TicketType {
   private double price;
 
   @ManyToOne
-  @JsonIgnore
   private Event event;
 
   public TicketType() {
