@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,6 +41,7 @@ public class TransactionRestController {
     // Maksutapahtuman lisääminen Postmanissa
 
     @RequestMapping(value = "/transactions", method = RequestMethod.POST)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public Transaction addTransaction(@Valid @RequestBody Transaction transaction) {
         return transactionRepository.save(transaction);
 
@@ -48,6 +50,7 @@ public class TransactionRestController {
     // Maksutapahtuman poisto ID:llä Postmanissa 
 
     @RequestMapping(value = "/transaction/{id}", method = RequestMethod.DELETE)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<String> deleteTransaction(@PathVariable("id") Long transactionid) {
         Optional<Transaction> transaction = transactionRepository.findById(transactionid);
         if (transaction.isPresent()) {

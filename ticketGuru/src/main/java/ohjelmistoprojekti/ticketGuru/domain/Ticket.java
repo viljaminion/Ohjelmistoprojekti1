@@ -33,8 +33,11 @@ public class Ticket {
     private TicketType ticketType;
     
     @ManyToOne
+    @JsonIgnore
     @JoinColumn
     private Event event;
+
+    // tietokantakaavion mukaan lipulla ei yhteyttä tapahtumiin
 
     public TicketType getTicketType() {
         return ticketType;

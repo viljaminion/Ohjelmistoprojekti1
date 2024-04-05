@@ -3,6 +3,8 @@ package ohjelmistoprojekti.ticketGuru.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -47,6 +49,7 @@ public class AppUser {
 	private String email;
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+	@JsonIgnore
 	private List<Transaction> transactions = new ArrayList<>();
 
 	public List<Transaction> getTransactions() {
