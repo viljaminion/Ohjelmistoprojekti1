@@ -1,6 +1,5 @@
 package ohjelmistoprojekti.ticketGuru.domain;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
@@ -11,14 +10,13 @@ import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-
 @Entity
 public class TicketType {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long ticketTypeId;
-  
+
   @NotBlank(message = "Must include a ticket type")
   private String ticketTypeName;
 
@@ -33,14 +31,14 @@ public class TicketType {
   }
 
   public Event getEvent() {
-	return event;
-}
+    return event;
+  }
 
-public void setEvent(Event event) {
-	this.event = event;
-}
+  public void setEvent(Event event) {
+    this.event = event;
+  }
 
-public TicketType(String ticketTypeName, double price) {
+  public TicketType(String ticketTypeName, double price) {
     this.ticketTypeName = ticketTypeName;
     this.price = price;
   }
@@ -69,15 +67,13 @@ public TicketType(String ticketTypeName, double price) {
     this.price = price;
   }
 
-
   @Override
   public String toString() {
     return "TicketType [ticketTypeId=" + ticketTypeId + ", ticketTypeName=" + ticketTypeName + ", price=" + price + "]";
   }
 
-public void add(TicketType ticketType) {
-	
-	
-}
+  public void add(TicketType ticketType) {
+
+  }
 
 }

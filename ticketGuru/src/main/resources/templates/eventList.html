@@ -28,35 +28,57 @@
 
     <a th:href="@{/events/add}" class="btn btn-success">Add Event</a><br>
     <table border="1" class="table table-striped">
-
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Event</th>
-                <th>Address</th>
-                <th>Showtime</th>
-                <th>Description</th>
-                <th>Max Tickets</th>
-                <th>Duration</th>
-                
-            </tr>
-            <tr th:each="event : ${events}">
-                <td th:text="${event.id}"></td>
-                <td th:text="${event.eventname}"></td>
-                <td th:text="${event.address}"></td>
-                <td th:text="${event.showtime}"></td>
-                <td th:text="${event.description}"></td>
-                <td th:text="${event.maxTickets}"></td>
-                <td th:text="${event.duration}"></td>
-
-
-                <td>
-					<a th:href="@{/events/{eventId}/addTicketType(eventId=${event.id})}" class="btn btn-primary">Add Ticket Type</a><br>
-                    <a th:href="@{/events/delete/{id}(id=${event.id})}" class="btn btn-danger">Delete</a>
-                    <a th:href="@{/events/edit/{id}(id=${event.id})}" class="btn btn-primary">Edit</a>
-                </td>
-            </tr>
-        </table>
+        <tr>
+            <th>ID</th>
+            <th>Event</th>
+            <th>Address</th>
+            <th>Showtime</th>
+            <th>Description</th>
+            <th>Max Tickets</th>
+            <th>Duration</th>
+            <th>Actions</th>
+            <th>Ticket Types</th>
+            <th>Buy Tickets</th>
+        </tr>
+        <tr th:each="event : ${events}">
+            <td th:text="${event.id}"></td>
+            <td th:text="${event.eventname}"></td>
+            <td th:text="${event.address}"></td>
+            <td th:text="${event.showtime}"></td>
+            <td th:text="${event.description}"></td>
+            <td th:text="${event.maxTickets}"></td>
+            <td th:text="${event.duration}"></td>
+            <td>
+                <a th:href="@{/events/delete/{id}(id=${event.id})}" class="btn btn-danger">Delete</a>
+                <a th:href="@{/events/edit/{id}(id=${event.id})}" class="btn btn-primary">Edit</a>
+                <a th:href="@{/events/{eventId}/addTicketType(eventId=${event.id})}" class="btn btn-secondary">Add Ticket Type</a> <!-- Add Ticket Type button -->
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <th>Ticket Type</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                    <tr th:each="ticketType : ${event.ticketTypes}">
+                        <td th:text="${ticketType.ticketTypeName}"></td>
+                        <td th:text="${ticketType.price}"></td>
+                        <td>
+                            <input type="number" name="ticketQuantities" min="0" value="0" /> <!-- Changed the name attribute to ticketQuantities -->
+                            <input type="hidden" name="ticketTypeIds" th:value="${ticketType.id}" /> <!-- Changed the name attribute to ticketTypeIds -->
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <form th:action="@{/tickets/save}" method="post">
+                    <input type="hidden" name="eventId" th:value="${event.id}" />
+                    <button type="submit" class="btn btn-primary">Buy</button>
+                </form>
+            </td>
+        </tr>
+    </table>
 </body>
 
 </html>
+

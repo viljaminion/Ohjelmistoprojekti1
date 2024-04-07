@@ -1,10 +1,12 @@
 package ohjelmistoprojekti.ticketGuru.domain;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+// import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+// import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,10 +31,11 @@ public class Transaction {
 	private Double ticketSum;
 
 	@ManyToOne
+	@JsonIgnore
 	private AppUser user;
 
-	@OneToMany(mappedBy = "transaction", cascade = CascadeType.ALL)
-	private List<Ticket> tickets = new ArrayList<>();
+	@OneToMany
+	private List<Ticket> tickets;
 
 	public Transaction() {
 
