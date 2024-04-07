@@ -1,25 +1,25 @@
 package ohjelmistoprojekti.ticketGuru;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
+//import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Bean;
 
-import ohjelmistoprojekti.ticketGuru.domain.AppUser;
-import ohjelmistoprojekti.ticketGuru.domain.AppUserRepository;
+//import ohjelmistoprojekti.ticketGuru.domain.AppUser;
+//import ohjelmistoprojekti.ticketGuru.domain.AppUserRepository;
 
 @SpringBootApplication
 public class TicketGuruApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(TicketGuruApplication.class);
+	//private static final Logger log = LoggerFactory.getLogger(TicketGuruApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(TicketGuruApplication.class, args);
 	}
 
-	@Bean(name = "UserCommandLineRunner")
+	/*@Bean(name = "UserCommandLineRunner")
 	public CommandLineRunner UserCommandLineRunner(AppUserRepository repository) {
 		return (args) -> {
 			AppUser user1 = new AppUser("maija", "$2a$10$6KFw5bwNuXu1Mr80yXcglOCEI9cmSlQlSRJK.D6.XvKbaos5LC7By" , "USER", "Matti", "Meikäläinen",
@@ -34,6 +34,6 @@ public class TicketGuruApplication {
 				log.info(user.toString());
 			}
 		};
-	}
+	}*/
 
 }
