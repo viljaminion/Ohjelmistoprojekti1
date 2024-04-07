@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -14,7 +15,8 @@ import jakarta.validation.constraints.NotNull;
 public class TicketType {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tickettype_seq")
+	@SequenceGenerator(name = "tickettype_seq", sequenceName = "tickettype_seq", allocationSize = 1)
   private Long ticketTypeId;
 
   @NotBlank(message = "Must include a ticket type")

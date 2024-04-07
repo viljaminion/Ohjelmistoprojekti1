@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -23,7 +24,8 @@ import jakarta.validation.constraints.Min;
 public class Event {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "event_seq")
+	@SequenceGenerator(name = "event_seq", sequenceName = "event_seq", allocationSize = 1)
     private Long eventId;
     
     @NotBlank(message = "Event name cannot be blank")
@@ -48,10 +50,10 @@ public class Event {
     @Max(500)
     private int duration;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     private List<TicketType> ticketTypes = new ArrayList<>();
 
-    @JsonIgnore
 	public List<TicketType> getTicketTypes() {
 		return ticketTypes;
 	}

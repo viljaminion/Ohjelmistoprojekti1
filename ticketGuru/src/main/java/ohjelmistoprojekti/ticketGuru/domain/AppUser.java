@@ -6,13 +6,13 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
@@ -20,7 +20,8 @@ import jakarta.validation.constraints.NotBlank;
 public class AppUser {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "appuser_seq")
+	@SequenceGenerator(name = "appuser_seq", sequenceName = "appuser_seq", allocationSize = 1)
 	private Long id;
 	
 	@NotBlank(message = "Username cannot be blank")
@@ -48,7 +49,7 @@ public class AppUser {
 	@Email(message = "Email must be valid")
 	private String email;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
 	@JsonIgnore
 	private List<Transaction> transactions = new ArrayList<>();
 
