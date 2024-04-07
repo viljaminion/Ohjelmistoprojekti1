@@ -31,12 +31,13 @@ public class Ticket {
     private Transaction transaction;
 
     @ManyToOne
-    @JoinColumn
+    @JsonIgnore
+    @JoinColumn(name = "tickettypeid")
     private TicketType ticketType;
     
     @ManyToOne
     @JsonIgnore
-    @JoinColumn
+    @JoinColumn(name = "eventid")
     private Event event;
 
     // tietokantakaavion mukaan lipulla ei yhteyttä tapahtumiin

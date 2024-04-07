@@ -79,7 +79,7 @@ public class EventController {
             existingEvent.setAddress(updatedEvent.getAddress());
             existingEvent.setShowtime(updatedEvent.getShowtime());
             existingEvent.setDescription(updatedEvent.getDescription());
-            existingEvent.setMaxTickets(updatedEvent.getMaxTickets());
+            existingEvent.setMaxtickets(updatedEvent.getMaxtickets());
             existingEvent.setDuration(updatedEvent.getDuration());
 
             eventRepository.save(existingEvent);

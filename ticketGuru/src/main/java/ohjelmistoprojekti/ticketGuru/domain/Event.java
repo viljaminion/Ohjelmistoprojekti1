@@ -26,7 +26,7 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "event_seq")
 	@SequenceGenerator(name = "event_seq", sequenceName = "event_seq", allocationSize = 1)
-    private Long eventId;
+    private Long event_id;
     
     @NotBlank(message = "Event name cannot be blank")
     @Size(min = 2, message = "Event name cannot be less than 2 letters")
@@ -42,9 +42,9 @@ public class Event {
     @NotBlank(message = "Description cannot be blank")
     private String description;
 
-    @Min(value =1, message = "maxTickets cannot be less than 1")
+    @Min(value =1, message = "maxtickets cannot be less than 1")
     @Max(10000)
-    private int maxTickets;
+    private int maxtickets;
 
     @Min(value =1, message = "Duration cannot be less than 1")
     @Max(500)
@@ -62,12 +62,12 @@ public class Event {
 		this.ticketTypes = ticketTypes;
 	}
 
-	public Event(String eventname, String address, LocalDateTime showtime, String description, int maxTickets, int duration) {
+	public Event(String eventname, String address, LocalDateTime showtime, String description, int maxtickets, int duration) {
         this.eventname = eventname;
         this.address = address;
         this.showtime = showtime;
         this.description = description;
-        this.maxTickets = maxTickets;
+        this.maxtickets = maxtickets;
         this.duration = duration;
         
     }
@@ -77,11 +77,11 @@ public class Event {
     }
 
     public Long getId() {
-        return eventId;
+        return event_id;
     }
 
-    public void setId(Long eventId) {
-        this.eventId = eventId;
+    public void setId(Long event_id) {
+        this.event_id = event_id;
     }
 
     public String getEventname() {
@@ -116,12 +116,12 @@ public class Event {
         this.description = description;
     }
 
-    public int getMaxTickets() {
-        return maxTickets;
+    public int getMaxtickets() {
+        return maxtickets;
     }
 
-    public void setMaxTickets(int maxTickets) {
-        this.maxTickets = maxTickets;
+    public void setMaxtickets(int maxtickets) {
+        this.maxtickets = maxtickets;
     }
 
     public int getDuration() {
@@ -134,8 +134,8 @@ public class Event {
 
 	@Override
 	public String toString() {
-		return "Event [eventId=" + eventId + ", eventname=" + eventname + ", address=" + address + ", showtime=" + showtime
-				+ ", description=" + description + ", maxTickets=" + maxTickets + ", duration=" + duration
+		return "Event [event_id=" + event_id + ", eventname=" + eventname + ", address=" + address + ", showtime=" + showtime
+				+ ", description=" + description + ", maxtickets=" + maxtickets + ", duration=" + duration
 				+ "]";
 	}
 

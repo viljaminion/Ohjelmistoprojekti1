@@ -16,7 +16,7 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
-@Entity(name = "users")
+@Entity(name = "appuser")
 public class AppUser {
 
 	@Id
@@ -28,7 +28,7 @@ public class AppUser {
 	private String username;
 	
 	@NotBlank(message = "Password cannot be blank")
-	private String passwordHash;
+	private String passwordhash;
 	
 	@NotBlank(message = "Role cannot be blank")
 	private String role;
@@ -65,10 +65,10 @@ public class AppUser {
 
 	}
 
-	public AppUser(String username, String passwordHash, String role, String firstname, String surname, String address, String phone,
+	public AppUser(String username, String passwordhash, String role, String firstname, String surname, String address, String phone,
 	String email) {
 		this.username = username;
-		this.passwordHash = passwordHash;
+		this.passwordhash = passwordhash;
 		this.role = role;
 		this.firstname = firstname;
 		this.surname = surname;
@@ -85,12 +85,12 @@ public class AppUser {
 		this.username = username;
 	}
 
-	public String getPasswordHash() {
-		return passwordHash;
+	public String getPasswordhash() {
+		return passwordhash;
 	}
 
-	public void setPasswordHash(String passwordHash) {
-		this.passwordHash = passwordHash;
+	public void setPasswordhash(String passwordhash) {
+		this.passwordhash = passwordhash;
 	}
 
 	public String getRole() {
@@ -145,13 +145,13 @@ public class AppUser {
 	public String toString() {
 		if (this.transactions != null)
 
-			return "User [id=" + id + ", username=" + username + ", passwordHash=" + passwordHash + ", role=" + role + ", firstname=" + firstname + ", surname="
+			return "User [id=" + id + ", username=" + username + ", passwordhash=" + passwordhash + ", role=" + role + ", firstname=" + firstname + ", surname="
 					+ surname + ", useraddress=" + address + ", userphone=" + phone
 					+ ", useremail=" + email + ", transactions=" + transactions
 					+ "]";
 
 		else
-			return "User [id=" + id + ", username=" + username + ", passwordHash=" + passwordHash + ", role=" + role + ", firstname=" + firstname + ", usersurname="
+			return "User [id=" + id + ", username=" + username + ", passwordhash=" + passwordhash + ", role=" + role + ", firstname=" + firstname + ", usersurname="
 					+ surname + ", address=" + address + ", phone=" + phone
 					+ ", email=" + email + ", transactions= " + transactions + "]";
 	}

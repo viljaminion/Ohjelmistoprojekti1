@@ -6,18 +6,19 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-@Entity
+@Entity(name = "tickettype")
 public class TicketType {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tickettype_seq")
 	@SequenceGenerator(name = "tickettype_seq", sequenceName = "tickettype_seq", allocationSize = 1)
-  private Long ticketTypeId;
+  private Long tickettype_id;
 
   @NotBlank(message = "Must include a ticket type")
   private String ticketTypeName;
@@ -26,6 +27,8 @@ public class TicketType {
   private double price;
 
   @ManyToOne
+  @JsonIgnore
+  @JoinColumn(name = "event_id")
   private Event event;
 
   public TicketType() {
@@ -46,11 +49,11 @@ public class TicketType {
   }
 
   public Long getId() {
-    return ticketTypeId;
+    return tickettype_id;
   }
 
-  public void setId(Long ticketTypeId) {
-    this.ticketTypeId = ticketTypeId;
+  public void setId(Long tickettype_id) {
+    this.tickettype_id = tickettype_id;
   }
 
   public String getTicketTypeName() {
@@ -71,7 +74,7 @@ public class TicketType {
 
   @Override
   public String toString() {
-    return "TicketType [ticketTypeId=" + ticketTypeId + ", ticketTypeName=" + ticketTypeName + ", price=" + price + "]";
+    return "TicketType [tickettype_id=" + tickettype_id + ", ticketTypeName=" + ticketTypeName + ", price=" + price + "]";
   }
 
   public void add(TicketType ticketType) {

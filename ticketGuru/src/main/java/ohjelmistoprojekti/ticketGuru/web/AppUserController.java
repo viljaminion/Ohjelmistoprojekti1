@@ -63,7 +63,7 @@ public class AppUserController {
         
         if (existingAppUser != null) {
             existingAppUser.setUsername(updatedAppUser.getUsername());
-            existingAppUser.setPasswordHash(updatedAppUser.getPasswordHash());
+            existingAppUser.setPasswordhash(updatedAppUser.getPasswordhash());
             existingAppUser.setRole(updatedAppUser.getRole());
             existingAppUser.setFirstname(updatedAppUser.getFirstname());
             existingAppUser.setSurname(updatedAppUser.getSurname());

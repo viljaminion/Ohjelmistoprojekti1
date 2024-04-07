@@ -6,11 +6,13 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 //import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
@@ -30,23 +32,25 @@ public class Transaction {
 	private LocalDate transactiondate;
 
 	@NotNull(message = "Ticket sum cannot be null")
-	private Double ticketSum;
+	private Double ticketsum;
 
 	@ManyToOne
 	@JsonIgnore
+	@JoinColumn(name = "appuser_id")
 	private AppUser user;
 
-	@OneToMany
+	@JsonIgnore
+	@OneToMany(mappedBy = "transaction", cascade = CascadeType.ALL)
 	private List<Ticket> tickets;
 
 	public Transaction() {
 
 	}
 
-	public Transaction(Long id, LocalDate transactiondate, Double ticketSum, AppUser user, List<Ticket> tickets) {
+	public Transaction(Long id, LocalDate transactiondate, Double ticketsum, AppUser user, List<Ticket> tickets) {
 		super();
 		this.transactiondate = transactiondate;
-		this.ticketSum = ticketSum;
+		this.ticketsum = ticketsum;
 		this.user = user;
 		this.tickets = tickets;
 	}
@@ -75,12 +79,12 @@ public class Transaction {
 		this.transactiondate = transactiondate;
 	}
 
-	public Double getTicketSum() {
-		return ticketSum;
+	public Double getTicketsum() {
+		return ticketsum;
 	}
 
-	public void setTicketSum(Double ticketSum) {
-		this.ticketSum = ticketSum;
+	public void setTicketsum(Double ticketsum) {
+		this.ticketsum = ticketsum;
 	}
 
 	public AppUser getUser() {
@@ -93,8 +97,8 @@ public class Transaction {
 
 	@Override
 	public String toString() {
-		return "Transaction [transactionid=" + transactionid + ", transactiondate=" + transactiondate + ", ticketSum="
-				+ ticketSum + ", seller="
+		return "Transaction [transactionid=" + transactionid + ", transactiondate=" + transactiondate + ", ticketsum="
+				+ ticketsum + ", seller="
 				+ user + ", tickets=" + tickets + "]";
 	}
 }
