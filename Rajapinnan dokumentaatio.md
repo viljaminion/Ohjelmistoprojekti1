@@ -1,6 +1,6 @@
 # REST-dokumentaatio
 
-## EventRestControllerin endpointit (Postman):
+## Tapahtumien endpointit (Postman):
 
 **Kaikki tapahtumat JSON-muodossa: GET /events**
 -	URL: /events/
@@ -14,15 +14,14 @@ Success Responses
 -	Content: List of events
 
 ```
-[ 
+[
     {
         "eventname": "Ankkarock",
         "address": "Lintukatu 1",
         "showtime": "2024-03-11T18:11:00",
         "description": "upea tilaisuus",
-        "maxTickets": 111,
+        "maxtickets": 111,
         "duration": 11,
-        "ticketTypes": [],
         "id": 1
     },
     {
@@ -30,9 +29,8 @@ Success Responses
         "address": "Rokkikatu 1",
         "showtime": "2024-10-11T18:11:00",
         "description": "upea juttu",
-        "maxTickets": 567,
+        "maxtickets": 567,
         "duration": 123,
-        "ticketTypes": [],
         "id": 2
     }
 ]
@@ -51,14 +49,13 @@ Success Responses
 
 ```
 {
-    "eventname": "Ruisrock",
-    "address": "Rokkikatu 1",
-    "showtime": "2024-10-11T18:11:00",
-    "description": "upea juttu",
-    "maxTickets": 567,
-    "duration": 123,
-    "ticketTypes": [],
-    "id": 4
+    "eventname": "Ankkarock",
+    "address": "Lintukatu 1",
+    "showtime": "2024-03-11T18:11:00",
+    "description": "upea tilaisuus",
+    "maxtickets": 111,
+    "duration": 11,
+    "id": 1
 }
 ```
 
@@ -75,14 +72,12 @@ Success Responses
 
 ```
 {
-    "eventname": "Ilosaarirock",
-    "address": "Rokkikatu 9",
-    "showtime": "2024-11-11T18:11:00",
-    "description": "upeampi juttu",
-    "maxTickets": 568,
-    "duration": 126,
-    "ticketTypes": null,
-    "id": 6
+    "eventname": "Sorsarock",
+    "address": "Lintukatu 6",
+    "showtime": "2024-03-11T18:12:00",
+    "description": "siisti tilaisuus",
+    "maxtickets": 200,
+    "duration": 120
 }
 ```
 
@@ -101,7 +96,7 @@ Success Responses
 Event with ID Optional[Event [eventId=6, eventname=Ilosaarirock, address=Rokkikatu 9, showtime=2024-11-11T18:11, description=upeampi juttu, maxTickets=568, duration=126]] has been deleted.
 ```
 
-## TicketTypeRestControllerin endpointit (Postman):
+## Lipputyyppien endpointit (Postman):
 
 **Kaikki lipputyypit JSON-muodossa: GET /tickettypes**
 
@@ -126,16 +121,6 @@ Success Responses
         "ticketTypeName": "lasten lippu",
         "price": 10.0,
         "id": 2
-    },
-    {
-        "ticketTypeName": "opiskelijalippu",
-        "price": 15.0,
-        "id": 3
-    },
-    {
-        "ticketTypeName": "eläkeläislippu",
-        "price": 15.0,
-        "id": 4
     }
 ]
 ```
@@ -174,8 +159,7 @@ Success Responses
 ```
 {
     "ticketTypeName": "aikuisten lippu",
-    "price": 20.0,
-    "id": 1
+    "price": 20.0
 }
 ```
 
@@ -194,7 +178,7 @@ Success Responses
 Ticket type with ID Optional[TicketType [ticketTypeId=4, ticketTypeName=eläkeläislippu, price=15.0]] has been deleted.
 ```
 
-## TransactionRestControllerin endpointit (Postman)
+## Ostotapahtuman endpointit (Postman)
 
 **Kaikki tiedot JSON-muodossa: GET /transactions**
 
@@ -212,31 +196,13 @@ Success Responses
 [
     {
         "transactiondate": "2024-03-08",
-        "ticketSum": 50.0,
-        "seller": null,
-        "ticket": null,
+        "ticketsum": 50.0,
         "id": 1
     },
     {
-        "transactiondate": "2024-02-21",
-        "ticketSum": 45.0,
-        "seller": null,
-        "ticket": null,
+        "transactiondate": "2024-03-07",
+        "ticketsum": 40.0,
         "id": 2
-    },
-    {
-        "transactiondate": "2023-11-16",
-        "ticketSum": 93.0,
-        "seller": null,
-        "ticket": null,
-        "id": 3
-    },
-    {
-        "transactiondate": "2023-10-06",
-        "ticketSum": 76.0,
-        "seller": null,
-        "ticket": null,
-        "id": 4
     }
 ]
 ```
@@ -257,8 +223,6 @@ Success Responses
 {
     "transactiondate": "2024-03-08",
     "ticketSum": 50.0,
-    "seller": null,
-    "ticket": null,
     "id": 1
 }
 ```
@@ -278,10 +242,7 @@ Success Responses
 ```
 {
     "transactiondate": "2024-03-03",
-    "ticketSum": 55.0,
-    "seller": null,
-    "ticket": null,
-    "id": 6
+    "ticketSum": 55.0
 }
 ```
 
@@ -301,104 +262,108 @@ Success Responses
 Transaction with ID Optional[Transaction [transactionid=6, transactiondate=2024-03-03, ticketSum=55.0, seller=null, ticket=null]] has been deleted.
 ```
 
-## SellerRestControllerin endpointit (Postman)
+## Käyttäjän endpointit (Postman)
 
-**Kaikki tiedot JSON-muodossa: GET /sellers**
--	URL: /sellers
+**Kaikki tiedot JSON-muodossa: GET /users**
+-	URL: /users
 -	Method: GET
 -	Auth required: YES
 -	Permission required: YES
 
 Success Responses
--	Condition: Admin can see all the sellers
+-	Condition: Admin can see all the users
 -	Code:  200 OK
--	Content: List of sellers
+-	Content: List of users
 
 ```
 [
     {
-        "sellerfirstname": "Marja",
-        "sellersurname": "Mäki",
-        "selleraddress": "Mäkikatu 7",
-        "sellerphone": "05098764",
-        "selleremail": "marja@maki.fi",
-        "transactions": [],
-        "id": 1
+        "username": "maija",
+        "passwordhash": "$2a$10$6KFw5bwNuXu1Mr80yXcglOCEI9cmSlQlSRJK.D6.XvKbaos5LC7By",
+        "role": "USER",
+        "firstname": "Maija",
+        "surname": "Meikäläinen",
+        "address": "Postiosoite 1A",
+        "phone": "0441234567",
+        "email": "maijameikalainen@gmail.com"
     },
     {
-        "sellerfirstname": "Heikki",
-        "sellersurname": "Mäki",
-        "selleraddress": "Mäkikatu 8",
-        "sellerphone": "05098799",
-        "selleremail": "heikki@maki.fi",
-        "transactions": [],
-        "id": 2
+        "username": "mikko",
+        "passwordhash": "$2a$10$/U9C/cQ7sudkeFkJS7OUwOfbIoWEzQPLeMd7cI8RgSfxChyKkNeVu",
+        "role": "ADMIN",
+        "firstname": "Mikko",
+        "surname": "Meikäläinen",
+        "address": "Postiosoite 1A",
+        "phone": "0447654321",
+        "email": "mikkomeikalainen@gmail.com"
     }
 ]
 ```
 
-**Tietyn myyjän tiedot ID:n avulla: GET /seller/{id}**
--	URL:/seller/{id}
+**Tietyn käyttäjän tiedot ID:n avulla: GET /user/{id}**
+-	URL:/user/{id}
 -	Method: GET
 -	Auth required: YES
 -	Permission required: YES
 
 Success Responses
--	Condition: Admin can see seller by id number
+-	Condition: Admin can see user by id number
 -	Code:  200 OK
--	Content: Shows a seller by id number 
+-	Content: Shows a user by id number 
 
 ```
 {
-    "sellerfirstname": "Heikki",
-    "sellersurname": "Mäki",
-    "selleraddress": "Mäkikatu 8",
-    "sellerphone": "05098799",
-    "selleremail": "heikki@maki.fi",
-    "transactions": [],
-    "id": 2
+    "username": "maija",
+    "passwordhash": "$2a$10$6KFw5bwNuXu1Mr80yXcglOCEI9cmSlQlSRJK.D6.XvKbaos5LC7By",
+    "role": "USER",
+    "firstname": "Maija",
+    "surname": "Meikäläinen",
+    "address": "Postiosoite 1A",
+    "phone": "0441234567",
+    "email": "maijameikalainen@gmail.com"
 }
 ```
 
-**Myyjän tietojen lisääminen Postmanilla: POST /sellers**
--	URL:/sellers
+**Käyttäjän tietojen lisääminen Postmanilla: POST /users**
+-	URL:/users
 -	Method: POST
 -	Auth required: YES
 -	Permission required: YES
 
 Success Responses
--	Condition: Admin can add a new seller
+-	Condition: Admin can add a new user
 -	Code:  200 OK
--	Content: Adds a new seller 
+-	Content: Adds a new user 
 
 ```
 {
-    "sellerfirstname": "Marja",
-    "sellersurname": "Mäki",
-    "selleraddress": "Mäkikatu 7",
-    "sellerphone": "05098764",
-    "selleremail": "marja@maki.fi",
-    "transactions": [],
-    "id": 1
+    "username": "maija",
+    "passwordhash": "$2a$10$6KFw5bwNuXu1Mr80yXcglOCEI9cmSlQlSRJK.D6.XvKbaos5LC7By",
+    "role": "USER",
+    "firstname": "Maija",
+    "surname": "Meikäläinen",
+    "address": "Postiosoite 1A",
+    "phone": "0441234567",
+    "email": "maijameikalainen@gmail.com"
 }
 ```
 
-**Myyjän poisto Postmanilla: DELETE /seller/{id}**
--	URL:/seller/{id}
+**Myyjän poisto Postmanilla: DELETE /user/{id}**
+-	URL:/user/{id}
 -	Method: DELETE
 -	Auth required: YES
 -	Permission required: YES
 
 Success Responses
--	Condition: Admin can delete a seller by id number
+-	Condition: Admin can delete a user by id number
 -	Code:  200 OK
--	Content: Deletes a seller by id number 
+-	Content: Deletes a user by id number 
 
 ```
-Seller with ID Optional[Seller [sellerid=2, sellerfirstname=Heikki, sellersurname=Mäki, selleraddress=Mäkikatu 8, sellerphone=05098799, selleremail=heikki@maki.fi, transactions=[]]] has been deleted.
+User with ID Optional[User [id=3, username=maiju, passwordhash=$2a$10$6KFw5bwNuXu1Mr80yXcglOCEI9cmSlQlSRJK.D6.XvKbaos5LC7By, role=USER, firstname=Maija, surname=Meikäläinen, useraddress=Postiosoite 1A, userphone=0441234567, useremail=maijameikalainen@gmail.com, transactions=[]]] has been deleted.
 ```
 
-## TicketRestControllerin endpointit (Postman)
+## Lippujen endpointit (Postman)
 
 **Kaikki tiedot JSON-muodossa: <span style="color:green">GET</span> /tickets**
 -	URL: /tickets
@@ -415,9 +380,19 @@ Success Responses
 [
     {
         "ticketnumber": "123",
-        "transaction": null,
-        "ticketType": null,
         "id": 1
+    },
+    {
+        "ticketnumber": "54321",
+        "id": 2
+    },
+    {
+        "ticketnumber": "3333",
+        "id": 3
+    },
+    {
+        "ticketnumber": "44",
+        "id": 4
     }
 ]
 ```
@@ -436,8 +411,6 @@ Success Responses
 ```
 {
     "ticketnumber": "123",
-    "transaction": null,
-    "ticketType": null,
     "id": 1
 }
 ```
@@ -455,9 +428,7 @@ Success Responses
 
 ```
 {
-    "ticketnumber": "123",
-    "transaction": null,
-    "ticketType": null
+    "ticketnumber": "123"
 }
 ```
 
@@ -473,6 +444,6 @@ Success Responses
 -	Content: Deletes a ticket by id number 
 
 ```
-Ticket with ID Optional[Ticket [ticketid=1,  ticketnumber=123, transaction=null, ticketType=null]] has been deleted.
+Ticket with ID Optional[Seller [ticketid=3,  ticketnumber=3333, transaction=null, ticketType=null]] has been deleted.
 ```
 
