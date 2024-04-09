@@ -34,8 +34,8 @@ public class TransactionRestController {
     // Maksutapahtuman tietojen haku ID:llä
 
     @RequestMapping(value = "/transaction/{id}", method = RequestMethod.GET)
-    public Optional<Transaction> findTransactionRest(@PathVariable("id") Long transactionid) {
-        return transactionRepository.findById(transactionid);
+    public Optional<Transaction> findTransactionRest(@PathVariable("id") Long transaction_id) {
+        return transactionRepository.findById(transaction_id);
     }
 
     // Maksutapahtuman lisääminen Postmanissa
@@ -51,10 +51,10 @@ public class TransactionRestController {
 
     @RequestMapping(value = "/transaction/{id}", method = RequestMethod.DELETE)
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<String> deleteTransaction(@PathVariable("id") Long transactionid) {
-        Optional<Transaction> transaction = transactionRepository.findById(transactionid);
+    public ResponseEntity<String> deleteTransaction(@PathVariable("id") Long transaction_id) {
+        Optional<Transaction> transaction = transactionRepository.findById(transaction_id);
         if (transaction.isPresent()) {
-            transactionRepository.deleteById(transactionid);
+            transactionRepository.deleteById(transaction_id);
 
             return new ResponseEntity<>("Transaction with ID " + transaction + " has been deleted.", HttpStatus.OK);
         } else {

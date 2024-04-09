@@ -46,11 +46,11 @@ PRIMARY KEY (id)
 );
 
 CREATE TABLE transaction (
-transactionid BIGINT NOT NULL AUTO_INCREMENT,
+transaction_id BIGINT NOT NULL AUTO_INCREMENT,
 transactiondate DATE NOT NULL,
 ticketsum DOUBLE NOT NULL,
 appuser_id BIGINT,
-PRIMARY KEY (transactionid),
+PRIMARY KEY (transaction_id),
 FOREIGN KEY (appuser_id) REFERENCES appuser(id)
 );
 
@@ -61,7 +61,7 @@ transaction_id BIGINT,
 tickettype_id BIGINT,
 event_id BIGINT,
 PRIMARY KEY (ticketid),
-FOREIGN KEY (transaction_id) REFERENCES transaction(transactionid),
+FOREIGN KEY (transaction_id) REFERENCES transaction(transaction_id),
 FOREIGN KEY (tickettype_id) REFERENCES tickettype(tickettype_id)
 );
 

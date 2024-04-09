@@ -41,6 +41,7 @@ public class TicketController {
     public String addTicket(Model model) {
         model.addAttribute("ticket", new Ticket());
         model.addAttribute("ticketTypes", ticketTypeRepository.findAll());
+        model.addAttribute("transactions", transactionRepository.findAll());
         return "addticket";
     }
 

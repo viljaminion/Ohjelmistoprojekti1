@@ -57,9 +57,9 @@ public class TransactionController {
     // muokkaus
 
     @GetMapping("/transactions/edit/{id}")
-    public String editTransaction(@PathVariable("id") Long transactionid, Model model) {
+    public String editTransaction(@PathVariable("id") Long transaction_id, Model model) {
     	
-        Transaction existingTransaction = transactionRepository.findById(transactionid).orElse(null);
+        Transaction existingTransaction = transactionRepository.findById(transaction_id).orElse(null);
         
         if (existingTransaction != null) {
             model.addAttribute("transaction", existingTransaction);
@@ -74,8 +74,8 @@ public class TransactionController {
     
     // muokkauksen tallennus
     @PostMapping("/transaction/edit/{id}")
-    public String updateTransaction(@PathVariable("id") Long transactionid, @ModelAttribute Transaction updatedTransaction) {
-        Transaction existingTransaction = transactionRepository.findById(transactionid).orElse(null);
+    public String updateTransaction(@PathVariable("id") Long transaction_id, @ModelAttribute Transaction updatedTransaction) {
+        Transaction existingTransaction = transactionRepository.findById(transaction_id).orElse(null);
         
         if (existingTransaction != null) {
             existingTransaction.setTransactiondate(updatedTransaction.getTransactiondate());

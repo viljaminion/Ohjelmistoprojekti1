@@ -27,12 +27,12 @@ public class Ticket {
 
     @ManyToOne
     @JsonIgnore
-    @JoinColumn(name = "transactionid")
+    @JoinColumn(name = "transaction_id")
     private Transaction transaction;
 
     @ManyToOne
     @JsonIgnore
-    @JoinColumn(name = "tickettypeid")
+    @JoinColumn(name = "tickettype_id")
     private TicketType ticketType;
     
     @ManyToOne

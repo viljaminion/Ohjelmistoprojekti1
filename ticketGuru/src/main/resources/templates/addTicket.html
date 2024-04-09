@@ -21,8 +21,8 @@
         <div>
             <label for="transactionList">Transaction ID:</label>
             <select id="transactionList" th:field="*{transaction}" class="form-control">
-                <option th:each="transaction: ${transactions}" th:value="${transaction.transactionid}"
-                    th:text="${transaction.transactionid}"></option>
+                <option th:each="transaction: ${transactions}" th:value="${transaction.transaction_id}"
+                    th:text="${transaction.transaction_id}"></option>
             </select>
         </div>
 

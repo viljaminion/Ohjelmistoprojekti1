@@ -21,7 +21,7 @@ public class TicketType {
   private Long tickettype_id;
 
   @NotBlank(message = "Must include a ticket type")
-  private String ticketTypeName;
+  private String tickettypename;
 
   @NotNull(message = "Price cannot be null")
   private double price;
@@ -43,8 +43,8 @@ public class TicketType {
     this.event = event;
   }
 
-  public TicketType(String ticketTypeName, double price) {
-    this.ticketTypeName = ticketTypeName;
+  public TicketType(String tickettypename, double price) {
+    this.tickettypename = tickettypename;
     this.price = price;
   }
 
@@ -56,12 +56,12 @@ public class TicketType {
     this.tickettype_id = tickettype_id;
   }
 
-  public String getTicketTypeName() {
-    return ticketTypeName;
+  public String getTickettypename() {
+    return tickettypename;
   }
 
-  public void setTicketTypeName(String ticketTypeName) {
-    this.ticketTypeName = ticketTypeName;
+  public void setTickettypename(String tickettypename) {
+    this.tickettypename = tickettypename;
   }
 
   public double getPrice() {
@@ -74,7 +74,7 @@ public class TicketType {
 
   @Override
   public String toString() {
-    return "TicketType [tickettype_id=" + tickettype_id + ", ticketTypeName=" + ticketTypeName + ", price=" + price + "]";
+    return "TicketType [tickettype_id=" + tickettype_id + ", tickettypename=" + tickettypename + ", price=" + price + "]";
   }
 
   public void add(TicketType ticketType) {

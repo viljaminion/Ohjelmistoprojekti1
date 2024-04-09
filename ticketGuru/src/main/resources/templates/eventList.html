@@ -61,7 +61,7 @@
                         <th>Quantity</th>
                     </tr>
                     <tr th:each="ticketType : ${event.ticketTypes}">
-                        <td th:text="${ticketType.ticketTypeName}"></td>
+                        <td th:text="${ticketType.tickettypename}"></td>
                         <td th:text="${ticketType.price}"></td>
                         <td>
                             <input type="number" name="ticketQuantities" min="0" value="0" /> <!-- Changed the name attribute to ticketQuantities -->

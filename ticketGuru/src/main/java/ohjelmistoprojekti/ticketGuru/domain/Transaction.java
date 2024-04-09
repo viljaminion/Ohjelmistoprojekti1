@@ -7,7 +7,6 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
-//import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,7 +24,7 @@ public class Transaction {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "transaction_seq")
 	@SequenceGenerator(name = "transaction_seq", sequenceName = "transaction_seq", allocationSize = 1)
-	private Long transactionid;
+	private Long transaction_id;
 
 	@Past
 	@NotNull(message = "Transaction must have a date")
@@ -47,7 +46,7 @@ public class Transaction {
 
 	}
 
-	public Transaction(Long id, LocalDate transactiondate, Double ticketsum, AppUser user, List<Ticket> tickets) {
+	public Transaction(LocalDate transactiondate, Double ticketsum, AppUser user, List<Ticket> tickets) {
 		super();
 		this.transactiondate = transactiondate;
 		this.ticketsum = ticketsum;
@@ -64,11 +63,11 @@ public class Transaction {
 	}
 
 	public Long getId() {
-		return transactionid;
+		return transaction_id;
 	}
 
-	public void setId(Long transactionid) {
-		this.transactionid = transactionid;
+	public void setId(Long transaction_id) {
+		this.transaction_id = transaction_id;
 	}
 
 	public LocalDate getTransactiondate() {
@@ -97,7 +96,7 @@ public class Transaction {
 
 	@Override
 	public String toString() {
-		return "Transaction [transactionid=" + transactionid + ", transactiondate=" + transactiondate + ", ticketsum="
+		return "Transaction [transaction_id=" + transaction_id + ", transactiondate=" + transactiondate + ", ticketsum="
 				+ ticketsum + ", seller="
 				+ user + ", tickets=" + tickets + "]";
 	}
