@@ -27,7 +27,6 @@ public class TicketType {
   private double price;
 
   @ManyToOne
-  @JsonIgnore
   @JoinColumn(name = "event_id")
   private Event event;
 

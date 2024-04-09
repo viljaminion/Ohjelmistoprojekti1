@@ -31,7 +31,6 @@ public class Ticket {
     private Transaction transaction;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "tickettype_id")
     private TicketType ticketType;
     

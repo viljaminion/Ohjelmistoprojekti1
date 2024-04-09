@@ -38,7 +38,6 @@ public class Transaction {
 	@JoinColumn(name = "appuser_id")
 	private AppUser user;
 
-	@JsonIgnore
 	@OneToMany(mappedBy = "transaction", cascade = CascadeType.ALL)
 	private List<Ticket> tickets;
 
