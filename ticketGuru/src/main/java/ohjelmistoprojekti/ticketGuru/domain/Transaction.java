@@ -38,7 +38,7 @@ public class Transaction {
 	@JoinColumn(name = "appuser_id")
 	private AppUser user;
 
-	@OneToMany(mappedBy = "transaction", cascade = CascadeType.ALL)
+	@OneToMany
 	private List<Ticket> tickets;
 
 	public Transaction() {

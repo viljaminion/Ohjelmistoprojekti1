@@ -226,13 +226,46 @@ Success Responses
 [
     {
         "transactiondate": "2024-03-08",
-        "ticketsum": 50.0,
+        "ticketsum": 99.0,
+        "tickets": [
+            {
+                "ticketnumber": "907",
+                "ticketType": {
+                    "tickettypename": "aikuisten lippu",
+                    "price": 20.0,
+                    "event": {
+                        "eventname": "Ankkarock",
+                        "address": "Lintukatu 1",
+                        "showtime": "2024-03-11T18:11:00",
+                        "description": "upea tilaisuus",
+                        "maxtickets": 111,
+                        "duration": 11,
+                        "id": 1
+                    },
+                    "id": 1
+                },
+                "id": 1
+            },
+            {
+                "ticketnumber": "587",
+                "ticketType": {
+                    "tickettypename": "lasten lippu",
+                    "price": 10.0,
+                    "event": {
+                        "eventname": "Ankkarock",
+                        "address": "Lintukatu 1",
+                        "showtime": "2024-03-11T18:11:00",
+                        "description": "upea tilaisuus",
+                        "maxtickets": 111,
+                        "duration": 11,
+                        "id": 1
+                    },
+                    "id": 2
+                },
+                "id": 2
+            }
+        ],
         "id": 1
-    },
-    {
-        "transactiondate": "2024-03-07",
-        "ticketsum": 40.0,
-        "id": 2
     }
 ]
 ```
@@ -252,7 +285,45 @@ Success Responses
 ```
 {
     "transactiondate": "2024-03-08",
-    "ticketSum": 50.0,
+    "ticketsum": 99.0,
+    "tickets": [
+        {
+            "ticketnumber": "907",
+            "ticketType": {
+                "tickettypename": "aikuisten lippu",
+                "price": 20.0,
+                "event": {
+                    "eventname": "Ankkarock",
+                    "address": "Lintukatu 1",
+                    "showtime": "2024-03-11T18:11:00",
+                    "description": "upea tilaisuus",
+                    "maxtickets": 111,
+                    "duration": 11,
+                    "id": 1
+                },
+                "id": 1
+            },
+            "id": 1
+        },
+        {
+            "ticketnumber": "587",
+            "ticketType": {
+                "tickettypename": "lasten lippu",
+                "price": 10.0,
+                "event": {
+                    "eventname": "Ankkarock",
+                    "address": "Lintukatu 1",
+                    "showtime": "2024-03-11T18:11:00",
+                    "description": "upea tilaisuus",
+                    "maxtickets": 111,
+                    "duration": 11,
+                    "id": 1
+                },
+                "id": 2
+            },
+            "id": 2
+        }
+    ],
     "id": 1
 }
 ```
@@ -271,9 +342,14 @@ Success Responses
 
 ```
 {
-    "transactiondate": "2024-03-03",
-    "ticketSum": 55.0
+  "transactiondate": "2024-03-08",
+  "ticketsum": 99.00,
+  "tickets": [
+    { "id": 1 },
+    { "id": 2 }
+  ]
 }
+
 ```
 
 **Ostotapahtuman poisto Postmanilla: DELETE /transaction/{id}**
