@@ -92,7 +92,7 @@ Tällä sivulla näkyy maksutapahtumien tiedot.
 > Kenttä | Tyyppi | Kuvaus
 > ------ | ------ | ------
 > lipputyyppi_id | PK* AN | Lipputyypin idnumero
-> tapahtuma_id| FK* N | ITapahtumapaikan idnumero, viittaus [Tapahtuma](#Tapahtuma)-tauluun
+> tapahtuma_id| FK* N | Tapahtumapaikan idnumero, viittaus [Tapahtuma](#Tapahtuma)-tauluun
 > lipputyyppi | *C/30 | Selitys lipputyypistä, esimerkiksi aikuinen/lapsi/opiskelija tms.
 > kuvaus | *C/100 | Tarkempi kuvaus lipputyypistä, esimerkiksi esteettömyys.
 > hinta | *DOUBLE | Lipun hinta.
