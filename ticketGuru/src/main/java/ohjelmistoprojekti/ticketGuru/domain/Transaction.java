@@ -38,7 +38,7 @@ public class Transaction {
 	@JoinColumn(name = "appuser_id")
 	private AppUser user;
 
-	@OneToMany
+	@OneToMany(mappedBy = "transaction")
 	private List<Ticket> tickets;
 
 	public Transaction() {
