@@ -33,7 +33,7 @@ FOREIGN KEY (event_id) REFERENCES event(event_id)
 );
 
 CREATE TABLE appuser (
-id BIGINT NOT NULL AUTO_INCREMENT,
+appuser_id BIGINT NOT NULL AUTO_INCREMENT,
 username VARCHAR(50) NOT NULL,
 passwordhash VARCHAR(150) NOT NULL,
 role VARCHAR(50) NOT NULL,
@@ -42,7 +42,7 @@ surname VARCHAR(100) NOT NULL,
 address VARCHAR(100) NOT NULL,
 phone VARCHAR(30) NOT NULL,
 email VARCHAR(50) NOT NULL,
-PRIMARY KEY (id)
+PRIMARY KEY (appuser_id)
 );
 
 CREATE TABLE transaction (
@@ -51,16 +51,16 @@ transactiondate DATE NOT NULL,
 ticketsum DOUBLE NOT NULL,
 appuser_id BIGINT,
 PRIMARY KEY (transaction_id),
-FOREIGN KEY (appuser_id) REFERENCES appuser(id)
+FOREIGN KEY (appuser_id) REFERENCES appuser(appuser_id)
 );
 
 CREATE TABLE ticket (
-ticketid BIGINT NOT NULL AUTO_INCREMENT,
+ticket_id BIGINT NOT NULL AUTO_INCREMENT,
 ticketnumber VARCHAR(9999) NOT NULL,
 transaction_id BIGINT,
 tickettype_id BIGINT,
 event_id BIGINT,
-PRIMARY KEY (ticketid),
+PRIMARY KEY (ticket_id),
 FOREIGN KEY (transaction_id) REFERENCES transaction(transaction_id),
 FOREIGN KEY (tickettype_id) REFERENCES tickettype(tickettype_id)
 );

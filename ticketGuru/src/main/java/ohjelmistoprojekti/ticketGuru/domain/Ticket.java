@@ -18,7 +18,7 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ticket_seq")
 	@SequenceGenerator(name = "ticket_seq", sequenceName = "ticket_seq", allocationSize = 1)
-    private Long ticketid;
+    private Long ticket_id;
 
     @NotBlank(message = "Ticket number cannot be blank")
     @Size(min = 1, message = "Ticket number should not be less than 1")
@@ -68,11 +68,11 @@ public class Ticket {
     }
 
     public Long getId() {
-        return ticketid;
+        return ticket_id;
     }
 
     public void setId(Long id) {
-        this.ticketid = id;
+        this.ticket_id = id;
     }
 
     public String getTicketnumber() {
@@ -85,7 +85,7 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Seller [ticketid=" + ticketid + ",  ticketnumber=" + ticketnumber + ", transaction=" + transaction
+        return "Seller [ticketid=" + ticket_id + ",  ticketnumber=" + ticketnumber + ", transaction=" + transaction
                 + ", ticketType=" + ticketType + "]";
     }
 
