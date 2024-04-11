@@ -50,10 +50,8 @@ transaction_id BIGINT NOT NULL AUTO_INCREMENT,
 transactiondate DATE NOT NULL,
 ticketsum DOUBLE NOT NULL,
 appuser_id BIGINT,
-ticket_id BIGINT,
 PRIMARY KEY (transaction_id),
-FOREIGN KEY (appuser_id) REFERENCES appuser(appuser_id),
-FOREIGN KEY (ticket_id) REFERENCES ticket(ticket_id)
+FOREIGN KEY (appuser_id) REFERENCES appuser(appuser_id)
 );
 
 CREATE TABLE ticket (
