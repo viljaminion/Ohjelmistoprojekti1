@@ -55,14 +55,13 @@ FOREIGN KEY (appuser_id) REFERENCES appuser(appuser_id)
 );
 
 CREATE TABLE ticket (
-ticket_id BIGINT NOT NULL AUTO_INCREMENT,
-ticketnumber VARCHAR(9999) NOT NULL,
-transaction_id BIGINT,
-tickettype_id BIGINT,
-event_id BIGINT,
-PRIMARY KEY (ticket_id),
-FOREIGN KEY (transaction_id) REFERENCES transaction(transaction_id),
-FOREIGN KEY (tickettype_id) REFERENCES tickettype(tickettype_id)
+    ticket_id BIGINT NOT NULL AUTO_INCREMENT,
+    ticketnumber VARCHAR(255) NOT NULL,
+    transaction_id BIGINT,
+    tickettype_id BIGINT,
+    PRIMARY KEY (ticket_id),
+    FOREIGN KEY (tickettype_id) REFERENCES tickettype(tickettype_id),
+    FOREIGN KEY (transaction_id) REFERENCES transaction(transaction_id)
 );
 
 CREATE SEQUENCE event_seq START WITH 3 INCREMENT BY 1;
@@ -85,23 +84,18 @@ INSERT INTO tickettype (tickettypename, price, event_id) VALUES
 ('opiskelijalippu', 15.0, 2),
 ('eläkeläislippu', 15.0, 1);
 
-INSERT INTO ticket (ticketnumber, transaction_id, tickettype_id) VALUES
-('123', NULL, NULL),
-('54321', NULL, NULL),
-('3333', NULL, NULL),
-('44', NULL, NULL);
-
 INSERT INTO transaction (transactiondate, ticketsum, appuser_id) VALUES
-('2024-03-08', 50.0, NULL),
-('2024-03-07', 40.0, NULL),
-('2023-12-12', 99.9, NULL),
-('2022-06-06', 66.6, NULL);
+('2024-03-08', 50.0, NULL);
 
 INSERT INTO appuser (username, passwordHash, role, firstname, surname, address, phone, email) VALUES
 ('maija', '$2a$10$6KFw5bwNuXu1Mr80yXcglOCEI9cmSlQlSRJK.D6.XvKbaos5LC7By', 'USER', 'Maija', 'Meikäläinen', 
 'Postiosoite 1A', '0441234567', 'maijameikalainen@gmail.com'), -- salasana user
 ('mikko', '$2a$10$/U9C/cQ7sudkeFkJS7OUwOfbIoWEzQPLeMd7cI8RgSfxChyKkNeVu', 'ADMIN', 'Mikko', 'Meikäläinen', 
 'Postiosoite 1A', '0447654321', 'mikkomeikalainen@gmail.com'); -- salasana admin
+
+INSERT INTO ticket (ticketnumber, transaction_id, tickettype_id) VALUES
+('123', 1, 1),
+('54321', 1, 2);
 
 SELECT * FROM event;
 SELECT * FROM tickettype;

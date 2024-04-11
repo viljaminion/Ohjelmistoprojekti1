@@ -1,6 +1,7 @@
 package ohjelmistoprojekti.ticketGuru.domain;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 // import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class Transaction {
 	@JoinColumn(name = "appuser_id")
 	private AppUser user;
 
-	@OneToMany(mappedBy = "transaction")
+	@OneToMany(mappedBy = "transaction", cascade = CascadeType.ALL)
 	private List<Ticket> tickets;
 
 	public Transaction() {

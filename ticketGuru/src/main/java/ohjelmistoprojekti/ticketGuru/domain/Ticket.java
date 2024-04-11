@@ -2,6 +2,7 @@ package ohjelmistoprojekti.ticketGuru.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,7 +11,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 
 @Entity
 public class Ticket {
@@ -21,8 +21,6 @@ public class Ticket {
     private Long ticket_id;
 
     @NotBlank(message = "Ticket number cannot be blank")
-    @Size(min = 1, message = "Ticket number should not be less than 1")
-    @Size(max = 999999, message = "Ticket number should not be greater than 999999")
     private String ticketnumber;
 
     @ManyToOne
@@ -33,13 +31,6 @@ public class Ticket {
     @ManyToOne
     @JoinColumn(name = "tickettype_id")
     private TicketType ticketType;
-    
-    @ManyToOne
-    @JsonIgnore
-    @JoinColumn(name = "eventid")
-    private Event event;
-
-    // tietokantakaavion mukaan lipulla ei yhteyttä tapahtumiin
 
     public TicketType getTicketType() {
         return ticketType;
