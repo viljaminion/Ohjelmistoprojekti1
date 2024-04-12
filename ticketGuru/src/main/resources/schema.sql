@@ -60,15 +60,15 @@ CREATE TABLE ticket (
     FOREIGN KEY (transaction_id) REFERENCES transaction(transaction_id)
 );
 
-CREATE SEQUENCE event_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE event_seq START WITH 3 INCREMENT BY 1;
 
-CREATE SEQUENCE tickettype_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE tickettype_seq START WITH 5 INCREMENT BY 1;
 
-CREATE SEQUENCE ticket_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE ticket_seq START WITH 3 INCREMENT BY 1;
 
-CREATE SEQUENCE transaction_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE transaction_seq START WITH 2 INCREMENT BY 1;
 
-CREATE SEQUENCE appuser_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE appuser_seq START WITH 3 INCREMENT BY 1;
 
 INSERT INTO event (eventname, address, showtime, description, maxtickets, duration) VALUES
 ('Ankkarock', 'Lintukatu 1', '2024-03-11 18:11:00', 'upea tilaisuus', 111, 11),
