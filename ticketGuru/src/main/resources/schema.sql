@@ -6,6 +6,12 @@ DROP TABLE IF EXISTS ticket;
 DROP TABLE IF EXISTS tickettype;
 DROP TABLE IF EXISTS transaction;
 
+DROP TABLE IF EXISTS appuser_seq;
+DROP TABLE IF EXISTS event_seq;
+DROP TABLE IF EXISTS ticket_seq;
+DROP TABLE IF EXISTS tickettype_seq;
+DROP TABLE IF EXISTS transaction_seq;
+
 SET FOREIGN_KEY_CHECKS=1;
 
 CREATE TABLE event (
