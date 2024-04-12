@@ -1,16 +1,12 @@
 SET FOREIGN_KEY_CHECKS=0;
+
 DROP TABLE IF EXISTS appuser;
 DROP TABLE IF EXISTS event;
 DROP TABLE IF EXISTS ticket;
 DROP TABLE IF EXISTS tickettype;
 DROP TABLE IF EXISTS transaction;
-SET FOREIGN_KEY_CHECKS=1;
 
-DROP SEQUENCE IF EXISTS appuser_seq;
-DROP SEQUENCE IF EXISTS event_seq;
-DROP SEQUENCE IF EXISTS ticket_seq;
-DROP SEQUENCE IF EXISTS tickettype_seq;
-DROP SEQUENCE IF EXISTS transaction_seq;
+SET FOREIGN_KEY_CHECKS=1;
 
 CREATE TABLE event (
 event_id BIGINT NOT NULL AUTO_INCREMENT,
@@ -63,16 +59,6 @@ CREATE TABLE ticket (
     FOREIGN KEY (tickettype_id) REFERENCES tickettype(tickettype_id),
     FOREIGN KEY (transaction_id) REFERENCES transaction(transaction_id)
 );
-
-CREATE SEQUENCE event_seq START WITH 3 INCREMENT BY 1;
-
-CREATE SEQUENCE tickettype_seq START WITH 5 INCREMENT BY 1;
-
-CREATE SEQUENCE ticket_seq START WITH 5 INCREMENT BY 1;
-
-CREATE SEQUENCE transaction_seq START WITH 5 INCREMENT BY 1;
-
-CREATE SEQUENCE appuser_seq START WITH 3 INCREMENT BY 1;
 
 INSERT INTO event (eventname, address, showtime, description, maxtickets, duration) VALUES
 ('Ankkarock', 'Lintukatu 1', '2024-03-11 18:11:00', 'upea tilaisuus', 111, 11),
