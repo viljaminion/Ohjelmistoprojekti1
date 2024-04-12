@@ -82,11 +82,3 @@ INSERT INTO appuser (username, passwordHash, role, firstname, surname, address, 
 INSERT INTO ticket (ticketnumber, transaction_id, tickettype_id) VALUES
 ('123', 1, 1),
 ('54321', 1, 2);
-
-SELECT * FROM event;
-SELECT * FROM tickettype;
-SELECT * FROM ticket;
-SELECT * FROM transaction;
-SELECT * FROM appuser;
-
-SHOW ENGINE INNODB STATUS;
