@@ -58,7 +58,7 @@ FOREIGN KEY (appuser_id) REFERENCES appuser(appuser_id)
 
 CREATE TABLE ticket (
     ticket_id BIGINT NOT NULL AUTO_INCREMENT,
-    ticketnumber VARCHAR(255) NOT NULL,
+    used DATETIME,
     transaction_id BIGINT,
     tickettype_id BIGINT,
     PRIMARY KEY (ticket_id),
@@ -95,6 +95,6 @@ INSERT INTO appuser (username, passwordHash, role, firstname, surname, address, 
 ('mikko', '$2a$10$/U9C/cQ7sudkeFkJS7OUwOfbIoWEzQPLeMd7cI8RgSfxChyKkNeVu', 'ADMIN', 'Mikko', 'Meikäläinen', 
 'Postiosoite 1A', '0447654321', 'mikkomeikalainen@gmail.com'); -- salasana admin
 
-INSERT INTO ticket (ticketnumber, transaction_id, tickettype_id) VALUES
-('123', 1, 1),
-('54321', 1, 2);
+INSERT INTO ticket (used, transaction_id, tickettype_id) VALUES
+(NULL, 1, 1),
+(NULL, 1, 2);
