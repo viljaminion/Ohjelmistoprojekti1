@@ -1,13 +1,17 @@
 package ohjelmistoprojekti.ticketGuru.domain;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -26,8 +30,11 @@ public class TicketType {
   @NotNull(message = "Price cannot be null")
   private double price;
 
-  @ManyToOne
+  @OneToMany(mappedBy = "ticketType", cascade = CascadeType.ALL)
   @JsonIgnore
+  private List<Ticket> tickets;
+
+  @ManyToOne
   @JoinColumn(name = "event_id")
   private Event event;
 

@@ -36,7 +36,7 @@ Tällä sivulla näkyy maksutapahtumien tiedot.
 
 ## Tietokanta
 
-![Alt text](tietokanta5.png)
+![Alt text](tietokanta7.png)
 
 > ### _Selitykset_
 > _Tässä on selitykset tietokannan taulujen tyypeille._
@@ -73,9 +73,9 @@ Tällä sivulla näkyy maksutapahtumien tiedot.
 > ------ | ------ | ------
 > ostotapahtuma_id | PK* AN | Ostotapahtuman idnumero
 > pvm | *DATE |  Ostotapahtuman päivämäärä
-> summa | * DOUBLE | Ostotapahtuman lippujen yhteishinta
+> summa | * DOUBLE | Ostotapahtuman lippujen yhteissumma
 > lippu_id| FK* N | Ostetun lipun idnumero, viittaus [Lippu](#Lippu)-tauluun
-> myyja_id| FK* N | Ostotapahtuman tehneen myyjän idnumero, viittaus [Myyjä](#Myyjä)-tauluun
+> myyja_id| FK* N | Ostotapahtuman tehneen käyttäjän idnumero, viittaus [Käyttäjä](#Käyttäjä)-tauluun
 
 > ### _Lippu_
 > _Lippu-taulu sisältää ostetun lipun tiedot._
@@ -84,7 +84,7 @@ Tällä sivulla näkyy maksutapahtumien tiedot.
 > ------ | ------ | ------
 > lippu_id | PK* AN | Lipun idnumero
 > lipputyyppi_id| FK* N | Ostetun lipun lipputyypin idnumero, viittaus [Lipputyyppi](#Lipputyyppi)-tauluun
-> tapahtuma_id| FK* N | ITapahtumapaikan idnumero, viittaus [Tapahtuma](#Tapahtuma)-tauluun
+
 
 > ### _Lipputyyppi_
 > _Lippu-taulu sisältää ostetun lipun tiedot._
@@ -92,21 +92,25 @@ Tällä sivulla näkyy maksutapahtumien tiedot.
 > Kenttä | Tyyppi | Kuvaus
 > ------ | ------ | ------
 > lipputyyppi_id | PK* AN | Lipputyypin idnumero
+> tapahtuma_id| FK* N | Tapahtumapaikan idnumero, viittaus [Tapahtuma](#Tapahtuma)-tauluun
 > lipputyyppi | *C/30 | Selitys lipputyypistä, esimerkiksi aikuinen/lapsi/opiskelija tms.
 > kuvaus | *C/100 | Tarkempi kuvaus lipputyypistä, esimerkiksi esteettömyys.
 > hinta | *DOUBLE | Lipun hinta.
 
-> ### _Myyjä_
-> _Myyjä-taulu sisältää myyjän yhteystiedot. Myyjällä voi olla vain yksi myyja_id käytössä._
+> ### _Käyttäjä_
+> _Käyttäjä-taulu sisältää Käyttäjä tiedot. Käyttäjällä voi olla vain yksi Käyttäjä_id käytössä._
 >
 > Kenttä | Tyyppi | Kuvaus
 > ------ | ------ | ------
-> myyja_id | PK* AN | Myyjän idnumero
-> m_etunimi | *C/50 |  Myyjän etunimi
-> m_sukunimi | *C/50 |  Myyjän sukunimi
-> m_katuosoite | *C/100 |  Katuosoite missä myyjä asuu
-> m_puhelinnro | *C/20 | Myyjän puhelinnumero
-> m_email | C/100 | Myyjän sähköpostiosoite
+> Käyttäjä_id | PK* AN | Käyttäjän idnumero
+> Käyttäjänimi | *C/50 | Käyttäjänimi, jota käytetään sovelluksessa
+> Salasana | *C/50 | Salasana, jolla kirjaudutaan sovellukseen
+> Rooli | *C/50 | Rooli, jolla käyttäjä pääsee tarvitsemiinsa sovelluksen osiin.
+> etunimi | *C/50 |  Käyttäjän etunimi
+> sukunimi | *C/50 |  Käyttäjän sukunimi
+> katuosoite | *C/100 |  Katuosoite missä käyttäjä asuu
+> puhelinnro | *C/20 | Käyttäjän puhelinnumero
+> email | C/100 | Käyttäjän sähköpostiosoite
 
 ## Tekninen kuvaus
 

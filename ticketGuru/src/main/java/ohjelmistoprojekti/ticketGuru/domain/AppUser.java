@@ -22,7 +22,7 @@ public class AppUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "appuser_seq")
 	@SequenceGenerator(name = "appuser_seq", sequenceName = "appuser_seq", allocationSize = 1)
-	private Long id;
+	private Long appuser_id;
 	
 	@NotBlank(message = "Username cannot be blank")
 	private String username;
@@ -76,6 +76,14 @@ public class AppUser {
 		this.phone = phone;
 		this.email = email;
 	}
+
+	public Long getAppuser_id() {
+		return appuser_id;
+	}
+
+	public void setAppuser_id(Long appuser_id) {
+		this.appuser_id = appuser_id;
+	}	
 
 	public String getUsername() {
 		return username;
@@ -145,14 +153,16 @@ public class AppUser {
 	public String toString() {
 		if (this.transactions != null)
 
-			return "User [id=" + id + ", username=" + username + ", passwordhash=" + passwordhash + ", role=" + role + ", firstname=" + firstname + ", surname="
+			return "User [id=" + appuser_id + ", username=" + username + ", passwordhash=" + passwordhash + ", role=" + role + ", firstname=" + firstname + ", surname="
 					+ surname + ", useraddress=" + address + ", userphone=" + phone
 					+ ", useremail=" + email + ", transactions=" + transactions
 					+ "]";
 
 		else
-			return "User [id=" + id + ", username=" + username + ", passwordhash=" + passwordhash + ", role=" + role + ", firstname=" + firstname + ", usersurname="
+			return "User [id=" + appuser_id + ", username=" + username + ", passwordhash=" + passwordhash + ", role=" + role + ", firstname=" + firstname + ", usersurname="
 					+ surname + ", address=" + address + ", phone=" + phone
 					+ ", email=" + email + ", transactions= " + transactions + "]";
 	}
+
+
 }

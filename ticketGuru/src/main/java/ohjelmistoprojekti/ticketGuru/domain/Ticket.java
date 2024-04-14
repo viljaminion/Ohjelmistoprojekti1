@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,7 +19,7 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ticket_seq")
 	@SequenceGenerator(name = "ticket_seq", sequenceName = "ticket_seq", allocationSize = 1)
-    private Long ticketid;
+    private Long ticket_id;
 
     private LocalDateTime used;
 
@@ -28,7 +29,6 @@ public class Ticket {
     private Transaction transaction;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "tickettype_id")
     private TicketType ticketType;
 
@@ -61,11 +61,11 @@ public class Ticket {
     }
 
     public Long getId() {
-        return ticketid;
+        return ticket_id;
     }
 
     public void setId(Long id) {
-        this.ticketid = id;
+        this.ticket_id = id;
     }
 
     public LocalDateTime getUsed() {
