@@ -1,5 +1,7 @@
 package ohjelmistoprojekti.ticketGuru.domain;
 
+import java.time.LocalDateTime;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
@@ -9,8 +11,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 
 @Entity
 public class Ticket {
@@ -20,10 +20,7 @@ public class Ticket {
 	@SequenceGenerator(name = "ticket_seq", sequenceName = "ticket_seq", allocationSize = 1)
     private Long ticketid;
 
-    @NotBlank(message = "Ticket number cannot be blank")
-    @Size(min = 1, message = "Ticket number should not be less than 1")
-    @Size(max = 999999, message = "Ticket number should not be greater than 999999")
-    private String ticketnumber;
+    private LocalDateTime used;
 
     @ManyToOne
     @JsonIgnore
@@ -34,11 +31,6 @@ public class Ticket {
     @JsonIgnore
     @JoinColumn(name = "tickettype_id")
     private TicketType ticketType;
-    
-    @ManyToOne
-    @JsonIgnore
-    @JoinColumn(name = "eventid")
-    private Event event;
 
     // tietokantakaavion mukaan lipulla ei yhteyttä tapahtumiin
 
@@ -62,8 +54,8 @@ public class Ticket {
 
     }
 
-    public Ticket(String ticketnumber, Transaction transaction, TicketType ticketType) {
-        this.ticketnumber = ticketnumber;
+    public Ticket(LocalDateTime used, Transaction transaction, TicketType ticketType) {
+        this.used = used;
         this.transaction = transaction;
         this.ticketType = ticketType;
     }
@@ -76,17 +68,17 @@ public class Ticket {
         this.ticketid = id;
     }
 
-    public String getTicketnumber() {
-        return ticketnumber;
+    public LocalDateTime getUsed() {
+        return used;
     }
 
-    public void setTicketnumber(String ticketnumber) {
-        this.ticketnumber = ticketnumber;
+    public void setUsed(LocalDateTime used) {
+        this.used = used;
     }
 
     @Override
     public String toString() {
-        return "Seller [ticketid=" + ticketid + ",  ticketnumber=" + ticketnumber + ", transaction=" + transaction
+        return "Seller [ticketid=" + ticketid + ", used=" + used + ", transaction=" + transaction
                 + ", ticketType=" + ticketType + "]";
     }
 

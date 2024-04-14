@@ -74,4 +74,27 @@ public class TicketController {
         model.addAttribute("ticket", ticket);
         return "editTicket";
     }
+
+    // Päivitys
+
+    @PostMapping("/tickets/update/{id}")
+    public String updateTicket(@PathVariable("id") Long ticketId, @Valid @ModelAttribute Ticket updatedTicket,
+            Model model) {
+        Ticket ticket = ticketRepository.findById(ticketId).orElse(null);
+
+        if (ticket == null) {
+            return "error";
+        }
+
+        // Update ticket properties with values from updatedTicket
+        // Example: ticket.setName(updatedTicket.getName());
+        // Example: ticket.setPrice(updatedTicket.getPrice());
+        ticket.setUsed(updatedTicket.getUsed());
+
+        // Save the updated ticket
+        ticketRepository.save(ticket);
+
+        return "redirect:/ticketlist";
+    }
+
 }

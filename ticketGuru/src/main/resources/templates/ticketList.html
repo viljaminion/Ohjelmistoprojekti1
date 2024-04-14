@@ -32,18 +32,18 @@
     <table>
         <tr>
             <th>ID</th>
-            <th>Ticket number</th>
+            <th>Used</th>
             <th>Transaction ID</th>
             <th>Ticket type ID</th>
         </tr>
         <tr th:each="ticket : ${tickets}">
             <td th:text="${ticket.id}"></td>
-            <td th:text="${ticket.ticketnumber}"></td>
+            <td th:text="${ticket.used}"></td>
 
-            <td th:if="${ticket.transaction != null}" th:text="${ticket.transaction.transaction}">Transaction</td>
+            <td th:if="${ticket.transaction != null}" th:text="${ticket.transaction.transactiondate}">Transaction</td>
                 <td th:unless="${ticket.transaction != null}">Transaction Not Found</td>
 
-                <td th:if="${ticket.ticketType != null}" th:text="${ticket.ticketType.ticketType}">Ticket type</td>
+                <td th:if="${ticket.ticketType != null}" th:text="${ticket.ticketType.tickettypename}">Ticket type</td>
                 <td th:unless="${ticket.ticketType != null}">Ticket type Not Found</td>
 
             <td>

@@ -13,9 +13,9 @@
 
     <form th:object="${ticket}" th:action="@{/tickets/save}" action="#" method="post">
         <div>
-            <label>Ticket number:</label>
-            <input type="text" th:field="*{ticketnumber}" />
-            <div th:if="${#fields.hasErrors('ticketnumber')}" th:errors="*{ticketnumber}">Error</div>
+            <label>Used:</label>
+            <input type="datetime-local" th:field="*{used}" />
+            <div th:if="${#fields.hasErrors('used')}" th:errors="*{used}">Error</div>
         </div>
 
         <div>

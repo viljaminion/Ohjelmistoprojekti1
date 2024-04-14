@@ -77,8 +77,4 @@ public class TicketType {
     return "TicketType [tickettype_id=" + tickettype_id + ", tickettypename=" + tickettypename + ", price=" + price + "]";
   }
 
-  public void add(TicketType ticketType) {
-
-  }
-
 }
