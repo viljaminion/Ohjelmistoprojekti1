@@ -1,10 +1,12 @@
 package ohjelmistoprojekti.ticketGuru.domain;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +22,9 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ticket_seq")
 	@SequenceGenerator(name = "ticket_seq", sequenceName = "ticket_seq", allocationSize = 1)
     private Long ticket_id;
+    
+    @Column(unique = true)
+    private UUID ticketcode = UUID.randomUUID();
 
     private LocalDateTime used;
 
@@ -67,8 +72,17 @@ public class Ticket {
     public void setId(Long id) {
         this.ticket_id = id;
     }
+    
 
-    public LocalDateTime getUsed() {
+    public UUID getTicketcode() {
+		return ticketcode;
+	}
+
+	public void setTicketcode(UUID ticketcode) {
+		this.ticketcode = ticketcode;
+	}
+
+	public LocalDateTime getUsed() {
         return used;
     }
 

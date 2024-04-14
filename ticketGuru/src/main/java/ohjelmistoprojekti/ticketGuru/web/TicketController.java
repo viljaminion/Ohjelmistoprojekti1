@@ -1,5 +1,8 @@
 package ohjelmistoprojekti.ticketGuru.web;
 
+import java.time.LocalDateTime;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -74,6 +77,18 @@ public class TicketController {
         model.addAttribute("ticket", ticket);
         return "editTicket";
     }
+    
+    @PostMapping("tickets/markUsed/{id}")
+    public String markTicketAsUsed(@PathVariable("id") Long ticketId) {
+        Optional<Ticket> optionalTicket = ticketRepository.findById(ticketId);
+        if (optionalTicket.isPresent()) {
+            Ticket ticket = optionalTicket.get();
+            ticket.setUsed(LocalDateTime.now());
+            ticketRepository.save(ticket);
+        }
+        return "redirect:/ticketlist";
+    }
+
 
     // Päivitys
 
@@ -86,12 +101,8 @@ public class TicketController {
             return "error";
         }
 
-        // Update ticket properties with values from updatedTicket
-        // Example: ticket.setName(updatedTicket.getName());
-        // Example: ticket.setPrice(updatedTicket.getPrice());
         ticket.setUsed(updatedTicket.getUsed());
 
-        // Save the updated ticket
         ticketRepository.save(ticket);
 
         return "redirect:/ticketlist";
