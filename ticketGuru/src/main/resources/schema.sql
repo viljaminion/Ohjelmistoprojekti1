@@ -1,18 +1,10 @@
 SET FOREIGN_KEY_CHECKS=0;
 
-
 DROP TABLE IF EXISTS appuser;
 DROP TABLE IF EXISTS event;
 DROP TABLE IF EXISTS ticket;
 DROP TABLE IF EXISTS tickettype;
 DROP TABLE IF EXISTS transaction;
-
-DROP TABLE IF EXISTS appuser_seq;
-DROP TABLE IF EXISTS event_seq;
-DROP TABLE IF EXISTS ticket_seq;
-DROP TABLE IF EXISTS tickettype_seq;
-DROP TABLE IF EXISTS transaction_seq;
-
 
 DROP TABLE IF EXISTS appuser_seq;
 DROP TABLE IF EXISTS event_seq;
@@ -44,7 +36,6 @@ FOREIGN KEY (event_id) REFERENCES event(event_id)
 
 CREATE TABLE appuser (
 appuser_id BIGINT NOT NULL AUTO_INCREMENT,
-appuser_id BIGINT NOT NULL AUTO_INCREMENT,
 username VARCHAR(50) NOT NULL,
 passwordhash VARCHAR(150) NOT NULL,
 role VARCHAR(50) NOT NULL,
@@ -53,7 +44,6 @@ surname VARCHAR(100) NOT NULL,
 address VARCHAR(100) NOT NULL,
 phone VARCHAR(30) NOT NULL,
 email VARCHAR(50) NOT NULL,
-PRIMARY KEY (appuser_id)
 PRIMARY KEY (appuser_id)
 );
 
@@ -64,17 +54,9 @@ ticketsum DOUBLE NOT NULL,
 appuser_id BIGINT,
 PRIMARY KEY (transaction_id),
 FOREIGN KEY (appuser_id) REFERENCES appuser(appuser_id)
-FOREIGN KEY (appuser_id) REFERENCES appuser(appuser_id)
 );
 
 CREATE TABLE ticket (
-    ticket_id BIGINT NOT NULL AUTO_INCREMENT,
-    ticketnumber VARCHAR(255) NOT NULL,
-    transaction_id BIGINT,
-    tickettype_id BIGINT,
-    PRIMARY KEY (ticket_id),
-    FOREIGN KEY (tickettype_id) REFERENCES tickettype(tickettype_id),
-    FOREIGN KEY (transaction_id) REFERENCES transaction(transaction_id)
     ticket_id BIGINT NOT NULL AUTO_INCREMENT,
     ticketnumber VARCHAR(255) NOT NULL,
     transaction_id BIGINT,
@@ -89,9 +71,7 @@ CREATE SEQUENCE event_seq START WITH 3 INCREMENT BY 1;
 CREATE SEQUENCE tickettype_seq START WITH 5 INCREMENT BY 1;
 
 CREATE SEQUENCE ticket_seq START WITH 3 INCREMENT BY 1;
-CREATE SEQUENCE ticket_seq START WITH 3 INCREMENT BY 1;
 
-CREATE SEQUENCE transaction_seq START WITH 2 INCREMENT BY 1;
 CREATE SEQUENCE transaction_seq START WITH 2 INCREMENT BY 1;
 
 CREATE SEQUENCE appuser_seq START WITH 3 INCREMENT BY 1;
@@ -108,17 +88,12 @@ INSERT INTO tickettype (tickettypename, price, event_id) VALUES
 
 INSERT INTO transaction (transactiondate, ticketsum, appuser_id) VALUES
 ('2024-03-08', 50.0, NULL);
-('2024-03-08', 50.0, NULL);
 
 INSERT INTO appuser (username, passwordHash, role, firstname, surname, address, phone, email) VALUES
 ('maija', '$2a$10$6KFw5bwNuXu1Mr80yXcglOCEI9cmSlQlSRJK.D6.XvKbaos5LC7By', 'USER', 'Maija', 'Meikäläinen', 
 'Postiosoite 1A', '0441234567', 'maijameikalainen@gmail.com'), -- salasana user
 ('mikko', '$2a$10$/U9C/cQ7sudkeFkJS7OUwOfbIoWEzQPLeMd7cI8RgSfxChyKkNeVu', 'ADMIN', 'Mikko', 'Meikäläinen', 
 'Postiosoite 1A', '0447654321', 'mikkomeikalainen@gmail.com'); -- salasana admin
-
-INSERT INTO ticket (ticketnumber, transaction_id, tickettype_id) VALUES
-('123', 1, 1),
-('54321', 1, 2);
 
 INSERT INTO ticket (ticketnumber, transaction_id, tickettype_id) VALUES
 ('123', 1, 1),

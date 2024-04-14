@@ -78,7 +78,7 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Seller [ticketid=" + ticketid + ", used=" + used + ", transaction=" + transaction
+        return "Seller [ticket_id=" + ticket_id + ", used=" + used + ", transaction=" + transaction
                 + ", ticketType=" + ticketType + "]";
     }
 
