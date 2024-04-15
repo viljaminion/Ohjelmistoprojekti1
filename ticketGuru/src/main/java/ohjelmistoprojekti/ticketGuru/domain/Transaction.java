@@ -40,6 +40,7 @@ public class Transaction {
 	private AppUser user;
 
 	@OneToMany(mappedBy = "transaction", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Ticket> tickets;
 
 	public Transaction() {

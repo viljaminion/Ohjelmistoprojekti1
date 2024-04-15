@@ -29,7 +29,6 @@ public class Ticket {
     private LocalDateTime used;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "transaction_id")
     private Transaction transaction;
 
