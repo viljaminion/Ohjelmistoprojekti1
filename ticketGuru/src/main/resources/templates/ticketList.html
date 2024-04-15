@@ -58,7 +58,7 @@
     			<a th:href="@{/tickets/delete/{id}(id=${ticket.id})}" class="btn btn-danger">Delete</a>
     			<a th:href="@{/tickets/edit/{id}(id=${ticket.id})}" class="btn btn-primary">Edit</a>
     				
-    		<form th:action="@{tickets/markUsed/{id}(id=${ticket.id})}" method="post">
+    		<form th:action="@{/tickets/markUsed/{id}(id=${ticket.id})}" method="post">
         			<button type="submit" class="btn btn-warning">Mark as Used</button>
     		</form>
 			</td>
