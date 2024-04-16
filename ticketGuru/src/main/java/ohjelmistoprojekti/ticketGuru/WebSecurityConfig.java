@@ -20,8 +20,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import ohjelmistoprojekti.ticketGuru.web.UserDetailServiceImpl;
 
-@Configuration
 @EnableWebSecurity
+@Configuration
 public class WebSecurityConfig {
 
 	@Bean
@@ -32,8 +32,10 @@ public class WebSecurityConfig {
 				.authorizeHttpRequests(
 						authorizeRequest -> authorizeRequest.requestMatchers(antMatcher("/css/**")).permitAll()
 								.anyRequest().authenticated())
+				.headers(headers -> headers.frameOptions(frameoptions -> frameoptions.disable()))
 				.formLogin(formlogin -> formlogin.defaultSuccessUrl("/eventlist", true).permitAll())
-				.logout(logout -> logout.permitAll());
+				.logout(logout -> logout.permitAll())
+        		.httpBasic(withDefaults());
 		return http.build();
 	}
 
