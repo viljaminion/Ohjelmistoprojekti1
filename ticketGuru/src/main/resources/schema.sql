@@ -59,7 +59,7 @@ FOREIGN KEY (appuser_id) REFERENCES appuser(appuser_id)
 CREATE TABLE ticket (
     ticket_id BIGINT NOT NULL AUTO_INCREMENT,
     ticketcode UUID UNIQUE,
-    used TIMESTAMP,
+    used DATETIME,
     transaction_id BIGINT,
     tickettype_id BIGINT,
     PRIMARY KEY (ticket_id),
@@ -71,7 +71,7 @@ CREATE SEQUENCE event_seq START WITH 3 INCREMENT BY 1;
 
 CREATE SEQUENCE tickettype_seq START WITH 5 INCREMENT BY 1;
 
-CREATE SEQUENCE ticket_seq START WITH 3 INCREMENT BY 1;
+CREATE SEQUENCE ticket_seq START WITH 2 INCREMENT BY 1;
 
 CREATE SEQUENCE transaction_seq START WITH 2 INCREMENT BY 1;
 
