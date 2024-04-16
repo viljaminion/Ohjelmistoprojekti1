@@ -485,7 +485,13 @@ Success Responses
 ```
 [
     {
-        "ticketnumber": "907",
+        "ticketcode": "64613232-6530-3462-2d66-6266662d3131",
+        "used": null,
+        "transaction": {
+            "transactiondate": "2024-03-08",
+            "ticketsum": 50.0,
+            "id": 1
+        },
         "ticketType": {
             "tickettypename": "aikuisten lippu",
             "price": 20.0,
@@ -503,7 +509,13 @@ Success Responses
         "id": 1
     },
     {
-        "ticketnumber": "587",
+        "ticketcode": "e2809ec3-b3c3-867d-c3b4-7e44c3b3c2b0",
+        "used": null,
+        "transaction": {
+            "transactiondate": "2024-03-08",
+            "ticketsum": 50.0,
+            "id": 1
+        },
         "ticketType": {
             "tickettypename": "lasten lippu",
             "price": 10.0,
@@ -536,7 +548,13 @@ Success Responses
 
 ```
 {
-    "ticketnumber": "907",
+    "ticketcode": "64613232-6530-3462-2d66-6266662d3131",
+    "used": "2023-11-07T07:03:46",
+    "transaction": {
+        "transactiondate": "2024-03-08",
+        "ticketsum": 50.0,
+        "id": 1
+    },
     "ticketType": {
         "tickettypename": "aikuisten lippu",
         "price": 20.0,
@@ -548,14 +566,34 @@ Success Responses
             "maxtickets": 111,
             "duration": 11,
             "id": 1
-            },
-        "id": 1
         },
+        "id": 1
+    },
     "id": 1
 }
 ```
 
-**Lipun tietojen lisääminen Postmanilla: <span style="color:yellow">POST</span> /tickets**
+**Lipun tietojen päivittäminen Postmanilla: <span style="color:purple">PATCH</span> /tickets/{id}**
+-	URL:/tickets/{id}
+-	Method: PATCH
+-	Auth required: YES
+-	Permission required: YES
+
+Success Responses
+-	Condition: Admin can update a ticket
+-	Code:  200 OK
+-	Content: Adds a new ticket
+
+```
+{ 
+    "used": "2023-11-07T07:03:46"
+}
+```
+```
+Ticket with ID 2 has been updated.
+```
+
+**Lipun lisääminen Postmanilla: <span style="color:yellow">POST</span> /tickets**
 -	URL:/tickets
 -	Method: POST
 -	Auth required: YES
@@ -568,10 +606,8 @@ Success Responses
 
 ```
 {
-    "ticketnumber": "907",
-    "ticketType": { 
-        "id": 1 
-        }
+   "transaction": { "id": 1 },
+   "ticketType": { "id": 1 }
 }
 ```
 
