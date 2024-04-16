@@ -15,7 +15,6 @@ import ohjelmistoprojekti.ticketGuru.domain.AppUser;
 import ohjelmistoprojekti.ticketGuru.domain.AppUserRepository;
 import ohjelmistoprojekti.ticketGuru.domain.TransactionRepository;
 
-@CrossOrigin
 @Controller
 public class AppUserController {
 
