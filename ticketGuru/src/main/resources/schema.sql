@@ -96,5 +96,5 @@ INSERT INTO appuser (username, passwordHash, role, firstname, surname, address, 
 ('mikko', '$2a$10$/U9C/cQ7sudkeFkJS7OUwOfbIoWEzQPLeMd7cI8RgSfxChyKkNeVu', 'ADMIN', 'Mikko', 'Meikäläinen', 
 'Postiosoite 1A', '0447654321', 'mikkomeikalainen@gmail.com'); -- salasana admin
 
-INSERT INTO ticket (transaction_id, tickettype_id) VALUES
-(1, 1);
+INSERT INTO ticket (ticketcode, transaction_id, tickettype_id) VALUES
+(UNHEX(REPLACE('36323634-3631-3337-2d36-3233392d3330', '-', '')), 1, 1);
