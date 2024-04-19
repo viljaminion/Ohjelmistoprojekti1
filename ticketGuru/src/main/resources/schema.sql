@@ -58,7 +58,7 @@ FOREIGN KEY (appuser_id) REFERENCES appuser(appuser_id)
 
 CREATE TABLE ticket (
 ticket_id BIGINT NOT NULL AUTO_INCREMENT,
-ticketcode CHAR(36) UNIQUE,
+ticketcode BINARY(16) UNIQUE,
 used DATETIME,
 transaction_id BIGINT,
 tickettype_id BIGINT,
