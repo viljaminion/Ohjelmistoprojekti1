@@ -65,13 +65,8 @@ public class TicketRestController {
         if (optionalTicket.isPresent()) {
             Ticket ticket = optionalTicket.get();
             ticket.setUsed(updatedTicket.getUsed());
-            // Update ticket properties with values from updatedTicket
-            // Example: ticket.setName(updatedTicket.getName());
-            // Example: ticket.setPrice(updatedTicket.getPrice());
-            
-            // Save the updated ticket
             ticketRepository.save(ticket);
-            
+
             return ResponseEntity.ok().body("Ticket with ID " + ticketId + " has been updated.");
         } else {
             return ResponseEntity.notFound().build();

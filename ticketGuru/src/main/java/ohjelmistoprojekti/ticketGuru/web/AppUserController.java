@@ -3,7 +3,6 @@ package ohjelmistoprojekti.ticketGuru.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +19,7 @@ public class AppUserController {
 
     @Autowired
     private AppUserRepository appUserRepository;
-    
+
     @Autowired
     private TransactionRepository transactionRepository;
 
@@ -44,10 +43,10 @@ public class AppUserController {
     }
 
     @GetMapping("/appUsers/edit/{id}")
-	public String editAppUser(@PathVariable("id") Long id, Model model) {
+    public String editAppUser(@PathVariable("id") Long id, Model model) {
 
         AppUser existingAppUser = appUserRepository.findById(id).orElse(null);
-        
+
         if (existingAppUser != null) {
             model.addAttribute("AppUser", existingAppUser);
             return "editAppUser";
@@ -55,13 +54,13 @@ public class AppUserController {
             return "error";
         }
     }
-    
+
     @PostMapping("/appUsers/edit/{id}")
-    
+
     public String updateAppUser(@PathVariable("id") Long appUserid, @ModelAttribute AppUser updatedAppUser) {
-        
-    	AppUser existingAppUser = appUserRepository.findById(appUserid).orElse(null);
-        
+
+        AppUser existingAppUser = appUserRepository.findById(appUserid).orElse(null);
+
         if (existingAppUser != null) {
             existingAppUser.setUsername(updatedAppUser.getUsername());
             existingAppUser.setPasswordhash(updatedAppUser.getPasswordhash());
@@ -71,15 +70,11 @@ public class AppUserController {
             existingAppUser.setAddress(updatedAppUser.getAddress());
             existingAppUser.setPhone(updatedAppUser.getPhone());
             existingAppUser.setEmail(updatedAppUser.getEmail());
-            
-            
+
             appUserRepository.save(existingAppUser);
         }
         return "redirect:/appAppUserlist";
     }
-
-
-	
 
     @GetMapping("/appAppUsers/delete/{id}")
     public String deleteAppUser(@PathVariable Long id) {

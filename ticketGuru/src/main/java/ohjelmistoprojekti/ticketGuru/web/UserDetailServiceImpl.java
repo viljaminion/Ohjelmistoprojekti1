@@ -24,6 +24,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
 				curruser.getPasswordhash(),
 				AuthorityUtils.createAuthorityList(curruser.getRole()));
 		return user;
-	} 
+	}
 
-} 
+}

@@ -7,4 +7,3 @@ public interface TransactionRepository extends CrudRepository<Transaction, Long>
     @Query("SELECT t FROM Transaction t WHERE t.transaction_id = ?1")
     Transaction findByTransactionId(Long transactionId);
 }
-

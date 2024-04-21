@@ -35,7 +35,7 @@ public class WebSecurityConfig {
 				.headers(headers -> headers.frameOptions(frameoptions -> frameoptions.disable()))
 				.formLogin(formlogin -> formlogin.defaultSuccessUrl("/eventlist", true).permitAll())
 				.logout(logout -> logout.permitAll())
-        		.httpBasic(withDefaults());
+				.httpBasic(withDefaults());
 		return http.build();
 	}
 

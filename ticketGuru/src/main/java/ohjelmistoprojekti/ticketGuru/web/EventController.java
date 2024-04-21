@@ -11,12 +11,13 @@ import ohjelmistoprojekti.ticketGuru.domain.Event;
 import ohjelmistoprojekti.ticketGuru.domain.EventRepository;
 import ohjelmistoprojekti.ticketGuru.domain.TicketType;
 import ohjelmistoprojekti.ticketGuru.domain.TicketTypeRepository;
+
 @Controller
 public class EventController {
 
     @Autowired
     private EventRepository eventRepository;
-    
+
     @Autowired
     private TicketTypeRepository ticketTypeRepository;
 
@@ -40,7 +41,7 @@ public class EventController {
 
     @PostMapping("/events/save")
     public String saveEvent(@Valid @ModelAttribute Event event, Model model) {
-        
+
         eventRepository.save(event);
         return "redirect:/eventlist";
     }
@@ -87,31 +88,26 @@ public class EventController {
         return "redirect:/eventlist";
     }
 
-	//Lipputyypin lisääminen
+    // Lipputyypin lisääminen
 
-	@GetMapping("/events/{event_id}/addTicketType")
-	public String addTicketType(@PathVariable Long event_id, Model model) {
-    	model.addAttribute("event_id", event_id);
+    @GetMapping("/events/{event_id}/addTicketType")
+    public String addTicketType(@PathVariable Long event_id, Model model) {
+        model.addAttribute("event_id", event_id);
         model.addAttribute("ticketType", new TicketType());
         return "addTicketType";
-}
-	//Lipputyypin tallentaminen
-	
-	
-	@PostMapping("/events/{event_id}/saveTicketType")
-	public String saveTicketType(@PathVariable Long event_id, @ModelAttribute TicketType ticketType) {
-	    Event event = eventRepository.findById(event_id).orElse(null);
-	    if (event != null) {
-	        ticketType.setEvent(event);
-	        ticketTypeRepository.save(ticketType);
-	        event.getTicketTypes().add(ticketType); 
-	        eventRepository.save(event);
-	    }
-	    return "redirect:/eventlist";
-	}
+    }
+    // Lipputyypin tallentaminen
 
-
-
-
+    @PostMapping("/events/{event_id}/saveTicketType")
+    public String saveTicketType(@PathVariable Long event_id, @ModelAttribute TicketType ticketType) {
+        Event event = eventRepository.findById(event_id).orElse(null);
+        if (event != null) {
+            ticketType.setEvent(event);
+            ticketTypeRepository.save(ticketType);
+            event.getTicketTypes().add(ticketType);
+            eventRepository.save(event);
+        }
+        return "redirect:/eventlist";
+    }
 
 }

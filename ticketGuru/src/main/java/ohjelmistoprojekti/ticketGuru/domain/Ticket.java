@@ -3,9 +3,6 @@ package ohjelmistoprojekti.ticketGuru.domain;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,9 +17,9 @@ public class Ticket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ticket_seq")
-	@SequenceGenerator(name = "ticket_seq", sequenceName = "ticket_seq", allocationSize = 1)
+    @SequenceGenerator(name = "ticket_seq", sequenceName = "ticket_seq", allocationSize = 1)
     private Long ticket_id;
-    
+
     @Column(unique = true)
     private UUID ticketcode = UUID.randomUUID();
 
@@ -35,8 +32,6 @@ public class Ticket {
     @ManyToOne
     @JoinColumn(name = "tickettype_id")
     private TicketType ticketType;
-
-    // tietokantakaavion mukaan lipulla ei yhteyttä tapahtumiin
 
     public TicketType getTicketType() {
         return ticketType;
@@ -71,17 +66,16 @@ public class Ticket {
     public void setId(Long id) {
         this.ticket_id = id;
     }
-    
 
     public UUID getTicketcode() {
-		return ticketcode;
-	}
+        return ticketcode;
+    }
 
-	public void setTicketcode(UUID ticketcode) {
-		this.ticketcode = ticketcode;
-	}
+    public void setTicketcode(UUID ticketcode) {
+        this.ticketcode = ticketcode;
+    }
 
-	public LocalDateTime getUsed() {
+    public LocalDateTime getUsed() {
         return used;
     }
 

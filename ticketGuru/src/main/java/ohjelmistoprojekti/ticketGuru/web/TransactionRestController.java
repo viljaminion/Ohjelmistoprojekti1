@@ -23,7 +23,6 @@ public class TransactionRestController {
     @Autowired
     private TransactionRepository transactionRepository;
 
-
     // JSON
 
     @RequestMapping(value = "/transactions", method = RequestMethod.GET)
@@ -47,7 +46,7 @@ public class TransactionRestController {
 
     }
 
-    // Maksutapahtuman poisto ID:llä Postmanissa 
+    // Maksutapahtuman poisto ID:llä Postmanissa
 
     @RequestMapping(value = "/transaction/{id}", method = RequestMethod.DELETE)
     @PreAuthorize("hasAuthority('ADMIN')")

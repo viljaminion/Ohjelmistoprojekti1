@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,40 +17,37 @@ import jakarta.validation.Valid;
 import ohjelmistoprojekti.ticketGuru.domain.Event;
 import ohjelmistoprojekti.ticketGuru.domain.EventRepository;
 
-
 @RestController
 public class EventRestController {
-	
-	@Autowired
+
+    @Autowired
     private EventRepository eventrepository;
 
-	
-//Kaikki tiedot JSON-muodossa
-	
-	
-    @RequestMapping(value="/events", method = RequestMethod.GET)
-    public List<Event> EventListRest() {	
-        return (List<Event>) eventrepository.findAll();
-    }    
+    // Kaikki tiedot JSON-muodossa
 
-//ID:n avulla haettavat tiedot tietystä tapahtumasta
-    
-    @RequestMapping(value="/event/{id}", method = RequestMethod.GET)    
-    public Optional<Event> findEventRest(@PathVariable("id") Long eventid) {	
-    	return eventrepository.findById(eventid);
+    @RequestMapping(value = "/events", method = RequestMethod.GET)
+    public List<Event> EventListRest() {
+        return (List<Event>) eventrepository.findAll();
     }
-    
-//Tapahtuman lisääminen Postmanissa
-    
-    @RequestMapping (value= "/events", method = RequestMethod.POST)
+
+    // ID:n avulla haettavat tiedot tietystä tapahtumasta
+
+    @RequestMapping(value = "/event/{id}", method = RequestMethod.GET)
+    public Optional<Event> findEventRest(@PathVariable("id") Long eventid) {
+        return eventrepository.findById(eventid);
+    }
+
+    // Tapahtuman lisääminen Postmanissa
+
+    @RequestMapping(value = "/events", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('ADMIN')")
     public Event addEvent(@Valid @RequestBody Event event) {
-         return eventrepository.save(event);
-            
-}
-    
-//Tapahtuman poisto ID:llä Postmanissa
-    
+        return eventrepository.save(event);
+
+    }
+
+    // Tapahtuman poisto ID:llä Postmanissa
+
     @RequestMapping(value = "/event/{id}", method = RequestMethod.DELETE)
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<String> deleteEvent(@PathVariable("id") Long eventid) {

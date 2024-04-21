@@ -19,15 +19,14 @@ import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 
-
 @Entity
 public class Event {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "event_seq")
-	@SequenceGenerator(name = "event_seq", sequenceName = "event_seq", allocationSize = 1)
+    @SequenceGenerator(name = "event_seq", sequenceName = "event_seq", allocationSize = 1)
     private Long event_id;
-    
+
     @NotBlank(message = "Event name cannot be blank")
     @Size(min = 2, message = "Event name cannot be less than 2 letters")
     private String eventname;
@@ -42,11 +41,11 @@ public class Event {
     @NotBlank(message = "Description cannot be blank")
     private String description;
 
-    @Min(value =1, message = "maxtickets cannot be less than 1")
+    @Min(value = 1, message = "maxtickets cannot be less than 1")
     @Max(10000)
     private int maxtickets;
 
-    @Min(value =1, message = "Duration cannot be less than 1")
+    @Min(value = 1, message = "Duration cannot be less than 1")
     @Max(500)
     private int duration;
 
@@ -54,25 +53,26 @@ public class Event {
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     private List<TicketType> ticketTypes = new ArrayList<>();
 
-	public List<TicketType> getTicketTypes() {
-		return ticketTypes;
-	}
+    public List<TicketType> getTicketTypes() {
+        return ticketTypes;
+    }
 
-	public void setTicketTypes(List<TicketType> ticketTypes) {
-		this.ticketTypes = ticketTypes;
-	}
+    public void setTicketTypes(List<TicketType> ticketTypes) {
+        this.ticketTypes = ticketTypes;
+    }
 
-	public Event(String eventname, String address, LocalDateTime showtime, String description, int maxtickets, int duration) {
+    public Event(String eventname, String address, LocalDateTime showtime, String description, int maxtickets,
+            int duration) {
         this.eventname = eventname;
         this.address = address;
         this.showtime = showtime;
         this.description = description;
         this.maxtickets = maxtickets;
         this.duration = duration;
-        
+
     }
 
-    public Event () {
+    public Event() {
 
     }
 
@@ -132,11 +132,12 @@ public class Event {
         this.duration = duration;
     }
 
-	@Override
-	public String toString() {
-		return "Event [event_id=" + event_id + ", eventname=" + eventname + ", address=" + address + ", showtime=" + showtime
-				+ ", description=" + description + ", maxtickets=" + maxtickets + ", duration=" + duration
-				+ "]";
-	}
+    @Override
+    public String toString() {
+        return "Event [event_id=" + event_id + ", eventname=" + eventname + ", address=" + address + ", showtime="
+                + showtime
+                + ", description=" + description + ", maxtickets=" + maxtickets + ", duration=" + duration
+                + "]";
+    }
 
 }

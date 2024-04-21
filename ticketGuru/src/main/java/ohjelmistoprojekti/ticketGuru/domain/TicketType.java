@@ -21,7 +21,7 @@ public class TicketType {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tickettype_seq")
-	@SequenceGenerator(name = "tickettype_seq", sequenceName = "tickettype_seq", allocationSize = 1)
+  @SequenceGenerator(name = "tickettype_seq", sequenceName = "tickettype_seq", allocationSize = 1)
   private Long tickettype_id;
 
   @NotBlank(message = "Must include a ticket type")
@@ -81,7 +81,8 @@ public class TicketType {
 
   @Override
   public String toString() {
-    return "TicketType [tickettype_id=" + tickettype_id + ", tickettypename=" + tickettypename + ", price=" + price + "]";
+    return "TicketType [tickettype_id=" + tickettype_id + ", tickettypename=" + tickettypename + ", price=" + price
+        + "]";
   }
 
 }

@@ -24,10 +24,9 @@ public class TransactionController {
     @Autowired
     private AppUserRepository userRepository;
 
-    @Autowired 
+    @Autowired
     private TicketRepository ticketRepository;
 
-    
     // näkymä
 
     @RequestMapping("/transactionlist")
@@ -58,30 +57,30 @@ public class TransactionController {
 
     @GetMapping("/transactions/edit/{id}")
     public String editTransaction(@PathVariable("id") Long transaction_id, Model model) {
-    	
+
         Transaction existingTransaction = transactionRepository.findById(transaction_id).orElse(null);
-        
+
         if (existingTransaction != null) {
             model.addAttribute("transaction", existingTransaction);
             model.addAttribute("user", userRepository.findAll());
             model.addAttribute("tickets", ticketRepository.findAll());
-       
+
             return "editTransaction";
         } else {
             return "error";
         }
     }
-    
+
     // muokkauksen tallennus
     @PostMapping("/transaction/edit/{id}")
-    public String updateTransaction(@PathVariable("id") Long transaction_id, @ModelAttribute Transaction updatedTransaction) {
+    public String updateTransaction(@PathVariable("id") Long transaction_id,
+            @ModelAttribute Transaction updatedTransaction) {
         Transaction existingTransaction = transactionRepository.findById(transaction_id).orElse(null);
-        
+
         if (existingTransaction != null) {
             existingTransaction.setTransactiondate(updatedTransaction.getTransactiondate());
             existingTransaction.setUser(updatedTransaction.getUser());
 
-            
             transactionRepository.save(existingTransaction);
         }
         return "redirect:/transactionlist";

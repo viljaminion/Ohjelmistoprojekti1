@@ -17,44 +17,41 @@ import jakarta.validation.Valid;
 import ohjelmistoprojekti.ticketGuru.domain.AppUser;
 import ohjelmistoprojekti.ticketGuru.domain.AppUserRepository;
 
-
 @RestController
 public class AppUserRestController {
-	
-	@Autowired
+
+    @Autowired
     private AppUserRepository appUserrepository;
 
-	
-//Kaikki tiedot JSON-muodossa
-	
-	
-    @RequestMapping(value="/users", method = RequestMethod.GET)
+    // Kaikki tiedot JSON-muodossa
+
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
     @PreAuthorize("hasAuthority('ADMIN')")
-    public List<AppUser> UserListRest() {	
+    public List<AppUser> UserListRest() {
         return (List<AppUser>) appUserrepository.findAll();
-    }    
-
-//ID:n avulla haettavat tiedot tietystä myyjästä
-    
-    @RequestMapping(value="/user/{id}", method = RequestMethod.GET)
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public Optional<AppUser> findUserRest(@PathVariable("id") Long userid) {	
-    	return appUserrepository.findById(userid);
     }
-    
-//Myyjän lisääminen Postmanissa
-    
-//@Valid annotaatio ennen @RequestBody annotaatiota mahdollistaa validoinnin
 
-    @RequestMapping (value= "/users", method = RequestMethod.POST)
+    // ID:n avulla haettavat tiedot tietystä myyjästä
+
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public Optional<AppUser> findUserRest(@PathVariable("id") Long userid) {
+        return appUserrepository.findById(userid);
+    }
+
+    // Myyjän lisääminen Postmanissa
+
+    // @Valid annotaatio ennen @RequestBody annotaatiota mahdollistaa validoinnin
+
+    @RequestMapping(value = "/users", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('ADMIN')")
     public AppUser addUser(@Valid @RequestBody AppUser user) {
-         return appUserrepository.save(user);
-            
-}
-    
-//Myyjän poisto ID:llä Postmanissa
-    
+        return appUserrepository.save(user);
+
+    }
+
+    // Myyjän poisto ID:llä Postmanissa
+
     @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<String> deleteUser(@PathVariable("id") Long userid) {

@@ -77,7 +77,7 @@ public class TicketController {
         model.addAttribute("ticket", ticket);
         return "editTicket";
     }
-    
+
     @PostMapping("tickets/markUsed/{id}")
     public String markTicketAsUsed(@PathVariable("id") Long ticketId) {
         Optional<Ticket> optionalTicket = ticketRepository.findById(ticketId);
@@ -88,7 +88,6 @@ public class TicketController {
         }
         return "redirect:/ticketlist";
     }
-
 
     // Päivitys
 
