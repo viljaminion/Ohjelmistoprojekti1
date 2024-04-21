@@ -1,6 +1,7 @@
 package ohjelmistoprojekti.ticketGuru.web;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
+import ohjelmistoprojekti.ticketGuru.domain.Event;
+import ohjelmistoprojekti.ticketGuru.domain.EventRepository;
 import ohjelmistoprojekti.ticketGuru.domain.Ticket;
 import ohjelmistoprojekti.ticketGuru.domain.TicketRepository;
+import ohjelmistoprojekti.ticketGuru.domain.TicketType;
 import ohjelmistoprojekti.ticketGuru.domain.TicketTypeRepository;
 import ohjelmistoprojekti.ticketGuru.domain.TransactionRepository;
 
@@ -29,6 +34,9 @@ public class TicketController {
 
     @Autowired
     private TicketTypeRepository ticketTypeRepository;
+
+    @Autowired
+    private EventRepository eventRepository;
 
     // Listanäkymä
 
@@ -51,8 +59,23 @@ public class TicketController {
     // Tallennus
 
     @PostMapping("/tickets/save")
-    public String saveTicket(@Valid @ModelAttribute Ticket ticket, Model model) {
-        ticketRepository.save(ticket);
+    public String saveTickets(@RequestParam("eventId") Long eventId,
+            @RequestParam("ticketTypeIds") List<Long> ticketTypeIds,
+            @RequestParam("ticketQuantities") List<Integer> ticketQuantities) {
+        Event event = eventRepository.findById(eventId).orElse(null);
+        if (event != null) {
+            for (int i = 0; i < ticketTypeIds.size(); i++) {
+                TicketType ticketType = ticketTypeRepository.findById(ticketTypeIds.get(i)).orElse(null);
+                if (ticketType != null && ticketQuantities.get(i) > 0) {
+                    for (int j = 0; j < ticketQuantities.get(i); j++) {
+                        Ticket ticket = new Ticket();
+                        ticket.setUsed(null);
+                        ticket.setTicketType(ticketType);
+                        ticketRepository.save(ticket);
+                    }
+                }
+            }
+        }
         return "redirect:/ticketlist";
     }
 

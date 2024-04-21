@@ -58,21 +58,27 @@
                     <tr>
                         <th>Ticket Type</th>
                         <th>Price</th>
-                        <th>Quantity</th>
                     </tr>
                     <tr th:each="ticketType : ${event.ticketTypes}">
                         <td th:text="${ticketType.tickettypename}"></td>
                         <td th:text="${ticketType.price}"></td>
-                        <td>
-                            <input type="number" name="ticketQuantities" min="0" value="0" /> <!-- Changed the name attribute to ticketQuantities -->
-                            <input type="hidden" name="ticketTypeIds" th:value="${ticketType.id}" /> <!-- Changed the name attribute to ticketTypeIds -->
-                        </td>
                     </tr>
                 </table>
             </td>
             <td>
                 <form th:action="@{/tickets/save}" method="post">
                     <input type="hidden" name="eventId" th:value="${event.id}" />
+                    <table>
+                        <tr th:each="ticketType : ${event.ticketTypes}">
+                            <td th:if="${ticketType != null}" th:text="${ticketType.tickettypename}">Ticket type</td>
+                            <td th:unless="${ticketType != null}">Ticket type Not Found</td>
+                            <td th:text="${ticketType.price}"></td>
+                            <td>
+                                <input type="number" name="ticketQuantities" min="0" value="0" />
+                                <input type="hidden" name="ticketTypeIds" th:value="${ticketType.id}" />
+                            </td>
+                        </tr>
+                    </table>
                     <button type="submit" class="btn btn-primary">Buy</button>
                 </form>
             </td>
@@ -81,4 +87,3 @@
 </body>
 
 </html>
-
