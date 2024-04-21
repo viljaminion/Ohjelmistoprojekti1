@@ -43,7 +43,7 @@ public class TicketController {
     @RequestMapping("/ticketlist")
     public String ticketList(Model model) {
         model.addAttribute("tickets", ticketRepository.findAll());
-        return "ticketlist";
+        return "ticketList";
     }
 
     // Lisäys
