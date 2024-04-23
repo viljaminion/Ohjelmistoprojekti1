@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
+import ohjelmistoprojekti.ticketGuru.domain.Ticket;
 import ohjelmistoprojekti.ticketGuru.domain.Transaction;
 import ohjelmistoprojekti.ticketGuru.domain.TransactionRepository;
 
@@ -61,4 +62,23 @@ public class TransactionRestController {
         }
     }
 
+    // Tietyn maksutapahtuman summan lasku
+
+    @RequestMapping(value = "/transaction/{id}/totalSum", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ResponseEntity<Double> calculateTotalTicketSum(@PathVariable("id") Long transactionId) {
+        Transaction transaction = transactionRepository.findById(transactionId).orElse(null);
+
+        if (transaction == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        
+        double totalSum = 0;
+        for (Ticket ticket : transaction.getTickets()) {
+            totalSum += ticket.getTicketType().getPrice();
+        }
+
+        return new ResponseEntity<>(totalSum, HttpStatus.OK);
+    }
 }
