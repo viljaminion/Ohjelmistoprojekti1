@@ -7,6 +7,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import TicketList from './ticketList';
 import EventList from './EventList';
+import TicketUsed from './TicketUsed';
 
 export default function App() {
 
@@ -16,10 +17,12 @@ export default function App() {
         <div>
           <Link to="/events">Events</Link>{' '}
           <Link to="/tickets">Tickets</Link>{' '}
+          <Link to="/ticketused">Check Ticket</Link>{' '}
           <Routes>
 
             <Route path="/events" element={<EventList />} />
             <Route path="/tickets" element={<TicketList />} />
+            <Route path="/ticketused" element={<TicketUsed />} />
           </Routes>
         </div>
       </BrowserRouter>

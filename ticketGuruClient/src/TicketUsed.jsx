@@ -1,85 +1,87 @@
 import React, { useState } from 'react';
 
-const TicketUsed = () => {
+function TicketUsed() {
     const [ticketCode, setTicketCode] = useState('');
-    const [ticket, setTicket] = useState(null);
-    const [error, setError] = useState(null);
+    const [ticketInfo, setTicketInfo] = useState(null);
 
     const username = 'mikko';
     const password = 'admin';
     const basicAuth = btoa(`${username}:${password}`);
 
-    const handleInputChange = (event) => {
-        setTicketCode(event.target.value);
+    const handleChange = (e) => {
+        setTicketCode(e.target.value);
     };
 
-    const handleSearch = () => {
-        fetch(`http://localhost:8080/tickets?ticketcode=${ticketCode}`, {
+    const handleSubmit = () => {
+        fetch(`http://localhost:8080/tickets`, {
             headers: {
                 Authorization: `Basic ${basicAuth}`
             }
         })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Ticket not found');
+                    throw new Error('Failed to fetch tickets');
                 }
                 return response.json();
             })
             .then(data => {
-                if (data.length === 0) {
-                    throw new Error('Ticket not found');
+                const foundTicket = data.find(ticket => ticket.ticketcode === ticketCode);
+                if (foundTicket) {
+                    setTicketInfo(foundTicket);
+                } else {
+                    setTicketInfo(null);
+                    console.error('Ticket not found');
                 }
-                setTicket(data[0]);
             })
             .catch(error => {
-                setError(error.message);
+                console.error('Error fetching tickets:', error);
             });
     };
 
-    const handleMarkAsUsed = () => {
-        fetch(`http://localhost:8080/tickets/${ticket.id}`, {
-            method: 'PUT',
+
+    const markAsUsed = () => {
+        fetch(`http://localhost:8080/tickets/${ticketInfo.id}`, {
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Basic ${basicAuth}`
             },
-            body: JSON.stringify({ used: new Date().toISOString() })
+            body: JSON.stringify({ used: new Date().toISOString() }),
         })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to mark ticket as used');
                 }
-                return response.json();
-            })
-            .then(data => {
-                setTicket(data);
+                setTicketInfo({...ticketInfo, used: new Date().toISOString() });
             })
             .catch(error => {
-                setError(error.message);
+                console.error('Error marking ticket as used:', error);
             });
     };
 
     return (
         <div>
-            <h1>Ticket Search</h1>
-            <input
-                type="text"
-                value={ticketCode}
-                onChange={handleInputChange}
-                placeholder="Enter Ticket Code"
-            />
-            <button onClick={handleSearch}>Search</button>
-            {ticket && (
+            <h1>Check Ticket</h1>
+            <input type="text" value={ticketCode} onChange={handleChange} />
+            <button onClick={handleSubmit}>Search Ticket</button>
+            {ticketInfo && (
                 <div>
                     <h2>Ticket Details</h2>
-                    <p>Ticket Code: {ticket.ticketcode}</p>
-                    <p>Used: {ticket.used ? new Date(ticket.used).toLocaleString() : 'Not Used'}</p>
-                    <button onClick={handleMarkAsUsed}>Mark as Used</button>
+                    <p>Ticket Code: {ticketInfo.ticketcode}</p>
+                    <p>Event Name: {ticketInfo.ticketType.event.eventname}</p>
+                    <p>Event Address: {ticketInfo.ticketType.event.address}</p>
+                    <p>Show Time: {ticketInfo.ticketType.event.showtime}</p>
+                    <p>Transaction ID: {ticketInfo.transaction.id}</p>
+                    {ticketInfo.used ? (
+                        <p>Marked as Used: {ticketInfo.used}</p>
+                    ) : (
+                        <button onClick={markAsUsed}>Mark as Used</button>
+                    )}
                 </div>
             )}
-            {error && <p>{error}</p>}
         </div>
     );
-};
+}
 
 export default TicketUsed;
+
