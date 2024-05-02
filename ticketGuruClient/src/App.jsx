@@ -8,6 +8,7 @@ import './App.css'
 import TicketList from './ticketList';
 import EventList from './EventList';
 import TicketUsed from './TicketUsed';
+import NewEvent from './NewEvent';
 
 export default function App() {
 
@@ -18,11 +19,13 @@ export default function App() {
           <Link to="/events">Events</Link>{' '}
           <Link to="/tickets">Tickets</Link>{' '}
           <Link to="/ticketused">Check Ticket</Link>{' '}
+          <Link to="/newevent">Create new event</Link>
           <Routes>
 
             <Route path="/events" element={<EventList />} />
             <Route path="/tickets" element={<TicketList />} />
             <Route path="/ticketused" element={<TicketUsed />} />
+            <Route path="/newevent" element={<NewEvent />} />
           </Routes>
         </div>
       </BrowserRouter>
