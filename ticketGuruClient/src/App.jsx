@@ -5,6 +5,7 @@ import TicketList from './ticketList';
 import EventList from './EventList';
 import TicketUsed from './TicketUsed';
 import Login from './Login';
+import NewEvent from './NewEvent';
 
 export default function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -35,6 +36,7 @@ export default function App() {
               <Link to="/events">Events</Link>{' '}
               <Link to="/tickets">Tickets</Link>{' '}
               <Link to="/ticketused">Check Ticket</Link>{' '}
+              <Link to="/newevent">Create new event</Link>
               <Link to="/login" onClick={handleLogout}>Logout</Link>{' '}
             </>
           )}
@@ -44,7 +46,9 @@ export default function App() {
             <Route path="/events" element={<EventList />} />
             <Route path="/tickets" element={<TicketList />} />
             <Route path="/ticketused" element={<TicketUsed />} />
+            <Route path="/newevent" element={<NewEvent />} />
             <Route path="/login" element={<Login onAuthentication={handleAuthentication} />} />
+            
           </Routes>
         </div>
       </BrowserRouter>
