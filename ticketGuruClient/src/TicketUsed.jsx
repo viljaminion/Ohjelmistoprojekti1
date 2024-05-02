@@ -4,8 +4,8 @@ function TicketUsed() {
     const [ticketCode, setTicketCode] = useState('');
     const [ticketInfo, setTicketInfo] = useState(null);
 
-    const username = 'mikko';
-    const password = 'admin';
+    const username = localStorage.getItem('username') || '';
+    const password = localStorage.getItem('password') || '';
     const basicAuth = btoa(`${username}:${password}`);
 
     const handleChange = (e) => {
