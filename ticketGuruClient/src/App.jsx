@@ -36,7 +36,7 @@ export default function App() {
               <Link to="/events">Events</Link>{' '}
               <Link to="/tickets">Tickets</Link>{' '}
               <Link to="/ticketused">Check Ticket</Link>{' '}
-              <Link to="/newevent">Create new event</Link>
+              <Link to="/newevent"></Link>
               <Link to="/login" onClick={handleLogout}>Logout</Link>{' '}
             </>
           )}
