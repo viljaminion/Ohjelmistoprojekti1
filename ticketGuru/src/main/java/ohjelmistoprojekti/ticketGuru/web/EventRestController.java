@@ -59,4 +59,19 @@ public class EventRestController {
             return new ResponseEntity<>("Event with ID " + event + " not found.", HttpStatus.NOT_FOUND);
         }
     }
+
+    // Tapahtuman muokkaaminen PUT-metodilla
+    @RequestMapping(value = "/event/{id}", method = RequestMethod.PUT)
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ResponseEntity<?> updateEvent(@PathVariable("id") Long eventId, @RequestBody Event updatedEvent) {
+        Optional<Event> event = eventrepository.findById(eventId);
+        if (event.isPresent()) {
+            // Update the event data
+            updatedEvent.setId(eventId); // Make sure the ID is set correctly
+            eventrepository.save(updatedEvent);
+            return ResponseEntity.ok("Event with ID " + eventId + " has been updated.");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

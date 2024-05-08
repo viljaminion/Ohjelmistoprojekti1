@@ -6,6 +6,10 @@ import EventList from './EventList';
 import TicketUsed from './TicketUsed';
 import Login from './Login';
 import NewEvent from './NewEvent';
+import TicketTypes from './TicketTypes';
+import EditEvent from './EditEvent';
+
+
 
 export default function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -46,6 +50,8 @@ export default function App() {
             <Route path="/tickets" element={<TicketList />} />
             <Route path="/ticketused" element={<TicketUsed />} />
             <Route path="/newevent" element={<NewEvent />} />
+            <Route path="/tickettypes/:id" element={<TicketTypes />} />
+            <Route path="/editevent/:id" element={<EditEvent />} /> {/* Define the route for EditEvent */}
             <Route path="/login" element={<Login onAuthentication={handleAuthentication} />} />
             
           </Routes>
