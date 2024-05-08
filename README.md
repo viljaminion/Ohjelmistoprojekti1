@@ -17,22 +17,54 @@ Määrittelyssä järjestelmää tarkastellaan käyttäjän näkökulmasta. Jär
 toiminnot hahmotellaan käyttötapausten tai käyttäjätarinoiden kautta, ja kuvataan järjestelmän
 käyttäjäryhmät.
 
--   Käyttäjäryhmiä ovat lipunmyyjät, asiakkaat (lipun ostajat), järjestelmän ylläpitäjä, lipunmyyntitoimiston johto
--   Käyttäjätarinat löytyy toisesta dokumentista
--   Lyhyt kuvaus käyttötapauksista tai käyttäjätarinat
+#### Lipunmyyjä
 
-Kuvauksissa kannattaa harkita, mikä on toteuttajalle ja asiakkaalle oleellista
-tietoa ja keskittyä siihen.
+- Myy lippuja lipunmyyntitoimistossa
+- Tarvittavat toiminnot:
+    - lipun tai useamman lipun myynti kerralla
+    - lipun tarkastus
+    - lipun merkitseminen käytetyksi
+
+Käyttäjätarinat:
+- Haluan myydä yhden tai useamman lipun tiettyyn tapahtumaan.
+- Haluan tarkastaa lipun tapahtumapaikan ovella ja nähdä onko lippu käytetty vai käyttämätön.
+- Haluan merkata lipun käytetyksi.
+
+#### Asiakas
+- Ostaa lippuja lipunmyyntitoimistossa ja osallistuu lipun oikeuttavaan tapahtumaan
+
+Käyttäjätarinat:
+- Haluan ostaa yhden tai useamman lipun tiettyyn tapahtumaan.
+- Haluan käyttää lipun tapahtumassa ja lippu tarkastetaan ovella.
+
+#### Järjestelmän ylläpitäjä
+
+- Vastaa lipunmyyntisovelluksen ylläpidosta.
+- Tarvittavat toiminnot:
+    - Uuden tapahtuman lisääminen
+    - Jo lisätyn tapahtuman muokkaaminen
+    - Tapahtuman poistaminen
+    - Käyttäjien hallinta
+
+Käyttäjätarinat:
+- Haluan luoda uuden tapahtuman.
+- Haluan muokata tapahtumaa ja lisätä sen myytävien lippujen määrää.
 
 ## Käyttöliittymä
-
-- Lipunmyyntisivu:
-Tällä sivulla näkyy järjestelmän lippujen ja asiakkaiden tiedot, näiden välisenä siirtyämänä käytetään Ostotapahtuma-taulua.
-- Tapahtumasivu:
-Tällä sivulla näkyy tapahtumien ja tarkemmat lipputiedot.
+- Etusivu:
+Tälle sivulle pääsee sisäänkirjautumisen jälkeen. Sieltä löytyy linkit Events, Tickets, Check Ticket ja Logout-linkki uloskirjautumista varten.
+- Tapahtumalistasivu:
+Tällä sivulla näkyy järjestelmään lisätyt tapahtumat listana. Niitä voi poistaa ja muokata. Lisäksi sivulta löytyy Create new event-linkki.
+- Tapahtuman lisäyssivu:
+Tällä sivulla pystyt luomaan uusia tapahtumia.
+- Liput-sivu:
+Tältä sivulta löydät kaikki myydyt liput tietoineen.
+- Lipun tarkistus-sivu:
+Tällä sivulla voit syöttää lipun koodin tarkistakseen onko se käytetty ja pystyt myös merkkaamaan lipun käytetyksi.
 - Tapahtumien hallinta: Tapahtumien CRUD-toiminnot (Rest)
-- Myyntiraportti
+- Myyntiraportti:
 Tällä sivulla näkyy maksutapahtumien tiedot.
+TÄHÄN PITÄÄ LISÄTÄ VIELÄ!!
 
 ## Tietokanta
 
@@ -114,47 +146,17 @@ Tällä sivulla näkyy maksutapahtumien tiedot.
 
 ## Tekninen kuvaus
 
-### EventControllerin endpointit selaimessa:
+### Frontend-komponentti
 
-- Tapahtuman listanäkymä: "/eventlist"
-- Tapahtuman lisäys: "/events/add"
-- Tapahtuman tallennus: "/events/save"
-- Tapahtuman poisto: "/events/delete/{id}"
-- Tapahtuman muokkaus: "/events/edit/{id}"
-- Tapahtumaan lipputyypin lisääminen: "/events/{eventId}/addTicketType"
-- Tapahtuman lipputyypin tallentaminen: "/events/{eventId}/saveTicketType" <!--tarviiko nää kaks vikaa olla tässä-->
+Frontend on tehty reactilla. Frontend kommunikoi backendin kanssa REST-rajapinnan kautta. Rest Api tulee Rahdin tietokantapalvelun kautta ja käyttöliittymä GitHub pagesin kautta.
 
-### TicketTypeControllerin endpointit selaimessa:
+### Backend-komponentti
 
-- Listanäkymä: "/tickettypelist"
-- Lisäys: "/tickettypes/add"
-- Tallennus: "/tickettypes/save"
-- Poisto: "tickettypes/delete/{id}"
-- Muokkaus: "/editTicketType/{id}"
+Backend on tehty Spring Bootilla ja se ajetaan Rahdin kautta. Kommunikointi tehdään Rest-rajapinnan kautta.
 
-### TransactionControllerin endpointit selaimessa:
+### Tietokanta-komponentti
 
-- Ostotapahtumalistaus: "/transactionlist"
-- Ostotapahtuman lisäys: "/transactions/add"
-- Ostotapahtuman tallennus: "/transactions/save"
-- Ostoapahtuman poisto: "/transactions/delete/{id}"
-- Ostotapahtuman muokkaus: "/editTransaction/{id}"  <!--täytyy vielä vikana tarkistaa tarviiko korjata-->
-
-### SellerControllerin endpointit selaimessa:
-
-- Lista myyjistä: "/sellerlist"
-- Myyjän lisäys: "/sellers/add"
-- Myyjän tietojen tallennus: "/sellers/save"
-- Myyjän tietojen muokkaaminen: "sellers/edit/{id}"
-- Myyjän tietojen poistaminen: "sellers/delete/{id}
-
-### TicketControllerin endpointit selaimessa:
-
-- Lista lipuista: "/ticketlist"
-- Lipun lisäys: "/tickets/add"
-- Lipun tietojen tallennus: "/tickets/save"
-- Lipun tietojen muokkaaminen: "tickets/edit/{id}"
-- Lipun tietojen poistaminen: "tickets/delete/{id}
+Käytössä on MariaDB tietokanta ja sitä käytetään Rahdin kautta.
 
 
 Teknisessä kuvauksessa esitetään järjestelmän toteutuksen suunnittelussa tehdyt tekniset
@@ -178,12 +180,12 @@ Tämän lisäksi
 
 ## Testaus
 
-Tässä kohdin selvitetään, miten ohjelmiston oikea toiminta varmistetaan
-testaamalla projektin aikana: millaisia testauksia tehdään ja missä vaiheessa.
-Testauksen tarkemmat sisällöt ja testisuoritusten tulosten raportit kirjataan
-erillisiin dokumentteihin.
+Automaattisesti luotu TicketGuruApplicationTests on niin sanottu savutesti, joka testaa lähteekö sovellus käyntiin.
+Junit-testit testaavat EventRepositoryTest.java luokassa löytääkö tapahtuman nimen perusteella ja palauttaako se silloin tapahtuman osoitteen. Lisäksi testataan uuden tapahtuman luonti ja tapahtuman poistaminen. 
+Integraatiotesti testaa EventControllerIntegrationTest-luokassa uuden tapahtuman luontia ja sitä, että löytyykö se sen jälkeen eventRepositorysta. 
+End-to-end testi testaa, että tickettypen luonti, haku ja poisto toimii kokonaisuudessaan. Testi käyttää mockmvc työkalua.
 
-Tänne kirjataan myös lopuksi järjestelmän tunnetut ongelmat, joita ei ole korjattu.
+Tänne kirjataan myös lopuksi järjestelmän tunnetut ongelmat, joita ei ole korjattu. <-- TÄMÄ KOHTA POISTOON JOS EI JÄÄ ONGELMIA.
 
 ## Asennustiedot
 
