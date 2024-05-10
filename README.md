@@ -189,23 +189,17 @@ Tänne kirjataan myös lopuksi järjestelmän tunnetut ongelmat, joita ei ole ko
 
 ## Asennustiedot
 
-Järjestelmän asennus on syytä dokumentoida kahdesta näkökulmasta:
-
--   järjestelmän kehitysympäristö: miten järjestelmän kehitysympäristön saisi
-    rakennettua johonkin toiseen koneeseen
-
--   järjestelmän asentaminen tuotantoympäristöön: miten järjestelmän saisi
-    asennettua johonkin uuteen ympäristöön.
-
-Asennusohjeesta tulisi ainakin käydä ilmi, miten käytettävä tietokanta ja
-käyttäjät tulee ohjelmistoa asentaessa määritellä (käytettävä tietokanta,
-käyttäjätunnus, salasana, tietokannan luonti yms.).
+Asenna MariaDB-tietokanta omalle tietokoneellesi MariaDB:n viralliselta verkkosivustolta (https://mariadb.org/download/). Lataa myös HeidiSQL ja luo tyhjä tietokanta.
+Kloonaa viimeisin versio sovelluksesta https://github.com/viljaminion/Ohjelmistoprojekti1. 
 
 ## Käynnistys- ja käyttöohje
 
-Tyypillisesti tässä riittää kertoa ohjelman käynnistykseen tarvittava URL sekä
-mahdolliset kirjautumiseen tarvittavat tunnukset. Jos järjestelmän
-käynnistämiseen tai käyttöön liittyy joitain muita toimenpiteitä tai toimintajärjestykseen liittyviä asioita, nekin kerrotaan tässä yhteydessä.
+### Sovelluksen käyttö lokaalisti
 
-Usko tai älä, tulet tarvitsemaan tätä itsekin, kun tauon jälkeen palaat
-järjestelmän pariin !
+Käynnistä ticketGuru. Käynnistä ticketGuruClient npm run dev-käskyllä terminaalissa oikeassa kansiossa. Avaa linkki, niin sovellus aukeaa.
+
+### Sovelluksen käyttö Rahdissa
+
+Tähän sovelluksen URL.
+Ylläpitäjän käyttäjätunnus on Mikko ja salasana admin.
+Myyjän käyttäjätunnus on Maija ja salasana user.
