@@ -1,11 +1,11 @@
-// TicketTypesForEvent.jsx
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // Import axios for making HTTP requests
-import { useParams } from 'react-router-dom'; // Import useParams to access URL parameters
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const TicketTypesForEvent = () => {
-    const { id } = useParams(); // Get the event ID from the URL
+    const { id } = useParams();
     const [ticketTypes, setTicketTypes] = useState([]);
+    const [newTicketType, setNewTicketType] = useState({ tickettypename: '', price: '' });
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -21,7 +21,6 @@ const TicketTypesForEvent = () => {
                         Authorization: `Basic ${basicAuth}`
                     }
                 });
-                console.log('API Response:', response.data); // Log the API response
                 setTicketTypes(response.data);
                 setIsLoading(false);
             } catch (error) {
@@ -33,6 +32,39 @@ const TicketTypesForEvent = () => {
         fetchTicketTypes();
     }, []);
 
+    const handleFormSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post(`http://localhost:8080/tickettypes`, {
+                ...newTicketType,
+                event: {
+                    id: parseInt(id)
+                }
+            }, {
+                headers: {
+                    Authorization: `Basic ${basicAuth}`
+                }
+            });
+            setTicketTypes([...ticketTypes, response.data]);
+            setNewTicketType({ tickettypename: '', price: '' });
+        } catch (error) {
+            setError(error.message);
+        }
+    };
+
+    const handleDelete = async (ticketTypeId) => {
+        try {
+            await axios.delete(`http://localhost:8080/tickettype/${ticketTypeId}`, {
+                headers: {
+                    Authorization: `Basic ${basicAuth}`
+                }
+            });
+            setTicketTypes(ticketTypes.filter(ticketType => ticketType.id !== ticketTypeId));
+        } catch (error) {
+            setError(error.message);
+        }
+    };
+
     if (isLoading) {
         return <div>Loading...</div>;
     }
@@ -43,19 +75,66 @@ const TicketTypesForEvent = () => {
 
     return (
         <div>
-            <h2>Ticket Types for Event ID: {id}</h2>
-            {ticketTypes.map(ticketType => {
-                if (ticketType.event.id === parseInt(id)) {
-                    return (
-                        <div key={ticketType.id}>
-                            <h3>{ticketType.tickettypename}</h3>
-                            <p>Price: ${ticketType.price}</p>
-                            <p>Event Name: {ticketType.event.eventname}</p>
-                        </div>
-                    );
+            <style>
+                {`
+                table {
+                    width: 50%;
                 }
-                return null;
-            })}
+
+                form div {
+                    width: 15%;
+                    margin: auto;
+                    padding: 5px;
+                }
+
+                label {
+                    display: block;
+                    text-align: left;
+                }
+
+                input {
+                    width: 100%;
+                }
+            `}
+            </style>
+            <h2>Ticket Types for Event ID: {id}</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {ticketTypes.map(ticketType => {
+                        if (ticketType.event.id === parseInt(id)) {
+                            return (
+                                <tr key={ticketType.id}>
+                                    <td>{ticketType.tickettypename}</td>
+                                    <td>${ticketType.price}</td>
+                                    <td>
+                                        <button onClick={() => handleDelete(ticketType.id)}>Delete</button>
+                                    </td>
+                                </tr>
+                            );
+                        }
+                        return null;
+                    })}
+                </tbody>
+            </table>
+            <h3>Add New Ticket Type</h3>
+            <form onSubmit={handleFormSubmit}>
+                <div>
+                    <label>Description:</label>
+                    <input type="text" value={newTicketType.tickettypename} onChange={(e) => setNewTicketType({ ...newTicketType, tickettypename: e.target.value })} />
+                </div>
+                <div>
+                    <label>Price:</label>
+                    <input type="number" value={newTicketType.price} onChange={(e) => setNewTicketType({ ...newTicketType, price: e.target.value })} />
+                </div>
+                <button class="addbutton" type="submit">Add Ticket Type</button>
+            </form>
         </div>
     );
 };

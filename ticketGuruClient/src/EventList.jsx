@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Link, useParams, useNavigate } from 'react-router-dom';
-import styled from "styled-components";
-import NewEvent from './NewEvent';
 import TicketTypes from './TicketTypes';
-import EditEvent from './EditEvent';
+import axios from 'axios';
 
 const EventList = () => {
     const [eventsWithTicketTypes, setEventsWithTicketTypes] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
+    const username = 'mikko';
+    const password = 'admin';
+    const basicAuth = btoa(`${username}:${password}`);
+
     useEffect(() => {
         const fetchData = () => {
-            const username = 'mikko';
-            const password = 'admin';
-            const basicAuth = btoa(`${username}:${password}`);
             Promise.all([
                 fetch('http://localhost:8080/events', {
                     headers: {
@@ -34,7 +33,6 @@ const EventList = () => {
                     return Promise.all([eventsResponse.json(), ticketTypesResponse.json()]);
                 })
                 .then(([eventsData, ticketTypesData]) => {
-                    // Combine events with their corresponding ticket types
                     const eventsWithTypes = eventsData.map(event => ({
                         ...event,
                         ticketTypes: ticketTypesData.filter(ticket => ticket.event.id === event.id)
@@ -52,13 +50,22 @@ const EventList = () => {
     }, []);
 
     const handleDeleteEvent = (eventId) => {
-        // Implement delete event functionality
+        axios.delete(`http://localhost:8080/event/${eventId}`, {
+            headers: {
+                Authorization: `Basic ${basicAuth}`
+            }
+        })
+            .then(() => {
+                setEventsWithTicketTypes(events => events.filter(event => event.id !== eventId));
+            })
+            .catch(error => {
+                setError(error.message);
+            });
     };
 
-    const navigate = useNavigate(); // Use useNavigate hook
+    const navigate = useNavigate();
 
     const handleEditEvent = (eventId) => {
-        // Redirect to the EditEvent page with the event ID in the URL
         navigate(`/editevent/${eventId}`);
     };
 
@@ -73,12 +80,6 @@ const EventList = () => {
     return (
         <div>
             <h1>Event List</h1>
-            <Link to="/newevent">Create new event</Link>{' '}
-            <Routes>
-                {eventsWithTicketTypes.map(event => (
-                    <Route key={event.id} path={`/tickettypes/${event.id}`} element={<TicketTypes event={event} />} />
-                ))}
-            </Routes>
 
             <table>
                 <thead>
@@ -104,9 +105,7 @@ const EventList = () => {
                             <td>{event.maxtickets}</td>
                             <td>{event.duration}</td>
                             <td>
-                                <Link to={`/tickettypes/${event.id}`}>
-                                    <button>Ticket Types</button>
-                                </Link>
+                                <button onClick={() => navigate(`/tickettypes/${event.id}`)}>Ticket Types</button>
                                 <button onClick={() => handleDeleteEvent(event.id)}>Delete</button>
                                 <button onClick={() => handleEditEvent(event.id)}>Edit</button>
                             </td>
@@ -114,6 +113,7 @@ const EventList = () => {
                     ))}
                 </tbody>
             </table>
+            <button class="addbutton" onClick={() => navigate('/newevent')}>Add new event</button>{' '}
         </div>
     );
 };

@@ -30,11 +30,13 @@ body {
 }
 
 button {
-  margin: 10px;
+  margin: 5px;
+  display: inline-flex;
+  justify-content: space-evenly;
 }
 
 table {
-  table-layout: fixed;
+  table-layout: auto; 
   margin: 0 auto;
   width: 100%;
   border-collapse: collapse;
@@ -43,6 +45,10 @@ table {
 th,
 td {
   text-align: left;
-  padding: 10px;
+  padding: 15px;
   border: 1px solid #ddd;
+}
+
+.addbutton {
+  margin-top: 25px;
 }

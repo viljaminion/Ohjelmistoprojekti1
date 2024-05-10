@@ -55,27 +55,55 @@ const EditEvent = () => {
 
     return (
         <div>
+            <style>
+                {`
+                table {
+                    width: 50%;
+                }
+
+                form div {
+                    width: 15%;
+                    margin: auto;
+                    padding: 5px;
+                }
+
+                label {
+                    display: block;
+                    text-align: left;
+                }
+
+                input {
+                    width: 100%;
+                }
+            `}
+            </style>
             <h2>Edit Event</h2>
             <form onSubmit={handleFormSubmit}>
+                <div>
                 <label>Event Name:</label>
                 <input type="text" value={event.eventname} onChange={(e) => setEvent({ ...event, eventname: e.target.value })} />
-                <br/>
+                </div>
+                <div>
                 <label>Address:</label>
                 <input type="text" value={event.address} onChange={(e) => setEvent({ ...event, address: e.target.value })} />
-                <br/>
+                </div>
+                <div>
                 <label>Showtime:</label>
                 <input type="datetime-local" value={event.showtime} onChange={(e) => setEvent({ ...event, showtime: e.target.value })} />
-                <br/>
+                </div>
+                <div>
                 <label>Description:</label>
-                <textarea value={event.description} onChange={(e) => setEvent({ ...event, description: e.target.value })} />
-                <br/>
+                <input value={event.description} onChange={(e) => setEvent({ ...event, description: e.target.value })} />
+                </div>
+                <div>
                 <label>Max Tickets:</label>
                 <input type="number" value={event.maxtickets} onChange={(e) => setEvent({ ...event, maxtickets: parseInt(e.target.value) })} />
-                <br/>
+                </div>
+                <div>
                 <label>Duration:</label>
                 <input type="number" value={event.duration} onChange={(e) => setEvent({ ...event, duration: parseInt(e.target.value) })} />
-                <br/>
-                <button type="submit">Save Changes</button>
+                </div>
+                <button class="addbutton" type="submit">Save Changes</button>
             </form>
         </div>
     );

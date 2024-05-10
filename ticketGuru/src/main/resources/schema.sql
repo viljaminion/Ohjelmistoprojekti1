@@ -84,8 +84,7 @@ INSERT INTO event (eventname, address, showtime, description, maxtickets, durati
 INSERT INTO tickettype (tickettypename, price, event_id) VALUES
 ('aikuisten lippu', 20.0, 1),
 ('lasten lippu', 10.0, 1),
-('opiskelijalippu', 15.0, 2),
-('eläkeläislippu', 15.0, 1);
+('opiskelijalippu', 15.0, 2);
 
 INSERT INTO transaction (transactiondate, ticketsum, appuser_id) VALUES
 ('2024-03-08', 50.0, NULL);
