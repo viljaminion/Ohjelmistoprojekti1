@@ -16,7 +16,7 @@ const TicketTypesForEvent = () => {
     useEffect(() => {
         const fetchTicketTypes = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/tickettypes`, {
+                const response = await axios.get(`http://ohjelmistoprojekti1-ticketguru-kovas.rahtiapp.fi/tickettypes`, {
                     headers: {
                         Authorization: `Basic ${basicAuth}`
                     }
@@ -35,7 +35,7 @@ const TicketTypesForEvent = () => {
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`http://localhost:8080/tickettypes`, {
+            const response = await axios.post(`http://ohjelmistoprojekti1-ticketguru-kovas.rahtiapp.fi/tickettypes`, {
                 ...newTicketType,
                 event: {
                     id: parseInt(id)
@@ -54,7 +54,7 @@ const TicketTypesForEvent = () => {
 
     const handleDelete = async (ticketTypeId) => {
         try {
-            await axios.delete(`http://localhost:8080/tickettype/${ticketTypeId}`, {
+            await axios.delete(`http://ohjelmistoprojekti1-ticketguru-kovas.rahtiapp.fi/tickettype/${ticketTypeId}`, {
                 headers: {
                     Authorization: `Basic ${basicAuth}`
                 }

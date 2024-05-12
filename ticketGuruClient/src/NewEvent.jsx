@@ -1,23 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function NewEvent() {
-
   const [eventname, setEventname] = useState('');
   const [address, setAddress] = useState('');
   const [showtime, setShowtime] = useState('');
   const [description, setDescription] = useState('');
   const [maxtickets, setMaxtickets] = useState('');
   const [duration, setDuration] = useState('');
+  const navigate = useNavigate();
 
-  const username = 'mikko';
-  const password = 'admin';
+  const username = localStorage.getItem('username') || '';
+  const password = localStorage.getItem('password') || '';
   const basicAuth = btoa(`${username}:${password}`);
 
-  const handleNewEvent = async () => {
+  const handleNewEvent = async (e) => {
+    e.preventDefault();
+
     try {
       await axios.post(
-        'http://localhost:8080/events',
+        'http://ohjelmistoprojekti1-ticketguru-kovas.rahtiapp.fi/events',
         {
           eventname,
           address,
@@ -32,7 +35,8 @@ export default function NewEvent() {
           }
         }
       );
-      alert('Event created successfully!');
+
+      navigate('/events');
     } catch (error) {
       console.error('Error creating data:', error);
     }
@@ -112,7 +116,7 @@ export default function NewEvent() {
             onChange={(e) => setDuration(e.target.value)}
           />
         </div>
-        <button class="addbutton" type="submit">Add event</button>
+        <button className="addbutton" type="submit">Add event</button>
       </form>
     </div>
   );
