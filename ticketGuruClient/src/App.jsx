@@ -39,6 +39,7 @@ export default function App() {
               <Link to="/selltickets">Sell Tickets</Link>{' '}
               <Link to="/ticketused">Check Ticket</Link>{' '}
               <Link to="/login" onClick={handleLogout}>Logout</Link>{' '}
+              <hr/>
             </>
           )}
           <Routes>

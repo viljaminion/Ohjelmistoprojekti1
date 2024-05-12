@@ -97,7 +97,7 @@ const SellTickets = () => {
                 }
     
                 form div {
-                    width: 20%;
+                    width: 23%;
                     padding: 13px;
                     margin-left: 10px;
                     margin-right: 10px;

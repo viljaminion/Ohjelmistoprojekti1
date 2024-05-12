@@ -14,7 +14,7 @@ a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
-  padding: 5px;
+  padding: 16px;
 }
 
 a:hover {
@@ -38,8 +38,13 @@ button {
 table {
   table-layout: auto;
   margin: 0 auto;
-  width: 100%;
+  width: 90%;
   border-collapse: collapse;
+}
+
+hr {
+  border: 1px solid rgba(65, 65, 65, 0.452);
+  width: 36%;
 }
 
 th,
