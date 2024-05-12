@@ -36,8 +36,7 @@ function Login({ onAuthentication }) {
             <br />
             <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
             <br />
-            <button onClick={handleLogin}>Login</button>
-
+            <button class="loginbutton" onClick={handleLogin}>Login</button>
         </div>
     );
 }

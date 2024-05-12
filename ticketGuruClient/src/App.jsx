@@ -13,18 +13,20 @@ export default function App() {
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
-    const isAuthenticated = localStorage.getItem('authenticated') === 'true';
-    setAuthenticated(isAuthenticated);
+    const storedAuth = sessionStorage.getItem('authenticated');
+    if (storedAuth) {
+      setAuthenticated(JSON.parse(storedAuth));
+    }
   }, []);
 
   const handleAuthentication = (isAuthenticated) => {
     setAuthenticated(isAuthenticated);
-    localStorage.setItem('authenticated', isAuthenticated ? 'true' : 'false');
+    sessionStorage.setItem('authenticated', JSON.stringify(isAuthenticated));
   };
 
   const handleLogout = () => {
     setAuthenticated(false);
-    localStorage.removeItem('authenticated');
+    sessionStorage.removeItem('authenticated');
   };
 
   return (
