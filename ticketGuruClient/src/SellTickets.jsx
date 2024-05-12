@@ -76,7 +76,6 @@ const SellTickets = () => {
 
     const addToCart = (event) => {
         event.preventDefault();
-        console.log(selectedTicketTypeId);
         const selectedTicket = ticketTypes.find((type) => type.id === selectedTicketTypeId);
         if (selectedTicket) {
             const itemsToAdd = Array.from({ length: quantity }, () => selectedTicket);
@@ -86,71 +85,83 @@ const SellTickets = () => {
         }
     };
 
+    const totalPrice = shoppingCart.reduce((total, item) => total + item.price, 0);
+
     return (
         <div>
             <style>
                 {`
                 table {
                     width: 50%;
+                    margin: 0 auto;
                 }
-
+    
                 form div {
-                    width: 15%;
-                    margin: auto;
-                    padding: 5px;
+                    width: 20%;
+                    padding: 13px;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    display: inline-block;
                 }
-
-                form select {
-                    width: 100%;
-                }
-
+    
                 label {
                     display: block;
                     text-align: left;
                 }
+    
+                form select {
+                    width: 100%;
+                }
 
                 form input {
-                    width: 96%;
-                    align: left;
+                    width: calc(100% - 10px);
                 }
-            `}
+    
+                .total {
+                    margin-top: 20px;
+                }
+    
+                .total p {
+                    display: inline-block;
+                }
+    
+                .total button {
+                    margin-left: 10px;
+                }
+                `}
             </style>
             <h1>Sell Tickets</h1>
             <form onSubmit={addToCart}>
-                <div>
-                    <label>Select an event:</label>
-                    <select value={selectedEvent} onChange={handleEventChange}>
-                        <option value="">-- Select Event --</option>
-                        {events.map((event) => (
-                            <option key={event.id} value={event.id}>
-                                {event.eventname}
-                            </option>
-                        ))}
-                    </select>
+                <div class="formcontainer">
+                    <div>
+                        <label>Select an event:</label>
+                        <select value={selectedEvent} onChange={handleEventChange}>
+                            <option value="">-- Events --</option>
+                            {events.map((event) => (
+                                <option key={event.id} value={event.id}>
+                                    {event.eventname}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div>
+                        <label>Select ticket type:</label>
+                        <select value={selectedTicketTypeId} onChange={handleTicketTypeChange}>
+                            <option value="">-- Ticket Types --</option>
+                            {filteredTicketTypes.map((type) => (
+                                <option key={type.id} value={type.id}>
+                                    {type.tickettypename} - {type.price}€
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div>
+                        <label>Amount of tickets:</label>
+                        <input type="number" value={quantity} onChange={handleQuantityChange} min="1" />
+                    </div>
                 </div>
-
-                {selectedEvent && (
-                    <>
-                        <div>
-                            <label>Select ticket type:</label>
-                            <select value={selectedTicketTypeId} onChange={handleTicketTypeChange}>
-                                <option value="">-- Ticket Types --</option>
-                                {filteredTicketTypes.map((type) => (
-                                    <option key={type.id} value={type.id}>
-                                        {type.tickettypename} - {type.price}€
-                                    </option>
-                                ))}
-                            </select>
-
-                        </div>
-                        <div>
-                            <label>Amount of tickets:</label>
-                            <input type="number" value={quantity} onChange={handleQuantityChange} min="1" />
-                        </div>
-                    </>
-                )}
-
-                <button class="addbutton" type="submit" disabled={!selectedTicketTypeId}>
+                <br />
+                <button type="submit" disabled={!selectedTicketTypeId}>
                     Add to Cart
                 </button>
             </form>
@@ -163,20 +174,22 @@ const SellTickets = () => {
                             <th>Ticket Type</th>
                             <th>Event</th>
                             <th>Price</th>
-
                         </tr>
                     </thead>
                     <tbody>
-                        {shoppingCart.map((type, index) => (
+                        {shoppingCart.map((item, index) => (
                             <tr key={index}>
-                                <td>{type.tickettypename}</td>
-                                <td>{type.event.eventname}</td>
-                                <td>{type.price}€</td>
-
+                                <td>{item.tickettypename}</td>
+                                <td>{item.event.eventname}</td>
+                                <td>{item.price}€</td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
+            </div>
+
+            <div className="total">
+                <p>Total Price: <b>{totalPrice}€</b></p><button>Confirm transaction</button>
             </div>
         </div>
     );

@@ -36,7 +36,7 @@ button {
 }
 
 table {
-  table-layout: auto; 
+  table-layout: auto;
   margin: 0 auto;
   width: 100%;
   border-collapse: collapse;
@@ -45,7 +45,7 @@ table {
 th,
 td {
   text-align: left;
-  padding: 12px;
+  padding: 8px;
   border: 1px solid #ddd;
 }
 
@@ -55,4 +55,19 @@ td {
 
 .loginbutton {
   margin-top: 15px;
+}
+
+.total {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.formcontainer {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.total p {
+  display: inline;
+  margin-right: 10px;
 }
