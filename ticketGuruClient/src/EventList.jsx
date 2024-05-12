@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Link, useParams, useNavigate } from 'react-router-dom';
-import TicketTypes from './TicketTypes';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const EventList = () => {
@@ -8,8 +7,8 @@ const EventList = () => {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
-    const username = 'mikko';
-    const password = 'admin';
+    const username = localStorage.getItem('username') || '';
+    const password = localStorage.getItem('password') || '';
     const basicAuth = btoa(`${username}:${password}`);
 
     useEffect(() => {
@@ -79,7 +78,7 @@ const EventList = () => {
 
     return (
         <div>
-            <h1>Event List</h1>
+            <h1>Events</h1>
 
             <table>
                 <thead>

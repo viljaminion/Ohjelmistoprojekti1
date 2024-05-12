@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
 import './App.css';
-import TicketList from './ticketList';
+import SellTickets from './SellTickets';
 import EventList from './EventList';
 import TicketUsed from './TicketUsed';
 import Login from './Login';
@@ -12,12 +12,19 @@ import EditEvent from './EditEvent';
 export default function App() {
   const [authenticated, setAuthenticated] = useState(false);
 
+  useEffect(() => {
+    const isAuthenticated = localStorage.getItem('authenticated') === 'true';
+    setAuthenticated(isAuthenticated);
+  }, []);
+
   const handleAuthentication = (isAuthenticated) => {
     setAuthenticated(isAuthenticated);
+    localStorage.setItem('authenticated', isAuthenticated ? 'true' : 'false');
   };
 
   const handleLogout = () => {
     setAuthenticated(false);
+    localStorage.removeItem('authenticated');
   };
 
   return (
@@ -27,7 +34,7 @@ export default function App() {
           {authenticated && (
             <>
               <Link to="/events">Events</Link>{' '}
-              <Link to="/tickets">Tickets</Link>{' '}
+              <Link to="/selltickets">Sell Tickets</Link>{' '}
               <Link to="/ticketused">Check Ticket</Link>{' '}
               <Link to="/login" onClick={handleLogout}>Logout</Link>{' '}
             </>
@@ -35,7 +42,7 @@ export default function App() {
           <Routes>
             {!authenticated && <Route path="/" element={<Navigate to="/login" />} />}
             <Route path="/events" element={<EventList />} />
-            <Route path="/tickets" element={<TicketList />} />
+            <Route path="/selltickets" element={<SellTickets />} />
             <Route path="/ticketused" element={<TicketUsed />} />
             <Route path="/newevent" element={<NewEvent />} />
             <Route path="/tickettypes/:id" element={<TicketTypes />} />
