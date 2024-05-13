@@ -51,25 +51,10 @@ Käyttäjätarinat:
 - Haluan muokata tapahtumaa ja lisätä sen myytävien lippujen määrää.
 
 ## Käyttöliittymä
-#### Etusivu:
-Tälle sivulle pääsee sisäänkirjautumisen jälkeen. Sieltä löytyy linkit Events, Tickets, Check Ticket ja Logout-linkki uloskirjautumista varten.
-#### /events:
-Tällä sivulla näkyy järjestelmään lisätyt tapahtumat listana. Tickettypes-napista pääsee luomaan uusia lipputyyppejä tietylle tapahtumalle. Tapahtumia voi poistaa ja muokata. Lisäksi sivulta löytyy Create new event-linkki.
-#### /tickettypes/{eventid}:
-Tällä sivulla näet tietyn tapahtuman jo luodut lipputyypit tietoineen ja voit poistaa niitä. Lisäksi voit luoda uusia lipputyyppejä.
-#### /editevent/{eventid}:
-Tällä sivulla voit muokata valitsemasi tapahtuman tietoja.
-#### /newevent:
-Tällä sivulla pystyt luomaan uuden tapahtuman.
-#### selltickets:
-Tällä sivulla voit ostaa lippuja yhteen tai useampaan tapahtumaan kerralla.
-#### /ticketused:
-Tällä sivulla voit syöttää lipun koodin tarkistakseen onko se käytetty ja pystyt myös merkkaamaan lipun käytetyksi.
-#### Tapahtumien hallinta: 
-Tapahtumien CRUD-toiminnot (Rest)
-#### Myyntiraportti:
-Tällä sivulla näkyy maksutapahtumien tiedot.
-TÄHÄN PITÄÄ LISÄTÄ VIELÄ!!
+
+![Alt text](kaavio2.png)
+
+Tässä kuvattu käyttöliittymän navigointi kaaviona.
 
 ## Tietokanta
 
@@ -163,34 +148,12 @@ Backend on tehty Spring Bootilla ja se ajetaan Rahdin kautta. Kommunikointi tehd
 
 Käytössä on MariaDB tietokanta ja sitä käytetään Rahdin kautta.
 
-
-Teknisessä kuvauksessa esitetään järjestelmän toteutuksen suunnittelussa tehdyt tekniset
-ratkaisut, esim.
-
--   Missä mikäkin järjestelmän komponentti ajetaan (tietokone, palvelinohjelma)
-    ja komponenttien väliset yhteydet (vaikkapa tähän tyyliin:
-    https://security.ufl.edu/it-workers/risk-assessment/creating-an-information-systemdata-flow-diagram/)
--   Palvelintoteutuksen yleiskuvaus: teknologiat, deployment-ratkaisut yms.
--   Keskeisten rajapintojen kuvaukset, esimerkit REST-rajapinta. Tarvittaessa voidaan rajapinnan käyttöä täsmentää
-    UML-sekvenssikaavioilla.
--   Toteutuksen yleisiä ratkaisuja, esim. turvallisuus.
-
-Tämän lisäksi
-
--   ohjelmakoodin tulee olla kommentoitua
--   luokkien, metodien ja muuttujien tulee olla kuvaavasti nimettyjä ja noudattaa
-    johdonmukaisia nimeämiskäytäntöjä
--   ohjelmiston pitää olla organisoitu komponentteihin niin, että turhalta toistolta
-    vältytään
-
 ## Testaus
 
 - Automaattisesti luotu TicketGuruApplicationTests on niin sanottu savutesti, joka testaa lähteekö sovellus käyntiin.
 - Junit-testit testaavat EventRepositoryTest.java luokassa löytääkö tapahtuman nimen perusteella ja palauttaako se silloin tapahtuman osoitteen. Lisäksi testataan uuden tapahtuman luonti ja tapahtuman poistaminen. 
 - Integraatiotesti testaa EventControllerIntegrationTest-luokassa uuden tapahtuman luontia ja sitä, että löytyykö se sen jälkeen eventRepositorysta. 
 - End-to-end testi testaa, että tickettypen luonti, haku ja poisto toimii kokonaisuudessaan. Testi käyttää mockmvc työkalua.
-
-Tänne kirjataan myös lopuksi järjestelmän tunnetut ongelmat, joita ei ole korjattu. <-- TÄMÄ KOHTA POISTOON JOS EI JÄÄ ONGELMIA.
 
 ## Asennustiedot
 
@@ -201,7 +164,7 @@ Kloonaa viimeisin versio sovelluksesta https://github.com/viljaminion/Ohjelmisto
 
 ### Sovelluksen käyttö lokaalisti
 
-Käynnistä ticketGuru. Käynnistä ticketGuruClient npm run dev-käskyllä terminaalissa oikeassa kansiossa. Avaa linkki, niin sovellus aukeaa.
+Käynnistä ticketGuruClient npm run dev-käskyllä terminaalissa oikeassa kansiossa. Avaa linkki, niin sovellus aukeaa.
 
 ### Sovelluksen käyttö Rahdissa
 
