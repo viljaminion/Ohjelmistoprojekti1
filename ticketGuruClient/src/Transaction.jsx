@@ -11,6 +11,11 @@ const TransactionPage = () => {
     const password = localStorage.getItem('password') || '';
     const basicAuth = btoa(`${username}:${password}`);
 
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}, ${date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`;
+    };
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -50,7 +55,7 @@ const TransactionPage = () => {
             </style>
             <h2>Transaction Complete</h2>
             <p>ID: {id}</p>
-            <p>Date: {transaction.transactiondate}</p>
+            <p>Date: {formatDate(transaction.transactiondate)}</p>
             <p>Total sum: <b>{transaction.ticketsum}€</b></p>
             <h2>Tickets sold:</h2>
             <table>
@@ -70,7 +75,7 @@ const TransactionPage = () => {
                             <td>{ticket.ticketcode}</td>
                             <td>{ticket.ticketType.event.eventname}</td>
                             <td>{ticket.ticketType.event.address}</td>
-                            <td>{ticket.ticketType.event.showtime}</td>
+                            <td>{formatDate(ticket.ticketType.event.showtime)}</td>
                         </tr>
                     ))}
                 </tbody>
