@@ -1,6 +1,6 @@
 package ohjelmistoprojekti.ticketGuru.domain;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -27,7 +27,7 @@ public class Transaction {
 
 	@Past
 	@NotNull(message = "Transaction must have a date")
-	private LocalDate transactiondate;
+	private Date transactiondate;
 
 	@NotNull(message = "Ticket sum cannot be null")
 	private Double ticketsum;
@@ -45,7 +45,7 @@ public class Transaction {
 
 	}
 
-	public Transaction(LocalDate transactiondate, Double ticketsum, AppUser user, List<Ticket> tickets) {
+	public Transaction(Date transactiondate, Double ticketsum, AppUser user, List<Ticket> tickets) {
 		super();
 		this.transactiondate = transactiondate;
 		this.ticketsum = ticketsum;
@@ -69,11 +69,11 @@ public class Transaction {
 		this.transaction_id = transaction_id;
 	}
 
-	public LocalDate getTransactiondate() {
+	public Date getTransactiondate() {
 		return transactiondate;
 	}
 
-	public void setTransactiondate(LocalDate transactiondate) {
+	public void setTransactiondate(Date transactiondate) {
 		this.transactiondate = transactiondate;
 	}
 

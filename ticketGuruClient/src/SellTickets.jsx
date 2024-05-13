@@ -85,7 +85,30 @@ const SellTickets = () => {
         }
     };
 
+    const currentDate = new Date().toISOString();
     const totalPrice = shoppingCart.reduce((total, item) => total + item.price, 0);
+
+    const handleConfirmTransaction = async () => {
+        try {
+            // Step 1: Create a new transaction
+            const transactionResponse = await axios.post('http://ohjelmistoprojekti1-ticketguru-kovas.rahtiapp.fi/transactions', {
+                transactiondate: currentDate, // Assuming current date/time
+                ticketsum: totalPrice // Assuming totalPrice is correctly calculated
+            }, {
+                headers: {
+                    Authorization: `Basic ${basicAuth}`
+                }
+            });
+
+            
+
+            // Step 4: Update UI
+            alert('Transaction successfully completed!');
+        } catch (error) {
+            console.error('Error confirming transaction:', error);
+            alert('An error occurred while confirming the transaction.');
+        }
+    };
 
     return (
         <div>
@@ -189,7 +212,7 @@ const SellTickets = () => {
             </div>
 
             <div className="total">
-                <p>Total Price: <b>{totalPrice}€</b></p><button>Confirm transaction</button>
+                <p>Total Price: <b>{totalPrice}€</b></p><button onClick={handleConfirmTransaction} disabled={shoppingCart.length === 0}>Confirm transaction</button>
             </div>
         </div>
     );
