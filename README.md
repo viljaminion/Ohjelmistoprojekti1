@@ -53,13 +53,17 @@ Käyttäjätarinat:
 ## Käyttöliittymä
 #### Etusivu:
 Tälle sivulle pääsee sisäänkirjautumisen jälkeen. Sieltä löytyy linkit Events, Tickets, Check Ticket ja Logout-linkki uloskirjautumista varten.
-#### Events-endpoint:
-Tällä sivulla näkyy järjestelmään lisätyt tapahtumat listana. Niitä voi poistaa ja muokata. Lisäksi sivulta löytyy Create new event-linkki.
-#### Newevent- endpoint:
+#### /events:
+Tällä sivulla näkyy järjestelmään lisätyt tapahtumat listana. Tickettypes-napista pääsee luomaan uusia lipputyyppejä tietylle tapahtumalle. Tapahtumia voi poistaa ja muokata. Lisäksi sivulta löytyy Create new event-linkki.
+#### /tickettypes/{eventid}:
+Tällä sivulla näet tietyn tapahtuman jo luodut lipputyypit tietoineen ja voit poistaa niitä. Lisäksi voit luoda uusia lipputyyppejä.
+#### /editevent/{eventid}:
+Tällä sivulla voit muokata valitsemasi tapahtuman tietoja.
+#### /newevent:
 Tällä sivulla pystyt luomaan uuden tapahtuman.
-#### Tickets-endpoint:
-Tältä sivulta löydät kaikki myydyt liput tietoineen.
-#### Lipun tarkistus-sivu:
+#### selltickets:
+Tällä sivulla voit ostaa lippuja yhteen tai useampaan tapahtumaan kerralla.
+#### /ticketused:
 Tällä sivulla voit syöttää lipun koodin tarkistakseen onko se käytetty ja pystyt myös merkkaamaan lipun käytetyksi.
 #### Tapahtumien hallinta: 
 Tapahtumien CRUD-toiminnot (Rest)
