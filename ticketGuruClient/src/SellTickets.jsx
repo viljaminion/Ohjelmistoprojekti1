@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const SellTickets = () => {
@@ -9,6 +10,7 @@ const SellTickets = () => {
     const [quantity, setQuantity] = useState(1);
     const [shoppingCart, setShoppingCart] = useState([]);
     const [filteredTicketTypes, setFilteredTicketTypes] = useState([]);
+    const navigate = useNavigate();
 
     const username = localStorage.getItem('username') || '';
     const password = localStorage.getItem('password') || '';
@@ -90,20 +92,34 @@ const SellTickets = () => {
 
     const handleConfirmTransaction = async () => {
         try {
-            // Step 1: Create a new transaction
             const transactionResponse = await axios.post('http://ohjelmistoprojekti1-ticketguru-kovas.rahtiapp.fi/transactions', {
-                transactiondate: currentDate, // Assuming current date/time
-                ticketsum: totalPrice // Assuming totalPrice is correctly calculated
+                transactiondate: currentDate,
+                ticketsum: totalPrice
             }, {
                 headers: {
                     Authorization: `Basic ${basicAuth}`
                 }
             });
 
-            
+            const transactionId = transactionResponse.data.id;
+            const ticketTypeIds = shoppingCart.map(item => item.id);
 
-            // Step 4: Update UI
-            alert('Transaction successfully completed!');
+            for (const ticketTypeId of ticketTypeIds) {
+                await axios.post(
+                    'http://ohjelmistoprojekti1-ticketguru-kovas.rahtiapp.fi/tickets',
+                    {
+                        transaction: { id: transactionId },
+                        ticketType: { id: ticketTypeId }
+                    },
+                    {
+                        headers: {
+                            Authorization: `Basic ${basicAuth}`
+                        }
+                    }
+                );
+            }
+
+            navigate(`/transaction/${transactionId}`);
         } catch (error) {
             console.error('Error confirming transaction:', error);
             alert('An error occurred while confirming the transaction.');
