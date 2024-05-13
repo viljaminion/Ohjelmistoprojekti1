@@ -1,6 +1,8 @@
+// EventList.jsx
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import EventReport from './EventReport'; // Import the new component
 
 const EventList = () => {
     const [eventsWithTicketTypes, setEventsWithTicketTypes] = useState([]);
@@ -10,6 +12,7 @@ const EventList = () => {
     const username = localStorage.getItem('username') || '';
     const password = localStorage.getItem('password') || '';
     const basicAuth = btoa(`${username}:${password}`);
+    const navigate = useNavigate(); // Get the navigate function
 
     useEffect(() => {
         const fetchData = () => {
@@ -62,10 +65,12 @@ const EventList = () => {
             });
     };
 
-    const navigate = useNavigate();
-
     const handleEditEvent = (eventId) => {
         navigate(`/editevent/${eventId}`);
+    };
+
+    const handleEventReport = (eventId) => {
+        navigate(`/eventreport/${eventId}`); // Navigate to the event report page
     };
 
     if (isLoading) {
@@ -102,17 +107,18 @@ const EventList = () => {
                             <td>{new Date(event.showtime).toLocaleString()}</td>
                             <td>{event.description}</td>
                             <td>{event.maxtickets}</td>
-                            <td>{event.duration}</td>
-                            <td>
-                                <button onClick={() => navigate(`/tickettypes/${event.id}`)}>Ticket Types</button>
-                                <button onClick={() => handleDeleteEvent(event.id)}>Delete</button>
+                            <td>{event.duration} min</td>
+                            <td>                                
                                 <button onClick={() => handleEditEvent(event.id)}>Edit</button>
+                                <button onClick={() => handleDeleteEvent(event.id)}>Delete</button>
+                                <button onClick={() => navigate(`/tickettypes/${event.id}`)}>Ticket Types</button>
+                                <button onClick={() => handleEventReport(event.id)}>Sales Report</button>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <button class="addbutton" onClick={() => navigate('/newevent')}>Add new event</button>{' '}
+            <button className="addbutton" onClick={() => navigate('/newevent')}>Add new event</button>{' '}
         </div>
     );
 };

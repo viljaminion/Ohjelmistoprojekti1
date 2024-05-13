@@ -9,7 +9,7 @@ import NewEvent from './NewEvent';
 import TicketTypes from './TicketTypes';
 import EditEvent from './EditEvent';
 import TransactionPage from './Transaction';
-
+import EventReport from './EventReport';
 
 export default function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -53,6 +53,7 @@ export default function App() {
             <Route path="/tickettypes/:id" element={<TicketTypes />} />
             <Route path="/editevent/:id" element={<EditEvent />} />
             <Route path="/transaction/:id" element={<TransactionPage />} />
+            <Route path="/eventreport/:id" element={<EventReport />} />
             <Route path="/login" element={<Login onAuthentication={handleAuthentication} />} />
           </Routes>
         </div>

@@ -16,6 +16,51 @@ const TransactionPage = () => {
         return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}, ${date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`;
     };
 
+    const generateRandomQRCode = () => {
+        const randomContent = Math.random().toString(36).substring(7);
+        return `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${randomContent}`;
+    };
+
+    const handlePrintTicket = (ticket) => {
+        const printWindow = window.open('', '_blank');
+        const content = `
+            <html>
+                <head>
+                    <title>Ticket Information</title>
+                    <style>
+                        .ticket-info {
+                            font-family: Arial, sans-serif;
+                            padding: 20px;
+                            border: 1px solid #ccc;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="ticket-info">
+                        <h2>Ticket Information</h2>
+                        <p>Ticket Type: ${ticket.ticketType.tickettypename}</p>
+                        <p>Ticket Code: ${ticket.ticketcode}</p>
+                        <p>Event: ${ticket.ticketType.event.eventname}</p>
+                        <p>Address: ${ticket.ticketType.event.address}</p>
+                        <p>Showtime: ${formatDate(ticket.ticketType.event.showtime)}</p>
+                        <p>QR Code:</p>
+                        <div id="qr-code"></div>
+                    </div>
+                    <script>
+                        function printAfterQRCodeLoad() {
+                            window.print();
+                        }
+                        const qrCodeImg = new Image();
+                        qrCodeImg.onload = printAfterQRCodeLoad;
+                        qrCodeImg.src = "${generateRandomQRCode()}";
+                        document.getElementById('qr-code').appendChild(qrCodeImg);
+                    </script>
+                </body>
+            </html>
+        `;
+        printWindow.document.write(content);
+    };
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -51,12 +96,12 @@ const TransactionPage = () => {
                 table {
                     width: 70%;
                 }
-            `}
+                `}
             </style>
             <h2>Transaction Complete</h2>
             <p>ID: {id}</p>
             <p>Date: {formatDate(transaction.transactiondate)}</p>
-            <p>Total sum: <b>{transaction.ticketsum}€</b></p>
+            <p>Total: <b>{transaction.ticketsum}€</b></p>
             <h2>Tickets sold:</h2>
             <table>
                 <thead>
@@ -66,6 +111,7 @@ const TransactionPage = () => {
                         <th>Event</th>
                         <th>Address</th>
                         <th>Showtime</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -76,6 +122,7 @@ const TransactionPage = () => {
                             <td>{ticket.ticketType.event.eventname}</td>
                             <td>{ticket.ticketType.event.address}</td>
                             <td>{formatDate(ticket.ticketType.event.showtime)}</td>
+                            <td><button onClick={() => handlePrintTicket(ticket)}>Print</button></td>
                         </tr>
                     ))}
                 </tbody>

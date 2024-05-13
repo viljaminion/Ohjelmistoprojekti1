@@ -8,6 +8,11 @@ function TicketUsed() {
     const password = localStorage.getItem('password') || '';
     const basicAuth = btoa(`${username}:${password}`);
 
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}, ${date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`;
+    };
+
     const handleChange = (e) => {
         setTicketCode(e.target.value);
     };
@@ -37,7 +42,6 @@ function TicketUsed() {
                 console.error('Error fetching tickets:', error);
             });
     };
-
 
     const markAsUsed = () => {
         fetch(`http://ohjelmistoprojekti1-ticketguru-kovas.rahtiapp.fi/tickets/${ticketInfo.id}`, {
@@ -70,10 +74,9 @@ function TicketUsed() {
                     <p>Ticket Code: {ticketInfo.ticketcode}</p>
                     <p>Event Name: {ticketInfo.ticketType.event.eventname}</p>
                     <p>Event Address: {ticketInfo.ticketType.event.address}</p>
-                    <p>Show Time: {ticketInfo.ticketType.event.showtime}</p>
-                    <p>Transaction ID: {ticketInfo.transaction.id}</p>
+                    <p>Show Time: {formatDate(ticketInfo.ticketType.event.showtime)}</p>
                     {ticketInfo.used ? (
-                        <p>Marked as Used: {ticketInfo.used}</p>
+                        <p>Marked as Used: {formatDate(ticketInfo.used)}</p>
                     ) : (
                         <button onClick={markAsUsed}>Mark as Used</button>
                     )}

@@ -189,7 +189,7 @@ const SellTickets = () => {
                             <option value="">-- Ticket Types --</option>
                             {filteredTicketTypes.map((type) => (
                                 <option key={type.id} value={type.id}>
-                                    {type.tickettypename} - {type.price}€
+                                    {type.tickettypename} - {type.price} €
                                 </option>
                             ))}
                         </select>
@@ -220,7 +220,7 @@ const SellTickets = () => {
                             <tr key={index}>
                                 <td>{item.tickettypename}</td>
                                 <td>{item.event.eventname}</td>
-                                <td>{item.price}€</td>
+                                <td>{item.price} €</td>
                             </tr>
                         ))}
                     </tbody>
@@ -228,7 +228,7 @@ const SellTickets = () => {
             </div>
 
             <div className="total">
-                <p>Total Price: <b>{totalPrice}€</b></p><button onClick={handleConfirmTransaction} disabled={shoppingCart.length === 0}>Confirm transaction</button>
+                <p>Total Price: <b>{totalPrice} €</b></p><button onClick={handleConfirmTransaction} disabled={shoppingCart.length === 0}>Confirm transaction</button>
             </div>
         </div>
     );

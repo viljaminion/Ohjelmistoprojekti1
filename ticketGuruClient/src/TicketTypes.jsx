@@ -112,7 +112,7 @@ const TicketTypesForEvent = () => {
                             return (
                                 <tr key={ticketType.id}>
                                     <td>{ticketType.tickettypename}</td>
-                                    <td>${ticketType.price}</td>
+                                    <td>{ticketType.price} €</td>
                                     <td>
                                         <button onClick={() => handleDelete(ticketType.id)}>Delete</button>
                                     </td>
