@@ -51,18 +51,19 @@ Käyttäjätarinat:
 - Haluan muokata tapahtumaa ja lisätä sen myytävien lippujen määrää.
 
 ## Käyttöliittymä
-- Etusivu:
+#### Etusivu:
 Tälle sivulle pääsee sisäänkirjautumisen jälkeen. Sieltä löytyy linkit Events, Tickets, Check Ticket ja Logout-linkki uloskirjautumista varten.
-- Tapahtumalistasivu:
+#### Events-endpoint:
 Tällä sivulla näkyy järjestelmään lisätyt tapahtumat listana. Niitä voi poistaa ja muokata. Lisäksi sivulta löytyy Create new event-linkki.
-- Tapahtuman lisäyssivu:
-Tällä sivulla pystyt luomaan uusia tapahtumia.
-- Liput-sivu:
+#### Newevent- endpoint:
+Tällä sivulla pystyt luomaan uuden tapahtuman.
+#### Tickets-endpoint:
 Tältä sivulta löydät kaikki myydyt liput tietoineen.
-- Lipun tarkistus-sivu:
+#### Lipun tarkistus-sivu:
 Tällä sivulla voit syöttää lipun koodin tarkistakseen onko se käytetty ja pystyt myös merkkaamaan lipun käytetyksi.
-- Tapahtumien hallinta: Tapahtumien CRUD-toiminnot (Rest)
-- Myyntiraportti:
+#### Tapahtumien hallinta: 
+Tapahtumien CRUD-toiminnot (Rest)
+#### Myyntiraportti:
 Tällä sivulla näkyy maksutapahtumien tiedot.
 TÄHÄN PITÄÄ LISÄTÄ VIELÄ!!
 
@@ -180,10 +181,10 @@ Tämän lisäksi
 
 ## Testaus
 
-Automaattisesti luotu TicketGuruApplicationTests on niin sanottu savutesti, joka testaa lähteekö sovellus käyntiin.
-Junit-testit testaavat EventRepositoryTest.java luokassa löytääkö tapahtuman nimen perusteella ja palauttaako se silloin tapahtuman osoitteen. Lisäksi testataan uuden tapahtuman luonti ja tapahtuman poistaminen. 
-Integraatiotesti testaa EventControllerIntegrationTest-luokassa uuden tapahtuman luontia ja sitä, että löytyykö se sen jälkeen eventRepositorysta. 
-End-to-end testi testaa, että tickettypen luonti, haku ja poisto toimii kokonaisuudessaan. Testi käyttää mockmvc työkalua.
+- Automaattisesti luotu TicketGuruApplicationTests on niin sanottu savutesti, joka testaa lähteekö sovellus käyntiin.
+- Junit-testit testaavat EventRepositoryTest.java luokassa löytääkö tapahtuman nimen perusteella ja palauttaako se silloin tapahtuman osoitteen. Lisäksi testataan uuden tapahtuman luonti ja tapahtuman poistaminen. 
+- Integraatiotesti testaa EventControllerIntegrationTest-luokassa uuden tapahtuman luontia ja sitä, että löytyykö se sen jälkeen eventRepositorysta. 
+- End-to-end testi testaa, että tickettypen luonti, haku ja poisto toimii kokonaisuudessaan. Testi käyttää mockmvc työkalua.
 
 Tänne kirjataan myös lopuksi järjestelmän tunnetut ongelmat, joita ei ole korjattu. <-- TÄMÄ KOHTA POISTOON JOS EI JÄÄ ONGELMIA.
 
