@@ -142,7 +142,7 @@ Frontend on tehty reactilla. Frontend kommunikoi backendin kanssa REST-rajapinna
 
 ### Backend-komponentti
 
-Backend on tehty Spring Bootilla ja se ajetaan Rahdin kautta. Kommunikointi tehdään Rest-rajapinnan kautta.
+Backend on tehty Spring Bootilla ja se ajetaan Rahdin kautta. Kommunikointi tehdään Rest-rajapinnan kautta. Tässä linkki: https://ohjelmistoprojekti1-ticketguru-kovas.rahtiapp.fi/.
 
 ### Tietokanta-komponentti
 
