@@ -138,7 +138,7 @@ Tässä kuvattu käyttöliittymän navigointi kaaviona.
 
 ### Frontend-komponentti
 
-Frontend on tehty reactilla. Frontend kommunikoi backendin kanssa REST-rajapinnan kautta. Rest Api tulee Rahdin tietokantapalvelun kautta ja käyttöliittymä GitHub pagesin kautta.
+Frontend on tehty reactilla. Frontend kommunikoi backendin kanssa REST-rajapinnan kautta. Rest Api tulee Rahdin tietokantapalvelun kautta ja käyttöliittymä Vercel palvelun kautta.
 
 ### Backend-komponentti
 
@@ -168,6 +168,6 @@ Käynnistä ticketGuruClient npm run dev-käskyllä terminaalissa oikeassa kansi
 
 ### Sovelluksen käyttö Rahdissa
 
-Tähän sovelluksen URL.
+Tästä linkistä pääsee sovellukseen: https://ticketguru-client.vercel.app/.
 Ylläpitäjän käyttäjätunnus on Mikko ja salasana admin.
 Myyjän käyttäjätunnus on Maija ja salasana user.
