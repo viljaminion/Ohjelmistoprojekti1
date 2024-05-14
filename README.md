@@ -1,4 +1,4 @@
-# TicketGuru (alustava nimi)
+# TicketGuru
 
 Tiimi: Heli Kyllinen, Viljami Olsen, Leevi Vehviläinen, Sakari Arasola, Viivi Salin
 
